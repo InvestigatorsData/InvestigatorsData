@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+]
+
+# include() add paths from the database application
+urlpatterns += [
+    path('database/', include('database.urls')),
 ]
