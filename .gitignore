@@ -1,5 +1,5 @@
 research_network/.idea/
 research_network/database/migrations/
-research_network/database/__pycache__/urls.cpython-36.pyc
-research_network/database/__pycache__/views.cpython-36.pyc
+research_network/database/__pycache__/
+research_network/research_network/__pycache__/
 *~
