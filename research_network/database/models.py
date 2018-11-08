@@ -1,99 +1,111 @@
 from django.db import models
 
 # Create your models here.
-class Institutos(models.Model):
-    id_instituto = models.AutoField(primary_key=True)
-    nombre = models.TextField()
-    telefono = models.IntegerField()
-    class Meta:
-        db_table = "Institutos"
 
-class Estados(models.Model):
-    id_estado = models.AutoField(primary_key=True)
-    nombre = models.TextField()
+class States(models.Model):
+    id_state = models.AutoField(primary_key=True)
+    key = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
     class Meta:
-        db_table = "Estados"
+        db_table = "States"
 
-class Departamento(models.Model):
-    id_departamento = models.AutoField(primary_key=True)
-    id_instituto = models.IntegerField()
-    colegio = models.IntegerField()
-    nombre = models.TextField()
-    direccion = models.TextField()
-    telefono = models.TextField()
-    correo = models.TextField()
+class College(models.Model):
+    id_college = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=200)
+    telephone = models.IntegerField()
+    address = models.CharField(max_length=200)
     class Meta:
-        db_table = "Departamento"
+        db_table = "College"
+
+
+class Campus(models.Model):
+    id_campus = models.IntegerField()
+    state = models.ForeignKey(States,on_delete=models.PROTECT)
+    college = models.ForeignKey(College,on_delete=models.PROTECT)
+    name = models.CharField(max_length=200)
+    telephone = models.IntegerField()
+    address = models.CharField(max_length=200)
+    class Meta:
+        db_table = "Campus"
+
+class Institutes(models.Model):
+    id_institute = models.IntegerField()
+    campus = models.ForeignKey(Campus,on_delete=models.PROTECT)
+    name = models.CharField(max_length=200)
+    telephone = models.IntegerField()
+    address = models.CharField(max_length=200)
+    class Meta:
+        unique_together = (("id_institute", "campus"),)
+        db_table = "Institutes"
+
+
+class Subinstitutes(models.Model):
+    id_subinstitute = models.AutoField(primary_key=True)
+    institute = models.ForeignKey(Institutes,on_delete=models.PROTECT)
+    id_reference_sub = models.ForeignKey('self',on_delete=models.PROTECT)
+    name = models.CharField(max_length=200)
+    address = models.CharField(max_length=200)
+    telephone = models.IntegerField()
+    class Meta:
+        db_table = "Subinstitutes"
 
 class Roles(models.Model):
-    id_rol = models.AutoField(primary_key=True)
-    rol = models.TextField()
+    id_role = models.AutoField(primary_key=True)
+    role = models.CharField(max_length=20)
     class Meta:
         db_table = "Roles"
 
-class Grupos(models.Model):
-    id_grupo = models.AutoField(primary_key=True)
-    id_instituto = models.IntegerField()
-    id_colegio = models.IntegerField()
-    nombre = models.TextField()
+class User_profiles(models.Model):
+    id_user_profile = models.AutoField(primary_key=True)
+    profile = models.CharField(max_length=200)
     class Meta:
-        db_table = "Grupos"
+        db_table = "User_profiles"
 
-class Articulos(models.Model):
-    id_articulo = models.AutoField(primary_key= True)
-    id_instituto = models.IntegerField()
-    id_colegio = models.IntegerField()
-    tema = models.TextField()
-    fecha_publicacion = models.TextField()
-    ruta_archivo = models.TextField()
+class Papers(models.Model):
+    id_paper = models.AutoField(primary_key=True)
+    topic = models.CharField(max_length=200)
+    publication_date = models.CharField(max_length=200)
+    file_path = models.CharField(max_length=200)
+    binary = models.BinaryField()
     class Meta:
-        db_table = "Articulos"
+        db_table = "Papers"
 
-class Nivel_Estudios(models.Model):
-    id_nivel_estudios = models.AutoField(primary_key=True)
-    nivel = models.TextField()
+class People(models.Model):
+    id_people = models.AutoField(primary_key=True)
+    mail = models.CharField(max_length=200)
+    password = models.CharField(max_length=128)
+    user_profile = models.ForeignKey(User_profiles,on_delete=models.PROTECT)
+    institute = models.ForeignKey(Institutes,on_delete=models.PROTECT)
+    subinstitute = models.ForeignKey(Subinstitutes,on_delete=models.PROTECT)
+    role = models.ForeignKey(Roles,on_delete=models.PROTECT)
+    academic_level = models.CharField(max_length=200)
+    degree = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    personal_telephone = models.CharField(max_length=200)
     class Meta:
-        db_table = "Nivel_Estudios"
+        db_table = "People"
 
-class Estudios(models.Model):
-    id_estudios = models.AutoField(primary_key=True)
-    id_instituto = models.IntegerField()
-    id_colegio = models.IntegerField()
-    estudio = models.TextField()
+class Groups(models.Model):
+    id_group = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=200)
+    id_creator = models.ForeignKey(People,on_delete=models.PROTECT)
     class Meta:
-        db_table = "Estudios"
+        db_table = "Groups"
 
-class Estudios_Personas(models.Model):
-    id_estudio = models.IntegerField()
-    id_persona = models.IntegerField()
-    class Meta:
-        db_table = "Estudios_Personas"
 
-class Colegios(models.Model):
-    id_colegio = models.AutoField(primary_key=True)
-    estado = models.ForeignKey(Estados,on_delete=models.PROTECT)
-    instituto = models.ForeignKey(Institutos,on_delete=models.PROTECT)
-    nombre = models.TextField()
-    direccion = models.TextField()
-    telefono = models.IntegerField()
-    correo = models.IntegerField()
+class Public(models.Model):
+    id_people = models.ForeignKey(People,on_delete=models.PROTECT)
+    mail = models.BooleanField()
+    id_institute = models.BooleanField()
+    id_subinstitute = models.BooleanField()
+    academic_level = models.BooleanField()
+    degree = models.BooleanField()
+    name = models.BooleanField()
+    last_name = models.BooleanField()
+    personal_telephone = models.BooleanField()
     class Meta:
-        db_table = "Colegios"
+        db_table = "Public"
 
-class Personas(models.Model):
-    id_persona = models.AutoField(primary_key=True)
-    nombre = models.TextField()
-    curp = models.TextField()
-    telefono = models.IntegerField()
-    correo = models.TextField()
-    instituto = models.ForeignKey(Institutos,on_delete=models.PROTECT)
-    colegio = models.ForeignKey(Colegios,on_delete=models.PROTECT)
-    estado = models.ForeignKey(Estados,on_delete=models.PROTECT)
-    departamento = models.ForeignKey(Departamento,on_delete=models.PROTECT)
-    rol = models.ForeignKey(Roles,on_delete=models.PROTECT)
-    nivel_estudios = models.ForeignKey(Nivel_Estudios,on_delete=models.PROTECT)
-    grupos = models.ManyToManyField(Grupos, help_text='Grupos a los que pertenece')
-    articulos = models.ManyToManyField(Articulos, help_text='Articulos en los que aparece')
-    estudios = models.ManyToManyField(Estudios, help_text='Estudios')
-    class Meta:
-        db_table = "Personas"
+
+
