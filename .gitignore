@@ -3,3 +3,4 @@ research_network/database/migrations/
 research_network/database/__pycache__/
 research_network/research_network/__pycache__/
 *~
+__pycache__/
