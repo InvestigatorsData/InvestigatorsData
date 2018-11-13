@@ -1,0 +1,56 @@
+Este README es temporal, solo es una guia para la instalacion de las dependencias necesarias para empezar a trabajar sobre el proyecto
+
+Primero que nada ocuparemos python 3 para el proyecto : "python3"
+
+Necesitaremos el gestor de paquetes de python3: "pip3" 
+
+Instalamos la version mas reciente del framework Django: "pip3 install Django==2.1.3"
+
+Instalamos el adaptador para que se comuniquen el framework y postgres: "pip3 install psycopg2-binary"
+
+La version que ocuparemos de postgres sera 10.x, ya esta la version 11 pero aun no hay soporte para tantos sistemas operativos como en
+la version 10. La instalacion es para ubuntu (https://www.postgresql.org/download/linux/ubuntu/), si su sistema operativo es distinto
+instalen los paquetes equivalentes para su distribucion por favor (https://www.postgresql.org/download/linux/)
+
+Lo que sigue es mas independiente de su sistema operativo en mi caso utilizo Ubuntu 18.04, por defecto el gestor de paquetes de ubuntu
+mantiene repositorios oficiales para postgres, asi que la instalacion es como sigue:
+
+1.- 'sudo apt-get update'
+
+2.- 'sudo apt-get install postgresql postgresql-contrib'
+
+3.- 'sudo apt-get install pgadmin3' (opcional)
+
+Despues de instalar PostgreSQL, por defecto crea un usuario "postgres", y una cuenta de sistema con el mismo nombre, esto quiere decir
+que no podemos ocupar el usuario actual con el que estamos trabajando, asi que tenemos cambiar de usuario de manera temporal, desde
+la terminal de ubuntu seria asi: 'sudo su postgres'
+
+Corremos el siguiente comando para abrir la linea de comandos de postgres: "psql"
+
+E introducimos los siguiente comandos
+
+1.-[ create user admin with password 'admin'; ] (Crea un usario llamado "admin" con password "admin", no es lo mejor pero es para que todos
+mantengamos las mismas credenciales en el gestor)
+
+2.- [create database researchnet with owner admin;] (Crea una base de datos que decidi llamar "researchnet")
+
+3.- [grant all privileges on all tables in schema public to admin;]
+
+Como ya subi la estructura inicial del proyecto en el repositorio solo falta correr los siguientes comandos dentro de la carpeta "research_network"
+para que llene la base de datos que acaban de crear con las tablas por defecto de Django y con las tablas de la estructura inicial
+
+1.- python3 manage.py makemigrations
+
+2-  python3 manage.py migrate
+
+3.- python3 manage.py createsuperuser (con los siguientes campos por favor: user=admin,email=admin@example.com,password=admmin)
+
+
+Con esto tenemos iniciada la estructura principal de la base de datos, para comprobar que se escribio en la base, en la terminal de psql
+usamos los siguientes comandos:
+
+1.-'\l' para listar las bases de datos
+2.-'\c researchnet' para conectarse a nuestra base de datos
+3.-'\dt' para ver las tablas de nuestras base de datos
+
+Si tienen algun problema, avisenme por favor ;(
