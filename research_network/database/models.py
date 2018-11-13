@@ -8,6 +8,9 @@ class States(models.Model):
     name = models.CharField(max_length=200)
     class Meta:
         db_table = "States"
+    def __str__(self):
+        """A string representation of the model."""
+        return self.name[:50]
 
 class College(models.Model):
     id_college = models.AutoField(primary_key=True)
@@ -16,6 +19,9 @@ class College(models.Model):
     address = models.CharField(max_length=200)
     class Meta:
         db_table = "College"
+    def __str__(self):
+        """A string representation of the model."""
+        return self.name[:50]
 
 
 class Campus(models.Model):
@@ -28,6 +34,10 @@ class Campus(models.Model):
     class Meta:
         db_table = "Campus"
 
+    def __str__(self):
+        """A string representation of the model."""
+        return self.name[:50]
+
 class Institutes(models.Model):
     id_institute = models.IntegerField()
     campus = models.ForeignKey(Campus,on_delete=models.PROTECT)
@@ -37,7 +47,9 @@ class Institutes(models.Model):
     class Meta:
         unique_together = (("id_institute", "campus"),)
         db_table = "Institutes"
-
+    def __str__(self):
+        """A string representation of the model."""
+        return self.name[:50]
 
 class Subinstitutes(models.Model):
     id_subinstitute = models.AutoField(primary_key=True)
@@ -49,17 +61,29 @@ class Subinstitutes(models.Model):
     class Meta:
         db_table = "Subinstitutes"
 
+    def __str__(self):
+        """A string representation of the model."""
+        return self.name[:50]
+
 class Roles(models.Model):
     id_role = models.AutoField(primary_key=True)
     role = models.CharField(max_length=20)
     class Meta:
         db_table = "Roles"
 
+    def __str__(self):
+        """A string representation of the model."""
+        return self.role[:50]
+
 class User_profiles(models.Model):
     id_user_profile = models.AutoField(primary_key=True)
     profile = models.CharField(max_length=200)
     class Meta:
         db_table = "User_profiles"
+
+    def __str__(self):
+        """A string representation of the model."""
+        return self.profile[:50]
 
 class Papers(models.Model):
     id_paper = models.AutoField(primary_key=True)
@@ -69,6 +93,9 @@ class Papers(models.Model):
     binary = models.BinaryField()
     class Meta:
         db_table = "Papers"
+    def __str__(self):
+        """A string representation of the model."""
+        return self.topic[:50]
 
 class People(models.Model):
     id_people = models.AutoField(primary_key=True)
@@ -85,6 +112,9 @@ class People(models.Model):
     personal_telephone = models.CharField(max_length=200)
     class Meta:
         db_table = "People"
+    def __str__(self):
+        """A string representation of the model."""
+        return self.name[:50]
 
 class Groups(models.Model):
     id_group = models.AutoField(primary_key=True)
@@ -92,6 +122,10 @@ class Groups(models.Model):
     id_creator = models.ForeignKey(People,on_delete=models.PROTECT)
     class Meta:
         db_table = "Groups"
+
+    def __str__(self):
+        """A string representation of the model."""
+        return self.name[:50]
 
 
 class Public(models.Model):
@@ -106,6 +140,9 @@ class Public(models.Model):
     personal_telephone = models.BooleanField()
     class Meta:
         db_table = "Public"
+    def __str__(self):
+        """A string representation of the model."""
+        return self.name[:50]
 
 
 
