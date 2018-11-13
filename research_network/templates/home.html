@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>RENAIN</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ammap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ammap.css' %}" type="text/css">
+
+</head>
+<body>
+
+<header>
+<div class="container">
+    <!-- This checkbox will give us the toggle behavior, it will be hidden, but functional -->
+    <input id="toggle" type="checkbox">
+
+    <!-- IMPORTANT: Any element that we want to modify when the checkbox state changes go here, being "sibling" of the checkbox element -->
+
+    <!-- This label is tied to the checkbox, and it will contain the toggle "buttons" -->
+    <label class="toggle-container" for="toggle">
+        <!-- If menu is open, it will be the "X" icon, otherwise just a clickable area behind the hamburger menu icon -->
+        <span class="button button-toggle"></span>
+    </label>
+
+    <!-- The nav menu -->
+    <nav class="nav logo">
+
+        <a class="nav-item" href="">Inicio</a>
+        <a class="nav-item" href="">Acerca de</a>
+        <a class="nav-item" href="Login.html">Ingresar</a>
+        <a class="nav-item" href="register.html">Registro</a>
+        <a class="nav-item" href="">Consulta</a>
+        <input type="text" class="nav-item" id="mySearch" onkeyup="myFunction()" placeholder="Buscar..." title="Type in a category">
+    </nav>
+</div>
+</header>
+
+
+      <div class="map">
+      <link rel="stylesheet" href="{% static 'css/ammap.css' %}" type="text/css">
+      <script src="{% static 'css/ammap.js' %}" type="text/javascript"></script>
+	    <script src="{% static 'css/mexicoHigh.js' %}" type="text/javascript"></script>
+        <script>
+
+			var map;
+
+			AmCharts.ready(function() {
+			    map = new AmCharts.AmMap();
+			    map.colorSteps = 10;
+			    var dataProvider = {
+			        mapVar: AmCharts.maps.mexicoHigh,
+			        areas: [
+			            {
+			            id: "MX-AGU",
+			            value: 1065416},
+			        {
+			            id: "MX-BCN",
+			            value: 2844469},
+			        {
+			            id: "MX-BCS",
+			            value: 512170},
+			        {
+			            id: "MX-CAM",
+			            value: 754730},
+			        {
+			            id: "MX-CHP",
+			            value: 4293459},
+			        {
+			            id: "MX-CHH",
+			            value: 3241444},
+			        {
+			            id: "MX-COA",
+			            value: 2495200},
+			        {
+			            id: "MX-COL",
+			            value: 567996},
+			        {
+			            id: "MX-CDMX",
+			            value: 8720916},
+			        {
+			            id: "MX-DUR",
+			            value: 1509117},
+			        {
+			            id: "MX-GUA",
+			            value: 4893812},
+			        {
+			            id: "MX-GRO",
+			            value: 3115202},
+			        {
+			            id: "MX-HID",
+			            value: 2345514},
+			        {
+			            id: "MX-JAL",
+			            value: 6752113},
+			        {
+			            id: "MX-MEX",
+			            value: 14007495},
+			        {
+			            id: "MX-MIC",
+			            value: 3966073},
+			        {
+			            id: "MX-MOR",
+			            value: 1612899},
+			        {
+			            id: "MX-NAY",
+			            value: 949684},
+			        {
+			            id: "MX-NLE",
+			            value: 4199292},
+			        {
+			            id: "MX-OAX",
+			            value: 3506821},
+			        {
+			            id: "MX-PUE",
+			            value: 2382133},
+			        {
+			            id: "MX-QUE",
+			            value: 1598139},
+			        {
+			            id: "MX-ROO",
+			            value: 1135309},
+			        {
+			            id: "MX-SLP",
+			            value: 2410414},
+			        {
+			            id: "MX-SIN",
+			            value: 2608442},
+			        {
+			            id: "MX-SON",
+			            value: 2394861},
+			        {
+			            id: "MX-TAB",
+			            value: 1989969},
+			        {
+			            id: "MX-TAM",
+			            value: 3024238},
+			        {
+			            id: "MX-TLA",
+			            value: 1068207},
+			        {
+			            id: "MX-VER",
+			            value: 7110214},
+			        {
+			            id: "MX-YUC",
+			            value: 1818948},
+			        {
+			            id: "MX-ZAC",
+			            value: 1367692}]
+			    };
+			    map.areasSettings = {
+			        autoZoom: true
+			    };
+			    map.dataProvider = dataProvider;
+			    var valueLegend = new AmCharts.ValueLegend();
+			    valueLegend.right = 10;
+			    valueLegend.minValue = "-";
+			    valueLegend.maxValue = "+";
+			    map.valueLegend = valueLegend;
+			    map.write("mapdiv");
+			});
+		</script>
+  </div>
+          <div id="mapdiv" style="width: 100%; background-color:#EEEEEE; height: 500px;"></div>
+
+        <div id="footer">
+          <p>Hecho en México, todos los derechos reservados 2018-2019. Esta página
+             puede ser reproducida con fines no lucrativos, siempre y cuando no se
+             mutile, se cite la fuente completa y su dirección electrónica. De otra
+             forma requiere permiso previo por escrito de la Institución. </p>
+        </div>
+
+    </body>
+</html>
