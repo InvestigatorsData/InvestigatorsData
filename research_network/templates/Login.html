@@ -47,30 +47,32 @@
 </div>
 </header>
 
+{% block content %}
 <div class="form">
-<div class="container-contact100">
+	<div class="container-contact100">
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
 					INGRESO
 				</span>
-
-				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "ingresa un correo valido (e@a.x)">
-					<span class="label-input100">CORREO *</span>
-					<input class="input100" type="text" name="email" placeholder="ingresa tu correo electronico">
-				</div>
-				
-				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
-					<span class="label-input100">CONTRASEÑA (MÍNIMO 8 CARACTERES) *</span>
-					<input class="input100" type="password" name="name" placeholder="Ingresa tu contraseña">
-				</div>
-
+				<form method="post" action="{% url 'database:user_login' %}">
+					{% csrf_token %}
+					<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "ingresa un correo valido (e@a.x)">
+						<span class="label-input100">CORREO *</span>
+						<input class="input100" type="text" name="email" placeholder="Ingresa tu correo electronico">
+					</div>
+					<div class="wrap-input100 validate-input bg1" data-validate="Contraseña de 8 caracteres">
+						<span class="label-input100">CONTRASEÑA (MÍNIMO 8 CARACTERES) *</span>
+						<input class="input100" type="password" name="password" placeholder="Ingresa tu contraseña">
+					</div>
+					<input type="submit" name="" value="Login">
+				</form>
 			</form>
 		</div>
 	</div>
 
 </div>
-
+{% endblock %}
 
 
 <!--===============================================================================================-->
