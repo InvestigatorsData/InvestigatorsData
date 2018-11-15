@@ -2,7 +2,7 @@ Este README es temporal, solo es una guia para la instalacion de las dependencia
 
 Primero que nada ocuparemos python 3 para el proyecto : "python3"
 
-Necesitaremos el gestor de paquetes de python3: "pip3" 
+Necesitaremos el gestor de paquetes de python3: "pip3"
 
 Instalamos la version mas reciente del framework Django: "pip3 install Django==2.1.3"
 
@@ -52,5 +52,3 @@ usamos los siguientes comandos:
 1.-'\l' para listar las bases de datos
 2.-'\c researchnet' para conectarse a nuestra base de datos
 3.-'\dt' para ver las tablas de nuestras base de datos
-
-Si tienen algun problema, avisenme por favor ;(
