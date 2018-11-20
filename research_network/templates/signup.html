@@ -56,7 +56,7 @@
 				
 				<form action="{% url 'signup' %}" method="POST" name="signup">
 					{% csrf_token %}
-
+					
 					<div class="wrap-input100 validate-input bg1" data-validate="Por favor, llene el campo">
 						<span class="label-input100">NOMBRE(S) *</span>
 						<input class="form-control" type="text" name="first_name" placeholder="Ingrese sus datos">
@@ -121,7 +121,7 @@
 						</div>
 					</div>	
 
-					<input type="submit" name="" value="Register">
+					<input type="submit" formmethod='POST' name="" value="Register">
 
 					<div class="container-contact100-form-btn">
 						<button class="contact100-form-btn">

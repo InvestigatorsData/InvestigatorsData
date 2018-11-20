@@ -30,7 +30,6 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('base.html'))
 
 def signup(request):
-    print(request.GET.get('email', False)) ## Aqui si obtengo los atributos
     if request.method == 'POST':
         user_form = SignUpForm(request.POST)
         if user_form.is_valid():
@@ -49,7 +48,6 @@ def signup(request):
     else:
         user_form = SignUpForm()
     return render(request, 'signup.html', {'form': user_form})
-
 
 def user_login(request):
     if request.method == 'POST':

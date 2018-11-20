@@ -25,4 +25,4 @@ admin.site.register(Upload_Document)
 admin.site.register(Join_Group)
 admin.site.register(Register_Place)
 admin.site.register(Modify_Place)
-
+admin.site.register(UserProfileInfo)

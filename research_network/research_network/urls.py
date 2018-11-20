@@ -1,5 +1,4 @@
 """research_network URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
 Examples:
@@ -24,6 +23,7 @@ app_name = 'database'
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='base.html'), name='base'),
+    path('admin/', admin.site.urls),
     path('home', TemplateView.as_view(template_name='home.html'), name='home'),
     url(r'^signup/$', database_views.signup, name='signup'),
     url(r'^login/$', database_views.user_login, name='login'),
