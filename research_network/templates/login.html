@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>REGISTRO</title>
+    <title>INGRESAR</title>
     <link rel="stylesheet" href="{% static 'css/ingreso.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/util.css' %}">
@@ -55,7 +55,7 @@
 				<span class="contact100-form-title">
 					INGRESO
 				</span>
-				<form method="post" action="{% url 'database:user_login' %}">
+				<form method="POST" action="{% url 'login' %}">
 					{% csrf_token %}
 					<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "ingresa un correo valido (e@a.x)">
 						<span class="label-input100">CORREO *</span>
@@ -65,7 +65,7 @@
 						<span class="label-input100">CONTRASEÑA (MÍNIMO 8 CARACTERES) *</span>
 						<input class="input100" type="password" name="password" placeholder="Ingresa tu contraseña">
 					</div>
-					<input type="submit" name="" value="Login">
+					<input type="submit" name="" value="login">
 				</form>
 			</form>
 		</div>

@@ -15,10 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url, include
-from django.urls import path,include
+from django.urls import path, include, re_path
+from django.views.generic.base import TemplateView
+from database import views as database_views
+from database.views import SignUp
+
+app_name = 'database'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'^database/', include('database.urls')),
-    path('', include('pages.urls')),
+    path('', TemplateView.as_view(template_name='base.html'), name='base'),
+    path('home', TemplateView.as_view(template_name='home.html'), name='home'),
+    url(r'^signup/$', database_views.signup, name='signup'),
+    url(r'^login/$', database_views.user_login, name='login'),
 ]
+
