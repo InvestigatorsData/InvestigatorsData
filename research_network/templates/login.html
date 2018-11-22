@@ -6,15 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>REGISTRO</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <title>INGRESAR</title>
+    <link rel="stylesheet" href="{% static 'css/ingreso.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/util.css' %}">
 
 
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+	<link rel="icon" type="image/png" href=" {% static 'images/icons/favicon.ico' %}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
 <!--===============================================================================================-->
@@ -41,98 +40,39 @@
 <body>
 
 <header>
-  <div class="header">
-    <a href="#default" class="logo">RENAIN</a>
-    <div class="header-right">
-      <a href="#about">Ayuda</a>
-    </div>
-  </div>
+<div class="container">
+    
+        <div> RENAIN </div>
+    
+</div>
 </header>
 
+{% block content %}
 <div class="form">
-<div class="container-contact100">
+	<div class="container-contact100">
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
-					REGISTRO
+					INGRESO
 				</span>
-
-				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
-					<span class="label-input100">NOMBRE(S) *</span>
-					<input class="input100" type="text" name="name" placeholder="Enter Your Name">
-				</div>
-
-				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
-					<span class="label-input100">APELLIDO(S) *</span>
-					<input class="input100" type="text" name="name" placeholder="Enter Your Name">
-				</div>
-
-				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
-					<span class="label-input100">CONTRASEÑA (MÍNIMO 8 CARACTERES) *</span>
-					<input class="input100" type="text" name="name" placeholder="Enter Your Name">
-				</div>
-
-				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
-					<span class="label-input100">CONFIRME SU CONTRASEÑA *</span>
-					<input class="input100" type="text" name="name" placeholder="Enter Your Name">
-				</div>
-
-				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email (e@a.x)">
-					<span class="label-input100">CORREO *</span>
-					<input class="input100" type="text" name="email" placeholder="Enter Your Email ">
-				</div>
-
-				<div class="wrap-input100 bg1 rs1-wrap-input100">
-					<span class="label-input100">CELULAR</span>
-					<input class="input100" type="text" name="phone" placeholder="Enter Number Phone">
-				</div>
-
-				<div class="wrap-input100 input100-select bg1">
-					<span class="label-input100"> DATOS ACÁDEMICOS *</span>
-					<div>
-						<select class="js-select2" name="service">
-							<option>Institución</option>
-							<option>Campus</option>
-							<option>Carrera</option>
-							<option>Posgrado</option>
-						</select>
-						<div class="dropDownSelect2"></div>
+				<form method="POST" action="{% url 'login' %}">
+					{% csrf_token %}
+					<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "ingresa un correo valido (e@a.x)">
+						<span class="label-input100">CORREO *</span>
+						<input class="input100" type="text" name="email" placeholder="Ingresa tu correo electronico">
 					</div>
-				</div>
-
-				<div class="w-full dis-none js-show-service">
-					<div class="wrap-contact100-form-radio">
-						<span class="label-input100">TIPO DE USUARIO</span>
-
-						<div class="contact100-form-radio m-t-15">
-							<input class="input-radio100" id="radio1" type="radio" name="type-product" value="physical" checked="checked">
-							<label class="label-radio100" for="radio1">
-								Investigador
-							</label>
-						</div>
-
-						<div class="contact100-form-radio">
-							<input class="input-radio100" id="radio2" type="radio" name="type-product" value="digital">
-							<label class="label-radio100" for="radio2">
-								Estudiante
-							</label>
-						</div>
-
-
-				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn">
-						<span>
-							Enviar solicitud
-							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-						</span>
-					</button>
-				</div>
+					<div class="wrap-input100 validate-input bg1" data-validate="Contraseña de 8 caracteres">
+						<span class="label-input100">CONTRASEÑA (MÍNIMO 8 CARACTERES) *</span>
+						<input class="input100" type="password" name="password" placeholder="Ingresa tu contraseña">
+					</div>
+					<input type="submit" formmethod='POST' name="login" value="login">
+				</form>
 			</form>
 		</div>
 	</div>
 
 </div>
-
+{% endblock %}
 
 
 <!--===============================================================================================-->
@@ -186,7 +126,7 @@
 
 	    var skipValues = [
 	    document.getElementById('value-lower'),
-	        document.getElementById('value-upper')
+	    document.getElementById('value-upper')
 	    ];
 
 	    filterBar.noUiSlider.on('update', function( values, handle ) {
