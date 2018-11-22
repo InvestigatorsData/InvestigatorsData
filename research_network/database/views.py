@@ -59,7 +59,7 @@ def user_login(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         user = authenticate(email=email, password=password)
-        if user:
+        if user is not None:
             if user.is_active:
                 login(request, user)
                 return HttpResponseRedirect(reverse('home'))
@@ -71,4 +71,4 @@ def user_login(request):
                 email, password))
             return HttpResponse("Invalid login details given")
     else:
-        return render(request, 'database/Login.html', {})
+        return render(request, 'login.html', {})
