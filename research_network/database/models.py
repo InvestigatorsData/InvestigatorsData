@@ -30,59 +30,59 @@ class States(models.Model):
         db_table = "States"
     def __str__(self):
         """A string representation of the model."""
-        return self.name[:50]
+        return self.name
 
 class College(models.Model):
     id_college = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
-    telephone = models.IntegerField()
-    address = models.CharField(max_length=200)
+    telephone = models.CharField(max_length=200, null=True, blank=True)
+    address = models.CharField(max_length=200, null=True, blank=True)
     class Meta:
         db_table = "College"
     def __str__(self):
         """A string representation of the model."""
-        return self.name[:50]
+        return self.name
 
 class Campus(models.Model):
-    id_campus = models.IntegerField()
+    id_campus = models.AutoField(primary_key=True)
     state = models.ForeignKey(States,on_delete=models.PROTECT)
     college = models.ForeignKey(College,on_delete=models.PROTECT)
     name = models.CharField(max_length=200)
-    telephone = models.IntegerField()
-    address = models.CharField(max_length=200)
+    telephone = models.CharField(max_length=200, null=True, blank=True)
+    address = models.CharField(max_length=200, null=True, blank=True)
     class Meta:
         db_table = "Campus"
 
     def __str__(self):
         """A string representation of the model."""
-        return self.name[:50]
+        return self.name
 
 class Institutes(models.Model):
-    id_institute = models.IntegerField()
-    campus = models.ForeignKey(Campus,on_delete=models.PROTECT)
+    id_institute = models.AutoField(primary_key=True)
+    campus = models.ForeignKey(Campus,on_delete=models.PROTECT, null=True, blank=True)
     name = models.CharField(max_length=200)
-    telephone = models.IntegerField()
-    address = models.CharField(max_length=200)
+    telephone = models.CharField(max_length=200, null=True, blank=True)
+    address = models.CharField(max_length=200, null=True, blank=True)
     class Meta:
         unique_together = (("id_institute", "campus"),)
         db_table = "Institutes"
     def __str__(self):
         """A string representation of the model."""
-        return self.name[:50]
+        return self.name
 
 class Subinstitutes(models.Model):
     id_subinstitute = models.AutoField(primary_key=True)
     institute = models.ForeignKey(Institutes,on_delete=models.PROTECT)
-    id_reference_sub = models.ForeignKey('self',on_delete=models.PROTECT)
+    id_reference_sub = models.ForeignKey('self',on_delete=models.PROTECT, null=True, blank=True)
     name = models.CharField(max_length=200)
-    address = models.CharField(max_length=200)
-    telephone = models.IntegerField()
+    address = models.CharField(max_length=200, null=True, blank=True)
+    telephone = models.CharField(max_length=200, null=True, blank=True)
     class Meta:
         db_table = "Subinstitutes"
 
     def __str__(self):
         """A string representation of the model."""
-        return self.name[:50]
+        return self.name
 
 class Roles(models.Model):
     id_role = models.AutoField(primary_key=True)
@@ -92,7 +92,7 @@ class Roles(models.Model):
 
     def __str__(self):
         """A string representation of the model."""
-        return self.role[:50]
+        return self.role
 
 class User_profiles(models.Model):
     id_user_profile = models.AutoField(primary_key=True)
@@ -102,19 +102,19 @@ class User_profiles(models.Model):
 
     def __str__(self):
         """A string representation of the model."""
-        return self.profile[:50]
+        return self.profile
 
 class Papers(models.Model):
     id_paper = models.AutoField(primary_key=True)
     topic = models.CharField(max_length=200)
     publication_date = models.CharField(max_length=200)
-    file_path = models.CharField(max_length=200)
-    binary = models.BinaryField()
+    file_path = models.CharField(max_length=200, null=True, blank=True)
+    binary = models.BinaryField(null=True, blank=True)
     class Meta:
         db_table = "Papers"
     def __str__(self):
         """A string representation of the model."""
-        return self.topic[:50]
+        return self.topic
 
 class Groups(models.Model):
     id_group = models.AutoField(primary_key=True)
@@ -124,7 +124,7 @@ class Groups(models.Model):
 
     def __str__(self):
         """A string representation of the model."""
-        return self.name[:50]
+        return self.name
 
 class People(models.Model):
     id_people = models.AutoField(primary_key=True)
@@ -132,34 +132,34 @@ class People(models.Model):
     password = models.CharField(max_length=128)
     user_profile = models.ForeignKey(User_profiles,on_delete=models.PROTECT)
     institute = models.ForeignKey(Institutes,on_delete=models.PROTECT)
-    subinstitute = models.ForeignKey(Subinstitutes,on_delete=models.PROTECT)
+    subinstitute = models.ForeignKey(Subinstitutes,on_delete=models.PROTECT, null=True, blank=True)
     role = models.ForeignKey(Roles,on_delete=models.PROTECT)
-    academic_level = models.CharField(max_length=200)
-    degree = models.CharField(max_length=200)
+    academic_level = models.CharField(max_length=200, null=True, blank=True)
+    degree = models.CharField(max_length=200, null=True, blank=True)
     name = models.CharField(max_length=200)
     groups = models.ManyToManyField(Groups)
-    personal_telephone = models.CharField(max_length=200)
+    papers = models.ManyToManyField(Papers)
+    personal_telephone = models.CharField(max_length=200, null=True, blank=True)
     class Meta:
         db_table = "People"
     def __str__(self):
         """A string representation of the model."""
-        return self.name[:50]
+        return self.name
 
 class Public(models.Model):
     id_people = models.ForeignKey(People,on_delete=models.PROTECT)
     mail = models.BooleanField()
     id_institute = models.BooleanField()
-    id_subinstitute = models.BooleanField()
-    academic_level = models.BooleanField()
-    degree = models.BooleanField()
+    id_subinstitute = models.BooleanField(null=True, blank=True)
+    academic_level = models.BooleanField(null=True, blank=True)
+    degree = models.BooleanField(null=True, blank=True)
     name = models.BooleanField()
-    last_name = models.BooleanField()
-    personal_telephone = models.BooleanField()
+    personal_telephone = models.BooleanField(null=True, blank=True)
     class Meta:
         db_table = "Public"
     def __str__(self):
         """A string representation of the model."""
-        return self.name[:50]
+        return self.name
 
 class New_User(models.Model):
     #user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -167,9 +167,9 @@ class New_User(models.Model):
     name = models.CharField(max_length=200)
     mail = models.CharField(max_length=200)
     password = models.CharField(max_length=128)
-    academic_level = models.CharField(max_length=200)
-    degree = models.CharField(max_length=200)
-    personal_telephone = models.IntegerField()
+    academic_level = models.CharField(max_length=200, null=True, blank=True)
+    degree = models.CharField(max_length=200, null=True, blank=True)
+    personal_telephone = models.CharField(max_length=200, null=True, blank=True)
     id_institute = models.ForeignKey(Institutes, on_delete=models.PROTECT)
     id_subinstitute = models.ForeignKey(Subinstitutes, on_delete=models.PROTECT)
     id_user_profile = models.ForeignKey(User_profiles, on_delete=models.PROTECT)
@@ -181,9 +181,9 @@ class Modify_User(models.Model):
     name = models.CharField(max_length=200)
     mail = models.CharField(max_length=200)
     password = models.CharField(max_length=128)
-    academic_level = models.CharField(max_length=200)
-    degree = models.CharField(max_length=200)
-    personal_telephone = models.IntegerField()
+    academic_level = models.CharField(max_length=200, null=True, blank=True)
+    degree = models.CharField(max_length=200, null=True, blank=True)
+    personal_telephone = models.CharField(max_length=200, null=True, blank=True)
     id_people = models.ForeignKey(People, on_delete=models.PROTECT)
     id_institute = models.ForeignKey(Institutes, on_delete= models.PROTECT)
     id_subinstitute = models.ForeignKey(Subinstitutes, on_delete= models.PROTECT)
@@ -200,8 +200,8 @@ class Upload_Document(models.Model):
     id_upload_document = models.AutoField(primary_key=True)
     topic = models.CharField(max_length=200)
     publication_date = models.CharField(max_length=200)
-    file_path = models.CharField(max_length=200)
-    binary = models.BinaryField()
+    file_path = models.CharField(max_length=200, null=True, blank=True)
+    binary = models.BinaryField(null=True, blank=True)
     class  Meta:
         db_table = "Upload_Document"
 
@@ -216,8 +216,8 @@ class Register_Place(models.Model):
     id_register_place = models.AutoField(primary_key=True)
     type_place = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
-    telephone = models.IntegerField()
-    address = models.CharField(max_length=200)
+    telephone = models.IntegerField(null=True, blank=True)
+    address = models.CharField(max_length=200, null=True, blank=True)
     id_state = models.ForeignKey(States, on_delete= models.PROTECT)
     class Meta:
         db_table = "Register_Place"
@@ -229,8 +229,8 @@ class Modify_Place(models.Model):
     id_campus = models.ForeignKey(Campus, on_delete= models.PROTECT)
     id_state = models.ForeignKey(States, on_delete= models.PROTECT)
     name = models.CharField(max_length=200)
-    telephone = models.IntegerField()
-    address = models.CharField(max_length=200)
+    telephone = models.CharField(max_length=200, null=True, blank=True)
+    address = models.CharField(max_length=200, null=True, blank=True)
     class Meta:
         db_table = "Modify_Place"
 
@@ -252,7 +252,7 @@ class Log(models.Model):
     description = models.TextField()
     id_event = models.ForeignKey(Events, on_delete=models.PROTECT)
     class Meta:
-        db_table = "Log"        
+        db_table = "Log"
 
 class Requests(models.Model):
     id_request = models.AutoField(primary_key=True)
