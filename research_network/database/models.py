@@ -5,6 +5,29 @@ from django.db.models.signals import post_save
 
 # Create your models here.
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    #id_profile = models.AutoField(primary_key=True)
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    password1 = models.CharField(max_length=128)
+    password2 = models.CharField(max_length=128)
+    academic_level = models.CharField(max_length=200)
+    degree = models.CharField(max_length=200)
+    personal_telephone = models.IntegerField()
+    #id_institute = models.ForeignKey(Institutes, on_delete=models.PROTECT)
+    #id_subinstitute = models.ForeignKey(Subinstitutes, on_delete=models.PROTECT)
+    #id_user_profile = models.ForeignKey(User_profiles, on_delete=models.PROTECT)
+    class Meta:
+        db_table = "Profile"
+
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()
+
 class UserProfileInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     portfolio_site = models.URLField(blank=True)
@@ -36,7 +59,7 @@ class College(models.Model):
         return self.name[:50]
 
 class Campus(models.Model):
-    id_campus = models.IntegerField()
+    id_campus = models.AutoField(primary_key=True)
     state = models.ForeignKey(States,on_delete=models.PROTECT)
     college = models.ForeignKey(College,on_delete=models.PROTECT)
     name = models.CharField(max_length=200)
@@ -44,13 +67,12 @@ class Campus(models.Model):
     address = models.CharField(max_length=200)
     class Meta:
         db_table = "Campus"
-
     def __str__(self):
         """A string representation of the model."""
         return self.name[:50]
 
 class Institutes(models.Model):
-    id_institute = models.IntegerField()
+    id_institute = models.AutoField(primary_key=True)
     campus = models.ForeignKey(Campus,on_delete=models.PROTECT)
     name = models.CharField(max_length=200)
     telephone = models.IntegerField()
@@ -153,27 +175,6 @@ class Public(models.Model):
         """A string representation of the model."""
         return self.name[:50]
 
-class New_User(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    id_new_user = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=200)
-    email = models.CharField(max_length=200)
-    password = models.CharField(max_length=128)
-    academic_level = models.CharField(max_length=200)
-    degree = models.CharField(max_length=200)
-    personal_telephone = models.IntegerField()
-    id_institute = models.ForeignKey(Institutes, on_delete=models.PROTECT)
-    id_subinstitute = models.ForeignKey(Subinstitutes, on_delete=models.PROTECT)
-    id_user_profile = models.ForeignKey(User_profiles, on_delete=models.PROTECT)
-    class Meta:
-        db_table = "New_User"
-"""
-@receiver(post_save, sender=User)
-def update_user_profile(sender, instance, created, **kwargs):
-    if created:
-        New_User.objects.create(user=instance)
-    instance.profile.save()
-"""
 class Modify_User(models.Model):
     id_modify_user = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
@@ -234,7 +235,7 @@ class Modify_Place(models.Model):
 
 class Events(models.Model):
     id_event = models.AutoField(primary_key=True)
-    id_new_user = models.ForeignKey(New_User, on_delete=models.PROTECT)
+    #id_new_user = models.ForeignKey(New_User, on_delete=models.PROTECT)
     id_modify_user = models.ForeignKey(Modify_User, on_delete=models.PROTECT)
     id_upload_document = models.ForeignKey(Upload_Document, on_delete=models.PROTECT)
     id_remove_document = models.ForeignKey(Remove_Document, on_delete=models.PROTECT)

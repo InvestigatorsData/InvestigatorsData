@@ -31,23 +31,33 @@ def user_logout(request):
 
 def signup(request):
     if request.method == 'POST':
-        user_form = SignUpForm(request.POST)
-        if user_form.is_valid():
-            user = user_form.save()
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
             user.refresh_from_db()
-            user.profile.name = user_form.cleaned_data.get('fist_name')
-            user.profile.email = user_form.cleaned_data.get('email')
-            user.profile.password = user_form.cleaned_data.get('password1')
+            user.profile.first_name = form.cleaned_data.get('fist_name')
+            user.profile.email = form.cleaned_data.get('email')
+            user.profile.password1 = form.cleaned_data.get('password1')
+            user.profile.password2 = form.cleaned_data.get('password2')
+            #user.profile.academic_level = 
+            #user.degree = 
+            user.set_password(user.profile.password1)
+            personal_telephone = form.cleaned_data.get('phone')
             user.save()    
-            username = user_form.cleaned_data.get('first_name')
-            password = user_form.cleaned_data.get('password1')
-            raw_password = user_form.cleaned_data.get('password2')
+            username = form.cleaned_data.get('first_name')
+            password = form.cleaned_data.get('password1')
+            raw_password = form.cleaned_data.get('password2')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            print('>>>>>>> REGISTRO EXITOSO <<<<<<<<<<<')
             return redirect('home.html')
+        else:
+            print(form.errors + ' ERROR')
     else:
-        user_form = SignUpForm()
-    return render(request, 'signup.html', {'form': user_form})
+        print('>>>>>>>>>>> LA FORMA NO ES VALIDA <<<<<<<<<<')
+        form = SignUpForm()
+    print(' >>>>>>>>>> ERROR <<<<<<<<<<<<< ')
+    return render(request, 'signup.html', {'form': form})
 
 def user_login(request):
     if request.method == 'POST':
