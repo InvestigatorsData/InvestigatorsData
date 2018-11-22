@@ -53,25 +53,27 @@
 				<span class="contact100-form-title">
 					REGISTRO
 				</span>
-				
+
 				<form action="{% url 'signup' %}" method="POST" name="signup">
 					{% csrf_token %}
-					
-					<div class="wrap-input100 validate-input bg1" data-validate="Por favor, llene el campo">
-						<span class="label-input100">NOMBRE(S) *</span>
-						<input class="form-control" type="text" name="first_name" placeholder="Ingrese sus datos">
-					</div>
 
-					<div class="wrap-input100 validate-input bg1" data-validate="Por favor, llene el campo">
-						<span class="label-input100">APELLIDO(S) *</span>
-						<input class="form-control" type="text" name="last_name" placeholder="Ingrese sus datos">
-					</div>
 
-					<div class="wrap-input100 validate-input bg1" data-validate="Por favor, escriba su contraseña">
-						<span class="label-input100">CONTRASEÑA (MÍNIMO 8 CARACTERES) *</span>
-						<input class="form-control" type="text" name="password1" placeholder="Ingrese su contraseña">
-					</div>
 
+				<div class="wrap-input100 validate-input bg1" data-validate="Por favor, llene el campo">
+					<span class="label-input100">NOMBRE(S) *</span>
+					<input class="input100" type="text" name="name" placeholder="Ingrese sus datos">
+				</div>
+
+				<div class="wrap-input100 validate-input bg1" data-validate="Por favor, llene el campo">
+					<span class="label-input100">APELLIDO(S) *</span>
+					<input class="input100" type="text" name="name" placeholder="Ingrese sus datos">
+				</div>
+
+				<div class="wrap-input100 validate-input bg1" data-validate="Por favor, escriba su contraseña">
+					<span class="label-input100">CONTRASEÑA (MÍNIMO 8 CARACTERES) *</span>
+					<input class="input100" type="text" name="name" placeholder="Ingrese su contraseña">
+				</div>
+                    
 					<div class="wrap-input100 validate-input bg1" data-validate="Por favor, confirme su contraseña">
 						<span class="label-input100">CONFIRME SU CONTRASEÑA *</span>
 						<input class="form-control" type="text" name="password2" placeholder="Confirme su contraseña">

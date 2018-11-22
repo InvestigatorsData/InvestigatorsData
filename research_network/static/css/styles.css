@@ -220,7 +220,7 @@ a {
   position:sticky;
   display: inline-block;
   float: left;
-  clear: both;
+  clear: none;
   color: transparent;
   font-size: 14px;
   letter-spacing: -5px;
