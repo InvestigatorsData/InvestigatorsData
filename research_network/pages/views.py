@@ -7,6 +7,8 @@ from django.http import HttpResponse
 class HomePageView(TemplateView):
     template_name = 'home.html'
 class RegisterPageView(TemplateView):
-    template_name = 'register.html'
+    template_name = 'signup.html'
 class LoginPageView(TemplateView):
-    template_name = 'Login.html'
+    template_name = 'login.html'
+class ProfilePageView(TemplateView):
+    template_name = 'profile.html'

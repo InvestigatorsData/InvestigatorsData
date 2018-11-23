@@ -71,4 +71,4 @@ def user_login(request):
                 email, password))
             return HttpResponse("Invalid login details given")
     else:
-        return render(request, 'database/Login.html', {})
+        return render(request, 'database/login.html', {})
