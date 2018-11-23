@@ -1,12 +1,13 @@
 
-{% block title %}Home{% endblock %}
+{% block title %} Inicio | {% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
-Hi {{ user.username }}!
+Bienvenido {{ user.username }}!
+<a href="{% url 'logout' %}">Cerrar Sesion</a>
 {% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">login</a>
+<p> Aun no inicias sesion </p>
+<a href="{% url 'login' %}">Iniciar Sesion</a>
 {% endif %}
 {% endblock %}
 

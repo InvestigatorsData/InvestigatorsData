@@ -11,21 +11,20 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    return render(request, 'database/home.html')
-
+    return render(request, 'base.html')
 
 @login_required
 def special(request):
-    return HttpResponse("You are logged in !")
+    return HttpResponse(" Bienvenido !")
 
 
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('home'))
+    return HttpResponseRedirect(reverse('base'))
 
 
-def register(request):
+def user_signup(request):
     registered = False
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
@@ -36,39 +35,52 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
-            if 'profile_pic' in request.FILES:
-                print('found it')
-                profile.profile_pic = request.FILES['profile_pic']
             profile.save()
             registered = True
+            return HttpResponseRedirect(reverse('login'))
         else:
             print(user_form.errors, profile_form.errors)
+            return HttpResponse(" Datos invalidos")
     else:
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
     return render(
-        request, 'database/register.html', {
+        request, 'signup.html', {
             'user_form': user_form,
             'profile_form': profile_form,
             'registered': registered
         })
 
 
+def user_profile(request):
+    if request.method == 'POST':
+        new_user_form = NewProfile(data=request.POST)
+        if new_user_form.is_valid():
+            new_user = new_user_form.save()
+            new_user.save()
+            return HttpResponseRedirect(reverse('home'))
+        else:
+            return HttpResponse('Ocurrio un error inesperado')
+    else:
+        return render(request, 'profile.html', {})
+
+
 def user_login(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
+        username = request.POST.get('username')
+        #email = request.POST.get('email')
         password = request.POST.get('password')
-        user = authenticate(email=email, password=password)
+        user = authenticate(username=username, password=password)
         if user:
             if user.is_active:
                 login(request, user)
                 return HttpResponseRedirect(reverse('home'))
             else:
-                return HttpResponse("Your account was inactive.")
+                return HttpResponse(" Tu cuenta esta inactiva ")
         else:
-            print("Someone tried to login and failed.")
-            print("They used username: {} and password: {}".format(
+            print(" Datos incorrectos")
+            print(" Nombre: {} Password: {}".format(
                 email, password))
-            return HttpResponse("Invalid login details given")
+            return HttpResponse(" Datos incorrectos ")
     else:
-        return render(request, 'database/Login.html', {})
+        return render(request, 'login.html', {})

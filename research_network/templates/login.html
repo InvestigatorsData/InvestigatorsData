@@ -57,15 +57,15 @@
 				</span>
 				<form method="POST" action="{% url 'login' %}">
 					{% csrf_token %}
-					<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "ingresa un correo valido (e@a.x)">
-						<span class="label-input100">CORREO *</span>
-						<input class="input100" type="text" name="email" placeholder="Ingresa tu correo electronico">
+					<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "ingresa tu nombre de usuario">
+						<span class="label-input100">NOMBRE *</span>
+						<input class="input100" type="text" name="username" placeholder="Ingresa tu nombre de usuario">
 					</div>
 					<div class="wrap-input100 validate-input bg1" data-validate="Contraseña de 8 caracteres">
 						<span class="label-input100">CONTRASEÑA (MÍNIMO 8 CARACTERES) *</span>
 						<input class="input100" type="password" name="password" placeholder="Ingresa tu contraseña">
 					</div>
-					<input type="submit" formmethod='POST' name="login" value="login">
+					<input type="submit" formmethod='POST' name="login" value="Ingresar">
 				</form>
 			</form>
 		</div>

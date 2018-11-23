@@ -5,22 +5,19 @@ from django.db.models.signals import post_save
 from django.urls import reverse
 # Create your models here.
 
-"""
-@receiver(post_save, sender=User)
-def update_user_profile(sender, instance, created, **kwargs):
-    if created:
-        New_User.objects.create(user=instance)
-    instance.profile.save()
-"""
-
-class UserProfileInfo(models.Model):
+class New_User(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    portfolio_site = models.URLField(blank=True)
-    profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
+    id_new_user = models.AutoField(primary_key=True)
+    username = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    academic_level = models.CharField(max_length=200, null=True, blank=True)
+    degree = models.CharField(max_length=200, null=True, blank=True)
+    personal_telephone = models.CharField(max_length=200, null=True, blank=True)
+    institute = models.CharField(max_length=200, null=True, blank=True)
+    subinstitute = models.CharField(max_length=200, null=True, blank=True)
     class Meta:
-        db_table = "UserProfileInfo"
-    def __str__(self):
-        return self.user.username
+        db_table = "New_User"
+
 
 class States(models.Model):
     id_state = models.AutoField(primary_key=True)
@@ -148,7 +145,7 @@ class People(models.Model):
 
 class Public(models.Model):
     id_people = models.ForeignKey(People,on_delete=models.PROTECT)
-    mail = models.BooleanField()
+    email = models.BooleanField()
     id_institute = models.BooleanField()
     id_subinstitute = models.BooleanField(null=True, blank=True)
     academic_level = models.BooleanField(null=True, blank=True)
@@ -160,27 +157,6 @@ class Public(models.Model):
     def __str__(self):
         """A string representation of the model."""
         return self.name
-
-class New_User(models.Model):
-    #user = models.OneToOneField (User, on_delete=models.CASCADE)
-    #username = models.ForeignKey('auth.User', on_delete =models.CASCADE)
-    id_new_user = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=200,unique=True)
-    mail = models.CharField(max_length=200,unique=True)
-    password = models.CharField(max_length=128)
-    academic_level = models.CharField(max_length=200, null=True, blank=True)
-    degree = models.CharField(max_length=200, null=True, blank=True)
-    personal_telephone = models.CharField(max_length=200, null=True, blank=True)
-    id_institute = models.ForeignKey(Institutes, on_delete=models.PROTECT)
-    id_subinstitute = models.ForeignKey(Subinstitutes, on_delete=models.PROTECT)
-    id_user_profile = models.ForeignKey(User_profiles, on_delete=models.PROTECT)
-    def __str__(self):
-        """A string representation of the model."""
-        return self.mail
-    def get_absolute_url(self):
-        return reverse('home')
-    class Meta:
-        db_table = "New_User"
 
 class Modify_User(models.Model):
     id_modify_user = models.AutoField(primary_key=True)
