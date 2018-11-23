@@ -5,6 +5,20 @@ from django.db.models.signals import post_save
 
 # Create your models here.
 
+class New_User(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    id_new_user = models.AutoField(primary_key=True)
+    username = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    academic_level = models.CharField(max_length=200, null=True, blank=True)
+    degree = models.CharField(max_length=200, null=True, blank=True)
+    personal_telephone = models.CharField(max_length=200, null=True, blank=True)
+    #id_institute = models.ForeignKey(Institutes, on_delete=models.PROTECT)
+    #id_subinstitute = models.ForeignKey(Subinstitutes, on_delete=models.PROTECT)
+    #id_user_profile = models.ForeignKey(User_profiles, on_delete=models.PROTECT)
+    class Meta:
+        db_table = "New_User"
+
 class UserProfileInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=200)
@@ -140,7 +154,7 @@ class People(models.Model):
 
 class Public(models.Model):
     id_people = models.ForeignKey(People,on_delete=models.PROTECT)
-    mail = models.BooleanField()
+    email = models.BooleanField()
     id_institute = models.BooleanField()
     id_subinstitute = models.BooleanField(null=True, blank=True)
     academic_level = models.BooleanField(null=True, blank=True)
@@ -152,20 +166,6 @@ class Public(models.Model):
     def __str__(self):
         """A string representation of the model."""
         return self.name
-
-class New_User(models.Model):
-    #id_new_user = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=200)
-    mail = models.CharField(max_length=200)
-    password = models.CharField(max_length=128)
-    academic_level = models.CharField(max_length=200, null=True, blank=True)
-    degree = models.CharField(max_length=200, null=True, blank=True)
-    personal_telephone = models.CharField(max_length=200, null=True, blank=True)
-    id_institute = models.ForeignKey(Institutes, on_delete=models.PROTECT)
-    id_subinstitute = models.ForeignKey(Subinstitutes, on_delete=models.PROTECT)
-    id_user_profile = models.ForeignKey(User_profiles, on_delete=models.PROTECT)
-    class Meta:
-        db_table = "New_User"
 
 class Modify_User(models.Model):
     id_modify_user = models.AutoField(primary_key=True)

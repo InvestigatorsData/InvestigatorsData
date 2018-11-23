@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.shortcuts import render
-from database.forms import UserForm, UserProfileInfoForm
+from database.forms import UserForm, UserProfileInfoForm, NewProfile
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -37,7 +37,7 @@ def user_signup(request):
             profile.user = user
             profile.save()
             registered = True
-            return HttpResponseRedirect(reverse('login'))
+            return HttpResponseRedirect(reverse('profile'))
         else:
             print(user_form.errors, profile_form.errors)
     else:
@@ -51,6 +51,19 @@ def user_signup(request):
         })
 
 
+def user_profile(request):
+    if request.method == 'POST':
+        new_user_form = NewProfile(data=request.POST)
+        if new_user_form.is_valid():
+            new_user = new_user_form.save()
+            new_user.save()
+            return HttpResponseRedirect(reverse('home'))
+        else:
+            print('Ocurrio un error inesperado')
+    else:
+        return render(request, 'profile.html', {})
+
+
 def user_login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -59,7 +72,7 @@ def user_login(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('base'))
+                return HttpResponseRedirect(reverse('home'))
             else:
                 return HttpResponse("Your account was inactive.")
         else:

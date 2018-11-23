@@ -51,7 +51,7 @@
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
-					REGISTRO
+					INFO
 				</span>
 				
 				<form action="{% url 'profile' %}" method="POST" name="profile">
@@ -59,32 +59,27 @@
 					
 					<div class="wrap-input100 validate-input bg1" data-validate="Por favor, llene el campo">
 						<span class="label-input100">NOMBRE(S) *</span>
-						<input class="form-control" type="text" name="first_name" placeholder="Ingrese sus datos">
+						<input class="form-control" type="text" name="name" placeholder="Ingrese sus datos">
 					</div>
-
-					<div class="wrap-input100 validate-input bg1" data-validate="Por favor, llene el campo">
-						<span class="label-input100">APELLIDO(S) *</span>
-						<input class="form-control" type="text" name="last_name" placeholder="Ingrese sus datos">
-					</div>
-
-					<div class="wrap-input100 validate-input bg1" data-validate="Por favor, escriba su contraseña">
-						<span class="label-input100">CONTRASEÑA (MÍNIMO 8 CARACTERES) *</span>
-						<input class="form-control" type="text" name="password1" placeholder="Ingrese su contraseña">
-					</div>
-
-					<div class="wrap-input100 validate-input bg1" data-validate="Por favor, confirme su contraseña">
-						<span class="label-input100">CONFIRME SU CONTRASEÑA *</span>
-						<input class="form-control" type="text" name="password2" placeholder="Confirme su contraseña">
-					</div>
-
+		
 					<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Introduzca su correo (c@d.x)">
 						<span class="label-input100">CORREO *</span>
 						<input class="form-control" type="text" name="email" placeholder="Ingrese su correo electrónico ">
 					</div>
 
 					<div class="wrap-input100 bg1 rs1-wrap-input100">
+						<span class="label-input100">NIVEL DE ESTUDIOS</span>
+						<input class="form-control" type="text" name="academic_level" placeholder="Ingrese su número de celular">
+					</div>
+
+					<div class="wrap-input100 bg1 rs1-wrap-input100">
+						<span class="label-input100"> GRADO DE ESTUDIOS</span>
+						<input class="form-control" type="text" name="degree" placeholder="Ingrese su número de celular">
+					</div>
+
+					<div class="wrap-input100 bg1 rs1-wrap-input100">
 						<span class="label-input100">CELULAR</span>
-						<input class="form-control" type="text" name="phone" placeholder="Ingrese su número de celular">
+						<input class="form-control" type="text" name="personal_telephone" placeholder="Ingrese su número de celular">
 					</div>
 
 					<div class="wrap-input100 input100-select bg1">
@@ -121,7 +116,7 @@
 						</div>
 					</div>	
 
-					<input type="submit" formmethod='POST' name="" value="Register">
+					<input type="submit" formmethod='POST' name="" value="Actualizar">
 
 					<div class="container-contact100-form-btn">
 						<button class="contact100-form-btn">
