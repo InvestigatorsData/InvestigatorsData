@@ -13,20 +13,11 @@ class New_User(models.Model):
     academic_level = models.CharField(max_length=200, null=True, blank=True)
     degree = models.CharField(max_length=200, null=True, blank=True)
     personal_telephone = models.CharField(max_length=200, null=True, blank=True)
-    #id_institute = models.ForeignKey(Institutes, on_delete=models.PROTECT)
-    #id_subinstitute = models.ForeignKey(Subinstitutes, on_delete=models.PROTECT)
-    #id_user_profile = models.ForeignKey(User_profiles, on_delete=models.PROTECT)
+    institute = models.CharField(max_length=200, null=True, blank=True)
+    subinstitute = models.CharField(max_length=200, null=True, blank=True)
     class Meta:
         db_table = "New_User"
 
-class UserProfileInfo(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=200)
-    email = models.CharField(max_length=200)
-    class Meta:
-        db_table = "UserProfileInfo"
-    def __str__(self):
-        return self.user.username
 
 class States(models.Model):
     id_state = models.AutoField(primary_key=True)
