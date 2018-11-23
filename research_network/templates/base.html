@@ -32,14 +32,20 @@
 
         <a class="nav-item" href="">Inicio &nbsp;</a>
         <a class="nav-item" href="">Acerca de &nbsp;</a>
-        <a class="nav-item" href="{% url 'login' %}">Ingresar &nbsp;</a>
-        <a class="nav-item" href="{% url 'signup' %}">Registro &nbsp;</a>
+        <a class="nav-item" href="{% url 'login2' %}">Ingresar &nbsp;</a>
+        <a class="nav-item" href="{% url 'signup2' %}">Registro &nbsp;</a>
         <a class="nav-item" href="">Consulta &nbsp;</a>
         <input type="text" class="nav-item" id="mySearch" onkeyup="myFunction()" placeholder="Buscar..." title="Type in a category">
     </nav>
 </div>
 </header>
-
+{% if user.is_authenticated %}
+<p>Hola {{ user.username }}!</p>
+    <p><a href="{% url 'logout' %}">Salir</a></p>
+{% else %}
+<p>Usted no se ha identificado</p>
+<a href="{% url 'login' %}">Identificarse</a>
+{% endif %}
 
       <div class="map">
       <link rel="stylesheet" href="{% static 'css/ammap.css' %}" type="text/css">

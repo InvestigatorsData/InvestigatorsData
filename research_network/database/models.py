@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
-
+from django.urls import reverse
 # Create your models here.
 
 """
@@ -162,10 +162,11 @@ class Public(models.Model):
         return self.name
 
 class New_User(models.Model):
-    #user = models.OneToOneField(User, on_delete=models.CASCADE)
+    #user = models.OneToOneField (User, on_delete=models.CASCADE)
+    #username = models.ForeignKey('auth.User', on_delete =models.CASCADE)
     id_new_user = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=200)
-    mail = models.CharField(max_length=200)
+    name = models.CharField(max_length=200,unique=True)
+    mail = models.CharField(max_length=200,unique=True)
     password = models.CharField(max_length=128)
     academic_level = models.CharField(max_length=200, null=True, blank=True)
     degree = models.CharField(max_length=200, null=True, blank=True)
@@ -173,6 +174,11 @@ class New_User(models.Model):
     id_institute = models.ForeignKey(Institutes, on_delete=models.PROTECT)
     id_subinstitute = models.ForeignKey(Subinstitutes, on_delete=models.PROTECT)
     id_user_profile = models.ForeignKey(User_profiles, on_delete=models.PROTECT)
+    def __str__(self):
+        """A string representation of the model."""
+        return self.mail
+    def get_absolute_url(self):
+        return reverse('home')
     class Meta:
         db_table = "New_User"
 
