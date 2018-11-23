@@ -5,18 +5,10 @@ from django.db.models.signals import post_save
 
 # Create your models here.
 
-"""
-@receiver(post_save, sender=User)
-def update_user_profile(sender, instance, created, **kwargs):
-    if created:
-        New_User.objects.create(user=instance)
-    instance.profile.save()
-"""
-
 class UserProfileInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    portfolio_site = models.URLField(blank=True)
-    profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
+    first_name = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
     class Meta:
         db_table = "UserProfileInfo"
     def __str__(self):
@@ -162,8 +154,7 @@ class Public(models.Model):
         return self.name
 
 class New_User(models.Model):
-    #user = models.OneToOneField(User, on_delete=models.CASCADE)
-    id_new_user = models.AutoField(primary_key=True)
+    #id_new_user = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
     mail = models.CharField(max_length=200)
     password = models.CharField(max_length=128)

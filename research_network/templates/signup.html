@@ -1,0 +1,27 @@
+<BODY>
+{% if registered %}
+<A href="profile.html">Perfil</A> says: Gracias por registrarte.
+{% else %}
+Regristrate aqui
+<FORM id="user_form" method="post" action="{% url 'signup' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="wrap-input100 validate-input bg1" data-validate="Por favor, llene el campo">
+        <span class="label-input100">NOMBRE(S) *</span>
+        <input class="form-control" type="text" name="username" placeholder="Ingrese sus datos">
+    </div>
+
+    <div class="wrap-input100 validate-input bg1" data-validate="Por favor, escriba su contraseña">
+        <span class="label-input100">CONTRASEÑA (MÍNIMO 8 CARACTERES) *</span>
+        <input class="form-control" type="text" name="password" placeholder="Ingrese su contraseña">
+    </div>
+
+    <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate="Introduzca su correo (c@d.x)">
+        <span class="label-input100">CORREO *</span>
+        <input class="form-control" type="text" name="email" placeholder="Ingrese su correo electrónico ">
+    </div>
+
+    <INPUT type="submit" name="submit" value="submit" />
+</FORM>
+{% endif %}
+</BODY>

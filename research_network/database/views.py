@@ -11,8 +11,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    return render(request, 'database/home.html')
-
+    return render(request, 'home')
 
 @login_required
 def special(request):
@@ -25,7 +24,7 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('home'))
 
 
-def register(request):
+def user_signup(request):
     registered = False
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
@@ -36,18 +35,16 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
-            if 'profile_pic' in request.FILES:
-                print('found it')
-                profile.profile_pic = request.FILES['profile_pic']
             profile.save()
             registered = True
+            return HttpResponseRedirect(reverse('login'))
         else:
             print(user_form.errors, profile_form.errors)
     else:
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
     return render(
-        request, 'database/register.html', {
+        request, 'signup.html', {
             'user_form': user_form,
             'profile_form': profile_form,
             'registered': registered
@@ -62,7 +59,7 @@ def user_login(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('home'))
+                return HttpResponseRedirect(reverse('base'))
             else:
                 return HttpResponse("Your account was inactive.")
         else:
