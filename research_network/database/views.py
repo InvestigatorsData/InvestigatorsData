@@ -1,13 +1,14 @@
 from django.shortcuts import render
 
 # Create your views here.
-
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from database.forms import UserForm, UserProfileInfoForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from .models import Institutes, Subinstitutes
 
 
 def index(request):
@@ -26,30 +27,29 @@ def user_logout(request):
 
 def user_signup(request):
     registered = False
+    institutes = Institutes.objects.all().order_by('name')
+    subinstitues = Subinstitutes.objects.all().order_by('name')
     if request.method == 'POST':
-        user_form = UserForm(data=request.POST)
         profile_form = UserProfileInfoForm(data=request.POST)
-        if user_form.is_valid() and profile_form.is_valid():
-            user = user_form.save()
-            user.set_password(user.password)
-            user.save()
+        if profile_form.is_valid():
             profile = profile_form.save(commit=False)
+            name = profile_form.cleaned_data.get('username')
+            username_normalize = name.replace(' ','')
+            email = profile_form.cleaned_data.get('email')
+            password = request.POST.get('password')
+            user = User.objects.create_user(username_normalize, email, password)
+            user.save()
             profile.user = user
             profile.save()
             registered = True
             return HttpResponseRedirect(reverse('login'))
         else:
-            print(user_form.errors, profile_form.errors)
-            return HttpResponse(" Datos invalidos")
+            return HttpResponse(" Datos invalidos: " + str(profile_form.errors))
     else:
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
     return render(
-        request, 'signup.html', {
-            'user_form': user_form,
-            'profile_form': profile_form,
-            'registered': registered
-        })
+        request, 'signup.html', context={'institutes':institutes, 'subinstitutes': subinstitues})
 
 
 def user_profile(request):
@@ -68,7 +68,6 @@ def user_profile(request):
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
-        #email = request.POST.get('email')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user:
@@ -80,7 +79,7 @@ def user_login(request):
         else:
             print(" Datos incorrectos")
             print(" Nombre: {} Password: {}".format(
-                email, password))
+                username, password))
             return HttpResponse(" Datos incorrectos ")
     else:
         return render(request, 'login.html', {})

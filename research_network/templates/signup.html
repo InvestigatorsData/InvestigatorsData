@@ -73,66 +73,67 @@
 					</div>
 
 					<div class="wrap-input100 validate-input bg1">
-						<span class="label-input100">NIVEL ACADEMICO</span>
-						<input class="form-control" type="text" name="academic_level" placeholder="Ingrese su nivel academico">
-					</div>
-
-					<div class="wrap-input100 validate-input bg1">
-						<span class="label-input100"> GRADO DE ESTUDIOS</span>
-						<input class="form-control" type="text" name="degree" placeholder="Ingrese su grado de estudios">
-					</div>
-
-					<div class="wrap-input100 validate-input bg1">
 						<span class="label-input100">CELULAR</span>
 						<input class="form-control" type="text" name="personal_telephone" placeholder="Ingrese su número de celular">
 					</div>
-
-					<div class="wrap-input100 validate-input bg1">
-						<span class="label-input100">INSTITUTO</span>
-						<input class="form-control" type="text" name="institute" placeholder="Ingrese el instituto que pertenece">
-					</div>
-
-					<div class="wrap-input100 validate-input bg1">
-						<span class="label-input100">SUBINSTITUTO</span>
-						<input class="form-control" type="text" name="subinstitute" placeholder="Ingrese el subinstituto que pertenece">
-					</div>
-					<input type="submit" formmethod='POST' name="" value="Registrarme">
 					
-					<!--
 					<div class="wrap-input100 input100-select bg1">
-						<span class="form-control"> DATOS ACÁDEMICOS *</span>
+						<span class="form-control"> NIVEL ACADEMICO *</span>
 						<div>
-							<select class="js-select2" name="service">
-								<option>Institución</option>
-								<option>Campus</option>
-								<option>Carrera</option>
-								<option>Posgrado</option>
+							<select class="js-select2" name="academic_level" required>
+								<option>Investigador</option>
+								<option>Estudiante</option>
 							</select>
 							<div class="dropDownSelect2"></div>
 						</div>
 					</div>
 
-					<div class="w-full dis-none js-show-service">
-						<div class="wrap-contact100-form-radio">
-							<span class="label-input100">TIPO DE USUARIO</span>
-
-							<div class="contact100-form-radio m-t-15">
-								<input class="input-radio100" id="radio1" type="radio" name="type_investigator" value="physical" checked="checked">
-								<label class="label-radio100" for="radio1">
-									Investigador
-								</label>
-							</div>
-
-							<div class="contact100-form-radio">
-								<input class="input-radio100" id="radio2" type="radio" name="type_student" value="digital">
-								<label class="label-radio100" for="radio2">
-									Estudiante
-								</label>
-							</div>
-
+					<div class="wrap-input100 input100-select bg1">
+						<span class="form-control"> GRADO DE ESTUDIOS *</span>
+						<div>
+							<select class="js-select2" name="degree" required >
+								<option>Licenciatura</option>
+								<option>Maestria</option>
+								<option>Doctorado</option>
+							</select>
+							<div class="dropDownSelect2"></div>
 						</div>
-					</div>	
-					
+					</div>
+
+
+					<div class="wrap-input100 input100-select bg1">
+						<span class="form-control"> INSTITUTO *</span>
+						<div>
+							<select class="js-select2" name="institute" required>
+								{% for institute in institutes %}
+								<tr>
+									<option> <td>{{institute.name}}</td> </option>
+								</tr>
+								{% endfor %}
+							</select>
+							<div class="dropDownSelect2"></div>
+						</div>
+					</div>
+
+					<div class="wrap-input100 input100-select bg1">
+						<span class="form-control"> SUBINSTITUTO *</span>
+						<div>
+							<select class="js-select2" name="subinstitute" required>
+								{% for subinstitute in subinstitutes %}
+								<tr>
+									<option>
+										<td>{{subinstitute.name}}</td>
+									</option>
+								</tr>
+								{% endfor %}
+							</select>
+							<div class="dropDownSelect2"></div>
+						</div>
+					</div>
+
+					<input type="submit" formmethod='POST' name="" value="Registrarme">
+				
+					<!--
 					<div class="container-contact100-form-btn">
 						<button class="contact100-form-btn">
 							<span>
@@ -141,7 +142,7 @@
 							</span>
 						</button>
 					</div>
-				-->
+					-->
 				</form>
 			</form>
 		</div>
