@@ -17,4 +17,10 @@ class RegisterPageView(TemplateView):
 class LoginPageView(TemplateView):
     template_name = 'login.html'
 class HomePageView(TemplateView):
-    template_name = 'home.html'    
+    template_name = 'home.html'
+class ProfilePageView(TemplateView):
+    template_name = 'profile.html'
+class ProfileModifyPageView(TemplateView):
+    template_name = 'proof.html'
+class AboutOfPageView(TemplateView):
+    template_name = 'aboutOf.html'

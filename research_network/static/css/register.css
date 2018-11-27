@@ -1,32 +1,37 @@
-/* Basic styles */
-* {
-  box-sizing: border-box;
-}
 
 html, body {
   margin: 10px;;
 }
 
-body {
-  font-family: sans-serif;
-  background-color: #eff1f3;
-}
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
+  color: white !important;
+
+}
+
+header {
+padding: 30px;
+
 
 }
 
 .container {
   color: white;
-  margin: -45px;
+  margin: 45px;
   padding: 5px;
-  height: 12%;
-  width: 100%;
   background-color: #404245;
   color: white;
   text-align: left;
   border-radius: 20px;
+}
+
+#help {
+  text-align: right;
+}
+
+#renain {
+  text-align: left;
 }
 
 #footer {

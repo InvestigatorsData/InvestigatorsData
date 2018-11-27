@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/ammap.css' %}">
     <link rel="stylesheet" href="{% static 'css/ammap.css' %}" type="text/css">
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
+
 
 </head>
 <body>
@@ -31,7 +33,7 @@
     <nav class="nav logo">
 
         <a class="nav-item" href="">Inicio &nbsp;</a>
-        <a class="nav-item" href="">Acerca de &nbsp;</a>
+        <a class="nav-item" href="{% url 'about' %}">Acerca de &nbsp;</a>
         <a class="nav-item" href="{% url 'login' %}">Ingresar &nbsp;</a>
         <a class="nav-item" href="{% url 'signup' %}">Registro &nbsp;</a>
         <a class="nav-item" href="">Consulta &nbsp;</a>
