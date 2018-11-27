@@ -26,3 +26,5 @@ admin.site.register(Join_Group)
 admin.site.register(Register_Place)
 admin.site.register(Modify_Place)
 
+admin.site.site_title = 'RENAIN'
+admin.site.site_header = 'Sitio de administración'
