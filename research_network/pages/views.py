@@ -12,3 +12,5 @@ class LoginPageView(TemplateView):
     template_name = 'login.html'
 class ProfilePageView(TemplateView):
     template_name = 'profile.html'
+class ProfilePageView(TemplateView):
+    template_name = 'proof.html'

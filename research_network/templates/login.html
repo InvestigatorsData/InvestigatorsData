@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{% static 'css/ingreso.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
 
 
 <!--===============================================================================================-->
@@ -40,11 +42,12 @@
 <body>
 
 <header>
-<div class="container">
-
-        <div> RENAIN </div>
-
-</div>
+  <header>
+    <div class="container">
+      <div id="renain"><a href="home.html"> RENAIN </a> </div>
+      <div id="help"> <a href="#help">  Ayuda </a> </div>
+    </div>
+  </header>
 </header>
 
 {% block content %}
