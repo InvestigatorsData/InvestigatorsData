@@ -1,0 +1,60 @@
+
+html, body {
+  margin: 10px;;
+}
+
+
+a {
+  text-decoration: none !important;
+  color: white !important;
+
+}
+
+header {
+padding: 30px;
+
+
+}
+
+.container {
+  color: white;
+  margin: 45px;
+  padding: 5px;
+  background-color: #404245;
+  color: white;
+  text-align: left;
+  border-radius: 20px;
+}
+
+#help {
+  text-align: right;
+}
+
+#renain {
+  text-align: left;
+}
+
+#footer {
+    margin: 5px;
+    padding: 5px;
+    height: 12%;
+    width: 100%;
+    background-color: #404245;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+}
+
+#mySearch {
+  border-radius: 5px;
+  display:
+}
+
+.logo {
+ color:white;
+ font-size:10px;
+ line-height:20px;
+ float:left;
+}
+
+/* Toggle functionality */
