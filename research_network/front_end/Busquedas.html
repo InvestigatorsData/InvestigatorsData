@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>ACERCA DE</title>
+    <title>Busquedas</title>
     <link rel="stylesheet" href="LogIn.css">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="util.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
     <link rel = "shortcut icon" href = "images/icons/favicon.png"> 
 
 
@@ -51,18 +54,40 @@
 <div class="container-contact100">
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
-				<align="left"><p style="color: #3ccaed;">NUESTRA MISIÓN</p> <p style="color:white;">Ofrecer un sistema que sirva para que los investigadores puedan subir articulos, asi como la información que ellos quieran ofrecer para dar a conocer su trabajo</p>
-				<align="left"><p style="color: #54f13c;">NUESTRA HISTORIA</p><p style="color:white;">El profesor Canek Peláez Valdéz nos pidio que hicieramos un sistema que sirviera para que los investigadores dieran a conocer articulos acerca de investigación científica </p> 
-				<align="left"><p style="color: #3ccaed;">CONTACTO DE ADMINISTRADORES</p><p style="color:white;">renainsoporte@gmail.com</p>
-				<align="left"><p style="color: #54f13c">CREDITOS</p><p style="color:white;">Pagina creada sin fines de lucro, el credito de esta pagina es para, Sandra del Mar Soto Cordel, Rodrigo Fernando Velazquez Cruz, Marco Antonio Velazco Flores, Nicole Romina Traschikoff García, Erik Quintero Villeda.</p>
-				<align="left"><p style="color: #3ccaed;">AVISO DE PRIVACIDAD</p>
-				<a href="Aviso-de-Privacidad.pdf" download="Ver de privacidad">
-				Descargar Aviso de privacidad
-				</a>
+				<align="left"><p style="color: white;"> <font size=6>Resultados de las busquedas</font></p>
+				<align="left"><p style="color: #54f13c;"> <font size=5>Investigadores</font></p>
+					<input type="button" value="mostrar resultados de investigadores" onClick="document.getElementById('oculto').style.visibility='visible'">
+						<br>
+						<div id="oculto" style="visibility:hidden">
+						<p style="color:white;">Aquí se mostrarán los investigadores que coinciden con la busqueda
+						</div>
+				<align="left"><p style="color: #3ccaed;"><font size=5>Institutos</font></p>
+					<input type="button" value="mostrar resultados de los institutos" onClick="document.getElementById('oculto2').style.visibility='visible'">
+						<br>
+						<div id="oculto2" style="visibility:hidden">
+						<p style="color:white;">Aquí se mostrarán los institutos que coinciden con la busqueda
+						</div>
+				<align="left"><p style="color: #54f13c;"><font size=5>SubInstitutos</font></p>
+					<input type="button" value="mostrar resultados de los subinstitutos" onClick="document.getElementById('oculto3').style.visibility='visible'">
+						<br>
+						<div id="oculto3" style="visibility:hidden">
+						<p style="color:white;">Aquí se mostrarán los subInstitutos que coinciden con la busqueda
+						</div>
+				<align="left"><p style="color: #3ccaed;"><font size=5>Grupos</font></p>
+					<input type="button" value="mostrar resultados de los grupos" onClick="document.getElementById('oculto4').style.visibility='visible'">
+						<br>
+						<div id="oculto4" style="visibility:hidden">
+						<p style="color:white;">Aquí se mostrarán los grupos que coinciden con la busqueda
+						</div>
+				<align="left"><p style="color: #54f13c;"><font size=5>Publicaciones</font></p>
+					<input type="button" value="mostrar resultados de las publicaciones" onClick="document.getElementById('oculto5').style.visibility='visible'">
+						<br>
+						<div id="oculto5" style="visibility:hidden">
+						<p style="color:white;">Aquí se mostrarán las publicaciones que coinciden con la busqueda
+						</div>
 			</form>
 		</div>
 	</div>
-
 </div>
 
 
