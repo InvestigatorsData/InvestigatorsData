@@ -75,7 +75,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('home'))
+                return HttpResponseRedirect(reverse('profile'))
             else:
                 return HttpResponse(" Tu cuenta aun no esta activa ")
         else:

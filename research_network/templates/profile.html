@@ -1,5 +1,4 @@
-{% load static %}
-
+                                                                                                                    {% load static %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
   <head>
@@ -14,7 +13,6 @@
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
 </head>
-
 <header>
 <div class="container">
     <!-- This checkbox will give us the toggle behavior, it will be hidden, but functional -->
@@ -56,9 +54,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           </div>
         </div>
         <div class="w3-container">
-          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Investigador</p>
-          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Ciudad de México, México</p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>ex@mail.com</p>
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ people.name }}</p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ people.state }}</p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ people.email }}</p>
 
           <hr>
 
@@ -82,15 +80,17 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <p>Detalles de la publicación.</p>
           <hr>
         </div>
-        <div class="w3-container">
+            <div class="w3-container">
           <h5 class="w3-opacity"><b>Título 2</b></h5>
           <a href="#public">  Ver publicación </a>
           <p>Detalles de la publicación.</p>
           <hr>
         </div>
         <div class="w3-container">
+
           <h5 class="w3-opacity"><b>Título 3</b></h5>
           <a href="#public">  Ver publicación </a>
+
           <p>Detalles de la publicación. </p><br>
         </div>
       </div>

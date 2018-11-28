@@ -36,12 +36,21 @@
         <a class="nav-item" href="{% url 'about' %}">Acerca de &nbsp;</a>
         <a class="nav-item" href="{% url 'login' %}">Ingresar &nbsp;</a>
         <a class="nav-item" href="{% url 'signup' %}">Registro &nbsp;</a>
-		{% endif %}
         <a class="nav-item" href="">Consulta &nbsp;</a>
         <input type="submit" class="nav-item" id="mySearch" onkeyup="myFunction()" placeholder="Buscar..." title="Type in a category">
     </nav>
 </div>
 </header>
+
+{% block content %}
+<div class="post-entry">
+<p>{{ object.name }}</p>
+<p>{{ object.body }}</p>
+<p>{{ object.academic_level }}</p>
+<p>{{ object.degree }}</p>
+</div>
+{% endblock content %}
+
 
       <div class="map">
       <link rel="stylesheet" href="{% static 'css/ammap.css' %}" type="text/css">
