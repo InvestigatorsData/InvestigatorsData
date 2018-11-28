@@ -39,18 +39,12 @@
         <a class="nav-item" href="{% url 'profile'%}">Perfil &nbsp;</a>
         <a class="nav-item" href="{% url 'profileM' %}">Ayuda &nbsp;</a>
         <input type="text" class="nav-item" id="mySearch" onkeyup="myFunction()" placeholder="Buscar..." title="Type in a category">
+        <input type="submit" class="nav-item" id="mySearch" onkeyup="myFunction()" placeholder="Buscar..." title="Type in a category">
+
     </nav>
 </div>
 </header>
-<!---
-{% if user.is_authenticated %}
-<p>Hola {{ user.username }}!</p>
-    <p><a href="{% url 'logout' %}">Salir</a></p>
-{% else %}
-<p>Usted no se ha identificado</p>
-<a href="{% url 'login' %}">Identificarse</a>
-{% endif %}
--->
+
       <div class="map">
       <link rel="stylesheet" href="{% static 'css/ammap.css' %}" type="text/css">
       <script src="{% static 'css/ammap.js' %}" type="text/javascript"></script>

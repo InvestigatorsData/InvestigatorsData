@@ -3,21 +3,7 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.urls import reverse
-# Create your models here.
-
-class New_User(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    id_new_user = models.AutoField(primary_key=True)
-    username = models.CharField(max_length=200)
-    email = models.CharField(max_length=200)
-    academic_level = models.CharField(max_length=200, null=True, blank=True)
-    degree = models.CharField(max_length=200, null=True, blank=True)
-    personal_telephone = models.CharField(max_length=200, null=True, blank=True)
-    institute = models.CharField(max_length=200, null=True, blank=True)
-    subinstitute = models.CharField(max_length=200, null=True, blank=True)
-    class Meta:
-        db_table = "New_User"
-
+# Create your models here
 
 class States(models.Model):
     id_state = models.AutoField(primary_key=True)
@@ -124,19 +110,19 @@ class Groups(models.Model):
         return self.name
 
 class People(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     id_people = models.AutoField(primary_key=True)
-    mail = models.CharField(max_length=200)
-    password = models.CharField(max_length=128)
-    user_profile = models.ForeignKey(User_profiles,on_delete=models.PROTECT)
-    institute = models.ForeignKey(Institutes,on_delete=models.PROTECT)
-    subinstitute = models.ForeignKey(Subinstitutes,on_delete=models.PROTECT, null=True, blank=True)
-    role = models.ForeignKey(Roles,on_delete=models.PROTECT)
+    email = models.CharField(max_length=200)
     academic_level = models.CharField(max_length=200, null=True, blank=True)
     degree = models.CharField(max_length=200, null=True, blank=True)
     name = models.CharField(max_length=200)
+    personal_telephone = models.CharField(max_length=200, null=True, blank=True)
+    state = models.ForeignKey(States, on_delete=models.PROTECT)
+    subinstitute = models.ForeignKey(Subinstitutes,on_delete=models.PROTECT)
+    role = models.ForeignKey(Roles,on_delete=models.PROTECT)
+    institute = models.ForeignKey(Institutes,on_delete=models.PROTECT)
     groups = models.ManyToManyField(Groups)
     papers = models.ManyToManyField(Papers)
-    personal_telephone = models.CharField(max_length=200, null=True, blank=True)
     class Meta:
         db_table = "People"
     def __str__(self):
@@ -218,7 +204,7 @@ class Modify_Place(models.Model):
 
 class Events(models.Model):
     id_event = models.AutoField(primary_key=True)
-    id_new_user = models.ForeignKey(New_User, on_delete=models.PROTECT)
+    #id_new_user = models.ForeignKey(New_User, on_delete=models.PROTECT)
     id_modify_user = models.ForeignKey(Modify_User, on_delete=models.PROTECT)
     id_upload_document = models.ForeignKey(Upload_Document, on_delete=models.PROTECT)
     id_remove_document = models.ForeignKey(Remove_Document, on_delete=models.PROTECT)

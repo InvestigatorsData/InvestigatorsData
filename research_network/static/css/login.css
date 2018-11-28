@@ -14,7 +14,7 @@ a {
 
 #container {
   padding: 10px;
-
+  margin: 10px;
   height: 20%;
   width:auto;
   color: white !important;
@@ -33,15 +33,15 @@ a {
 }
 
 #footer {
-    margin: 5px;
-    padding: 5px;
-    height: 20%;
-    width: 100%;
+    margin: 50px 10px 50px 10px;
+    padding: 60px;
+    height: 35%;
     background-color: #404245;
     color: white;
-    text-align: center;
-    border-radius: 20px;
+    text-align: justify;
+    border-radius: 10px;
 }
+
 
 #mySearch {
   border-radius: 5px;
@@ -54,5 +54,3 @@ a {
  line-height:20px;
  float:left;
 }
-
-/* Toggle functionality */

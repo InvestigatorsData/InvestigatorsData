@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/util.css' %}">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
 
 
 <!--===============================================================================================-->
@@ -39,7 +39,7 @@
 <body>
 
 <header>
-  <div class="container">
+  <div id="container">
     <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
     <div id="help"> <a href="#help">  Ayuda </a> </div>
   </div>
@@ -52,15 +52,15 @@
 				<span class="contact100-form-title">
 					REGISTRO
 				</span>
-				
+
 				<form action="{% url 'signup' %}" method="POST" name="user_signup">
 					{% csrf_token %}
-					
+
 					<div class="wrap-input100 validate-input bg1" data-validate="Por favor, llene el campo">
 						<span class="label-input100">NOMBRE(S) *</span>
-						<input class="form-control" type="text" name="username" placeholder="Ingrese su nombre completo">
+						<input class="form-control" type="text" name="name" placeholder="Ingrese su nombre completo">
 					</div>
-		
+
 					<div class="wrap-input100 validate-input bg1" data-validate = "Introduzca su correo (c@d.x)">
 						<span class="label-input100">CORREO *</span>
 						<input class="form-control" type="text" name="email" placeholder="Ingrese su correo electrónico ">
@@ -75,11 +75,30 @@
 						<span class="label-input100">CELULAR</span>
 						<input class="form-control" type="text" name="personal_telephone" placeholder="Ingrese su número de celular">
 					</div>
-					
+
+					<div class="wrap-input100 input100-select bg1">
+							<span class="form-control"> ESTADO *</span>
+							<div>
+								<select class="js-select2" name="state" required>
+									<option value="" selected disabled hidden>Selecciona</option>
+									{% for state in states %}
+									<tr>
+										<option value={{state.id_state}}> <td>{{state.name}}</td> </option>
+									</tr>
+									{% endfor %}
+
+								</select>
+								<div class="dropDownSelect2"></div>
+							</div>
+						</div>
+
+
+
 					<div class="wrap-input100 input100-select bg1">
 						<span class="form-control"> NIVEL ACADEMICO *</span>
 						<div>
 							<select class="js-select2" name="academic_level" required>
+								<option value="" selected disabled hidden>Selecciona</option>
 								<option>Investigador</option>
 								<option>Estudiante</option>
 							</select>
@@ -91,6 +110,7 @@
 						<span class="form-control"> GRADO DE ESTUDIOS *</span>
 						<div>
 							<select class="js-select2" name="degree" required >
+									<option value="" selected disabled hidden>Selecciona</option>
 								<option>Licenciatura</option>
 								<option>Maestria</option>
 								<option>Doctorado</option>
@@ -104,9 +124,10 @@
 						<span class="form-control"> INSTITUTO *</span>
 						<div>
 							<select class="js-select2" name="institute" required>
+									<option value="" selected disabled hidden>Selecciona Instituto</option>
 								{% for institute in institutes %}
 								<tr>
-									<option> <td>{{institute.name}}</td> </option>
+									<option value={{institute.id_institute}}> <td>{{institute.name}}</td> </option>
 								</tr>
 								{% endfor %}
 							</select>
@@ -118,11 +139,10 @@
 						<span class="form-control"> SUBINSTITUTO *</span>
 						<div>
 							<select class="js-select2" name="subinstitute" required>
+									<option value="" selected disabled hidden>Selecciona Subinstituto</option>
 								{% for subinstitute in subinstitutes %}
 								<tr>
-									<option>
-										<td>{{subinstitute.name}}</td>
-									</option>
+									<option value={{subinstitute.id_subinstitute}}> <td>{{subinstitute.name}}</td> </option>
 								</tr>
 								{% endfor %}
 							</select>
@@ -130,18 +150,14 @@
 						</div>
 					</div>
 
-					<input type="submit" formmethod='POST' name="" value="Registrarme">
-				
-					<!--
 					<div class="container-contact100-form-btn">
-						<button class="contact100-form-btn">
+						<button class="contact100-form-btn" type="submit" formmethod='POST'>
 							<span>
 								Enviar solicitud
 								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
 							</span>
 						</button>
 					</div>
-					-->
 				</form>
 			</form>
 		</div>
