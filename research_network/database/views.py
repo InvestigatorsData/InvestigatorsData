@@ -69,9 +69,10 @@ def user_profile(request):
 
 def user_login(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        name = request.POST.get('username')
+        name_normalize = name.replace(' ','')
         password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
+        user = authenticate(username=name_normalize, password=password)
         if user:
             if user.is_active:
                 login(request, user)
@@ -82,7 +83,7 @@ def user_login(request):
             print(" Datos incorrectos")
             print(" Nombre: {} Password: {}".format(
                 username, password))
-            return HttpResponse(" Datos incorrectos ")
+            return HttpResponse(" Ingresaste el password o nombre incorrectos ")
     else:
         return render(request, 'login.html', {})
 
