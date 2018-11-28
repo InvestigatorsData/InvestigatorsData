@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from .models import Institutes, Subinstitutes, States, Roles
+from .models import Institutes, Subinstitutes, States, Roles, People, Groups, Papers
 
 
 def index(request):
@@ -85,3 +85,19 @@ def user_login(request):
             return HttpResponse(" Datos incorrectos ")
     else:
         return render(request, 'login.html', {})
+
+
+def user_search(request):
+    required = request.POST.get('entry')
+    people = People.objects.filter(name__contains=required)
+    institutes = Institutes.objects.filter(name__contains=required)
+    subinstitutes = Subinstitutes.objects.filter(name__contains=required)
+    groups = Groups.objects.filter(name__contains=required)
+    papers = Papers.objects.filter(topic__contains=required)
+    return render(request, "search.html", context={'people':people, 'institutes':institutes, 'subinstitutes':subinstitutes, 'groups':groups, 'papers':papers,'required':required})
+
+
+
+
+
+

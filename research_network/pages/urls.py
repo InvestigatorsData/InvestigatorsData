@@ -13,5 +13,5 @@ urlpatterns = [
     path('profile/', views.ProfilePageView.as_view(), name='profile'),
     path('profileM/', views.ProfileModifyPageView.as_view(), name='profileM'),
     path('about/', views.AboutOfPageView.as_view(), name='about'),
-
+    path('search/', database.views.user_search, name='search'),
 ]
