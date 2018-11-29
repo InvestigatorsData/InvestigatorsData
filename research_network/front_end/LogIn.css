@@ -51,5 +51,18 @@ a {
  float:left;
 }
 
+.inutil{
+ background-color: #404245;
+}
+
+.olvcon{
+ border-radius: 20px;
+ background-color: #030303; 
+}
+
+.olvcon2{
+ border-radius: 20px;
+ background-color: #030303; 
+}
 /* Toggle functionality */
 
