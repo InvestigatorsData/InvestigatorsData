@@ -36,6 +36,7 @@ a {
     color: white;
     text-align: center;
     border-radius: 20px;
+    margin-top: 120px;
 }
 
 #mySearch {
@@ -220,7 +221,7 @@ a {
   position:sticky;
   display: inline-block;
   float: left;
-  clear: both;
+  clear: none;
   color: transparent;
   font-size: 14px;
   letter-spacing: -5px;

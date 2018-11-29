@@ -1,5 +1,6 @@
+{% block content %}
 {% load static %}
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,13 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>REGISTRO</title>
-    <link rel="stylesheet" href="{% static 'css/ingreso.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/util.css' %}">
 
 
+
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href=" {% static 'images/icons/favicon.ico' %}"/>
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
 <!--===============================================================================================-->
@@ -33,47 +35,134 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/noui/nouislider.min.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
 </head>
 <body>
 
 <header>
-<div class="container">
-    
-        <div> RENAIN </div>
-    
-</div>
+  <div id="container">
+    <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
+    <div id="help"> <a href="#help">  Ayuda </a> </div>
+  </div>
 </header>
 
-{% block content %}
 <div class="form">
-	<div class="container-contact100">
+<div class="container-contact100">
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
-					INGRESO
+					REGISTRO
 				</span>
-				<form method="post" action="{% url 'database:user_login' %}">
+
+				<form action="{% url 'signup' %}" method="POST" name="user_signup">
 					{% csrf_token %}
-					<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "ingresa un correo valido (e@a.x)">
+
+					<div class="wrap-input100 validate-input bg1" data-validate="Por favor, llene el campo">
+						<span class="label-input100">NOMBRE(S) *</span>
+						<input class="form-control" type="text" name="name" placeholder="Ingrese su nombre completo">
+					</div>
+
+					<div class="wrap-input100 validate-input bg1" data-validate = "Introduzca su correo (c@d.x)">
 						<span class="label-input100">CORREO *</span>
-						<input class="input100" type="text" name="email" placeholder="Ingresa tu correo electronico">
+						<input class="form-control" type="text" name="email" placeholder="Ingrese su correo electrónico ">
 					</div>
-					<div class="wrap-input100 validate-input bg1" data-validate="Contraseña de 8 caracteres">
-						<span class="label-input100">CONTRASEÑA (MÍNIMO 8 CARACTERES) *</span>
-						<input class="input100" type="password" name="password" placeholder="Ingresa tu contraseña">
+
+					<div class="wrap-input100 validate-input bg1" data-validate="Introduzca su nuevo password">
+						<span class="label-input100">PASSWORD *</span>
+						<input class="form-control" type="password" name="password" placeholder="Ingrese su nuevo password ">
 					</div>
-					<input type="submit" name="" value="Login">
+
+					<div class="wrap-input100 validate-input bg1">
+						<span class="label-input100">CELULAR</span>
+						<input class="form-control" type="text" name="personal_telephone" placeholder="Ingrese su número de celular">
+					</div>
+
+					<div class="wrap-input100 input100-select bg1">
+							<span class="form-control"> ESTADO *</span>
+							<div>
+								<select class="js-select2" name="state" required>
+									<option value="" selected disabled hidden>Selecciona</option>
+									{% for state in states %}
+									<tr>
+										<option value={{state.id_state}}> <td>{{state.name}}</td> </option>
+									</tr>
+									{% endfor %}
+
+								</select>
+								<div class="dropDownSelect2"></div>
+							</div>
+						</div>
+
+
+
+					<div class="wrap-input100 input100-select bg1">
+						<span class="form-control"> NIVEL ACADEMICO *</span>
+						<div>
+							<select class="js-select2" name="academic_level" required>
+								<option value="" selected disabled hidden>Selecciona</option>
+								<option>Investigador</option>
+								<option>Estudiante</option>
+							</select>
+							<div class="dropDownSelect2"></div>
+						</div>
+					</div>
+
+					<div class="wrap-input100 input100-select bg1">
+						<span class="form-control"> GRADO DE ESTUDIOS *</span>
+						<div>
+							<select class="js-select2" name="degree" required >
+									<option value="" selected disabled hidden>Selecciona</option>
+								<option>Licenciatura</option>
+								<option>Maestria</option>
+								<option>Doctorado</option>
+							</select>
+							<div class="dropDownSelect2"></div>
+						</div>
+					</div>
+
+
+					<div class="wrap-input100 input100-select bg1">
+						<span class="form-control"> INSTITUTO *</span>
+						<div>
+							<select class="js-select2" name="institute" required>
+									<option value="" selected disabled hidden>Selecciona Instituto</option>
+								{% for institute in institutes %}
+								<tr>
+									<option value={{institute.id_institute}}> <td>{{institute.name}}</td> </option>
+								</tr>
+								{% endfor %}
+							</select>
+							<div class="dropDownSelect2"></div>
+						</div>
+					</div>
+
+					<div class="wrap-input100 input100-select bg1">
+						<span class="form-control"> SUBINSTITUTO *</span>
+						<div>
+							<select class="js-select2" name="subinstitute" required>
+									<option value="" selected disabled hidden>Selecciona Subinstituto</option>
+								{% for subinstitute in subinstitutes %}
+								<tr>
+									<option value={{subinstitute.id_subinstitute}}> <td>{{subinstitute.name}}</td> </option>
+								</tr>
+								{% endfor %}
+							</select>
+							<div class="dropDownSelect2"></div>
+						</div>
+					</div>
+
+					<div class="container-contact100-form-btn">
+						<button class="contact100-form-btn" type="submit" formmethod='POST'>
+							<span>
+								Enviar solicitud
+								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
 				</form>
 			</form>
 		</div>
 	</div>
-
 </div>
-{% endblock %}
-
 
 <!--===============================================================================================-->
 	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
@@ -139,7 +228,7 @@
 	<script src="{% static 'js/main.js' %}"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script async src=" https://www.googletagmanager.com/gtag/js?id=UA-23581568-13 "></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -150,15 +239,14 @@
 
 
 
-
-
-
 <div id="footer">
-  <p>Hecho en México, todos los derechos reservados 2018-2019. Esta página
-     puede ser reproducida con fines no lucrativos, siempre y cuando no se
-     mutile, se cite la fuente completa y su dirección electrónica. De otra
-     forma requiere permiso previo por escrito de la Institución. </p>
+  <p>2018 Red Nacional de Investigación | Hecho en México |
+    © Todos los derechos reservados. Esta página electrónica puede ser reproducida,
+     sin objeto comercial, siempre y cuando su contenido no se mutile o altere, se cite la fuente completa
+     y la dirección Web de conformidad con el artículo 148 de la Ley Federal del Derecho de Autor, de otra forma,
+     se requerirá permiso previo y por escrito de la RENAIN.</p>
 </div>
 
 </body>
 </html>
+{% endblock %}

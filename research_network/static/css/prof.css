@@ -1,38 +1,41 @@
-/* Basic styles */
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 10px;;
-}
 
 body {
   font-family: sans-serif;
   background-color: #eff1f3;
 }
 
+
 a {
-  text-decoration: none;
+  text-decoration: none !important;
+  color: white !important;
 
 }
 
-.container {
-  color: white;	
-  margin: -45px;
-  padding: 5px;
-  height: 12%;
-  width: 100%;
-  background-color: #404245;
-  color: white;
+
+#container {
+  padding: 10px;
+
+  height: 20%;
+  width:auto;
+  color: white !important;
+  background-color: #404245 !important;
+  color: white !important;
+  text-align: left !important;
+  border-radius: 10px !important;
+}
+
+#help {
+  text-align: right;
+}
+
+#renain {
   text-align: left;
-  border-radius: 20px;
 }
 
 #footer {
     margin: 5px;
     padding: 5px;
-    height: 12%;
+    height: 20%;
     width: 100%;
     background-color: #404245;
     color: white;
@@ -53,4 +56,3 @@ a {
 }
 
 /* Toggle functionality */
-

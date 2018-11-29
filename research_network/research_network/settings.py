@@ -17,7 +17,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -112,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es_MEX'
 
 TIME_ZONE = 'UTC'
 
@@ -122,6 +122,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -129,5 +130,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-LOGIN_URL = '/database/user_login/'
-LOGIN_REDIRECT_URL = '/ '
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = 'home'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'renainsoporte@gmail.com'
+EMAIL_HOST_PASSWORD = 'Renain1234'
+EMAIL_PORT = 587
