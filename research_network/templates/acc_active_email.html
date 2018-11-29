@@ -1,0 +1,17 @@
+{% autoescape off %}
+
+Gracias por registrarte en Renain.
+
+Confirma tu cuenta de usuario haciendo clic en este enlace:
+
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+
+Si la activación no te funciona, copia el enlace en tu navegador.
+
+No dudes en contactarnos para cualquier pregunta o aclaración en el email renainsoporte@gmail.com
+
+Saludos!
+El equipo de RENAIN
+
+
+{% endautoescape %}
