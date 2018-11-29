@@ -8,28 +8,29 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>PERFIL</title>
 
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
-    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'css/prof.css' %}">
 
 
     <header>
-      <div class="container">
+      <div id="container">
         <div id="renain"><a href="home.html"> RENAIN </a> </div>
         <div id="help"> <a href="#help">  Ayuda </a> </div>
       </div>
     </header>
+    <br/> <br/> &nbsp;&nbsp;&nbsp;&nbsp;<b>Editar Perfil </b> <br/> <br/>
 
-  
-     Editar Perfil <br/> <br/>
+    <div style="width: 530px; margin: 0 auto;">
 
-      Nombre: * <input type="text" name="name" />  <br/>
 
-      Correo: * <input type="text" name="email" />  <br/>
+      Nombre: * <input type="text" name="name" />  <br/> <br/>
 
-      Teléfono: <input type="text" name="phone" /> <input type="button" value="Público"> <input type="button" value="Privado"> <br/>
+      Correo: * <input type="text" name="email" />  <br/> <br/>
 
-      Cumpleaños: <input type="text" name="birthday" /> <input type="button" value="Público"> <input type="button" value="Privado"> <br/>
+      Teléfono: <input type="text" name="phone" /> <button> <img src="{% static 'images/icons/internet.png' %}"> </button> <button> <img src="{% static 'images/icons/lock.png' %}"> </button> <br/> <br/>
+
+      Cumpleaños: <input type="text" name="birthday" /> <button> <img src="{% static 'images/icons/internet.png' %}"> </button> <button> <img src="{% static 'images/icons/lock.png' %}"> </button> <br/> <br/>
 
       ¿Estaba su institución al momento de regístrarse?
 
@@ -45,13 +46,13 @@
           Campus: <input type="text" name="campus" />  <br/>
 
         </div> <br/> <br/> <br/> <br/>
+      </div>
 
 
 
 
 
-
-      <input type="button" value="Guardar cambios">  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;   <input type="button" value="Convertirme en investigador">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Guardar cambios">  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;   <input type="button" value="Convertirme en investigador"> <br/> <br/> <br/>
 
 
 
