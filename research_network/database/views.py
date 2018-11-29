@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from database.forms import UserForm, UserProfileInfoForm
+from database.forms import UserProfileInfoForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -124,9 +124,3 @@ def user_search(request):
     groups = Groups.objects.filter(name__contains=required)
     papers = Papers.objects.filter(topic__contains=required)
     return render(request, "search.html", context={'people':people, 'institutes':institutes, 'subinstitutes':subinstitutes, 'groups':groups, 'papers':papers,'required':required})
-
-
-
-
-
-
