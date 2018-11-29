@@ -31,6 +31,7 @@
 
     <!-- The nav menu -->
     <nav class="nav logo">
+<<<<<<< HEAD
 
         <a class="nav-item" href="">Inicio &nbsp; &nbsp;</a>
         <a class="nav-item" href="{% url 'about' %}">Acerca de &nbsp; &nbsp;</a>
@@ -43,8 +44,16 @@
         <input type="submit" class="nav-item" id="mySearch" onkeyup="myFunction()" placeholder="Buscar..." title="Type in a category">
 
     </nav>
+
+
 </div>
 </header>
+
+	<form action="{% url 'search' %}" method="post">
+		{% csrf_token %}
+		<button type="submit"> Buscar &nbsp;</button>
+		<input name="entry" formmethod='post' placeholder="Ingresa tu busqueda">
+	</form>
 
       <div class="map">
       <link rel="stylesheet" href="{% static 'css/ammap.css' %}" type="text/css">
