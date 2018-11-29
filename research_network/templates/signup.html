@@ -40,7 +40,7 @@
 
 <header>
   <div id="container">
-    <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
+    <div id="renain" scr="{% static 'images/icons/renain.png' %}"><a href="{% url 'base' %}"> RENAIN </a> </div>
     <div id="help"> <a href="#help">  Ayuda </a> </div>
   </div>
 </header>
@@ -67,9 +67,14 @@
 					</div>
 
 					<div class="wrap-input100 validate-input bg1" data-validate="Introduzca su nuevo password">
-						<span class="label-input100">PASSWORD *</span>
-						<input class="form-control" type="password" name="password" placeholder="Ingrese su nuevo password ">
+						<span class="label-input100">CONTRASEÑA *</span>
+						<input class="form-control" type="password" name="password" placeholder="Ingrese su nuevo contraseña ">
 					</div>
+
+          <div class="wrap-input100 validate-input bg1" data-validate="Introduzca su nuevo password">
+            <span class="label-input100">CONFIRMAR CONTRASEÑA *</span>
+            <input class="form-control" type="password" name="password" placeholder="Ingrese su nuevo contraseña ">
+          </div>
 
 					<div class="wrap-input100 validate-input bg1">
 						<span class="label-input100">CELULAR</span>
