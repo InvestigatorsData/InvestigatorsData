@@ -69,9 +69,14 @@ def user_profile(request):
 
 def user_login(request):
     if request.method == 'POST':
-        name = request.POST.get('username')
-        name_normalize = name.replace(' ','')
+        email_request = request.POST.get('email')
         password = request.POST.get('password')
+        try:
+             person = People.objects.get(email=email_request)
+        except:
+            return HttpResponse(" Usuario no registrado")
+        name = person.name
+        name_normalize = name.replace(' ','')
         user = authenticate(username=name_normalize, password=password)
         if user:
             if user.is_active:
@@ -81,8 +86,8 @@ def user_login(request):
                 return HttpResponse(" Tu cuenta aun no esta activa ")
         else:
             print(" Datos incorrectos")
-            print(" Nombre: {} Password: {}".format(
-                username, password))
+            print(" Email: {} Password: {}".format(
+                email_request, password))
             return HttpResponse(" Ingresaste el password o nombre incorrectos ")
     else:
         return render(request, 'login.html', {})
