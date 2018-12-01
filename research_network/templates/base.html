@@ -33,11 +33,15 @@
     <nav class="nav logo">
 
         <a class="nav-item" href="">Inicio &nbsp; &nbsp;</a>
-        <a class="nav-item" href="{% url 'about' %}">Acerca de &nbsp; &nbsp;</a>
+		<a class="nav-item" href="{% url 'about' %}">Acerca de &nbsp; &nbsp;</a>
+		{% if user.is_authenticated %}
+		<a class="nav-item" href="{% url 'logout'%}">Salir &nbsp; &nbsp;</a>
+		<a class="nav-item" href="{% url 'profile'%}">Perfil &nbsp; &nbsp;</a>
+		{% else %}
         <a class="nav-item" href="{% url 'login' %}">Ingresar &nbsp; &nbsp;</a>
         <a class="nav-item" href="{% url 'loginadmin' %}">Ingresar Admin &nbsp; &nbsp;</a>
-        <a class="nav-item" href="{% url 'signup' %}">Registro &nbsp; &nbsp;</a>
-        <a class="nav-item" href="{% url 'profile'%}">Perfil &nbsp; &nbsp;</a>
+        <a class="nav-item" href="{% url 'signup' %}">Registro &nbsp; &nbsp;</a>	
+		{% endif%}
         <a class="nav-item" href="{% url 'profileM' %}">Ayuda &nbsp; &nbsp;</a>
         
 
