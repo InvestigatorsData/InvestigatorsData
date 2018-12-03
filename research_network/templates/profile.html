@@ -1,4 +1,4 @@
-                                                                                                                    {% load static %}
+{% block content %}                                                                                                                    {% load static %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
   <head>
@@ -27,8 +27,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     </label>
 
     <!-- The nav menu -->
+     <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
     <nav class="nav logo">
-
         <a class="nav-item" href="">Publicaciones &nbsp;</a>
         <a class="nav-item" href="">Grupos &nbsp;</a>
     </nav>
@@ -116,3 +116,4 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
    </body>
   </html>
+{% endblock content %}

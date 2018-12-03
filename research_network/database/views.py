@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from .models import Institutes, Subinstitutes, States, Roles
+from .models import Institutes, Subinstitutes, States, Roles, People, Groups, Papers
 
 
 def index(request):
@@ -69,19 +69,38 @@ def user_profile(request):
 
 def user_login(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        name = request.POST.get('username')
+        name_normalize = name.replace(' ','')
+        #People.objects.get(name = name_normalize)
         password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
+        user = authenticate(username=name_normalize, password=password)
+        slug = name_normalize
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('profile'))
+                return HttpResponseRedirect(reverse('profile',args=(1,)))
             else:
                 return HttpResponse(" Tu cuenta aun no esta activa ")
         else:
             print(" Datos incorrectos")
             print(" Nombre: {} Password: {}".format(
                 username, password))
-            return HttpResponse(" Datos incorrectos ")
+            return HttpResponse(" Ingresaste el password o nombre incorrectos ")
     else:
         return render(request, 'login.html', {})
+
+
+def user_search(request):
+    required = request.POST.get('entry')
+    people = People.objects.filter(name__contains=required)
+    institutes = Institutes.objects.filter(name__contains=required)
+    subinstitutes = Subinstitutes.objects.filter(name__contains=required)
+    groups = Groups.objects.filter(name__contains=required)
+    papers = Papers.objects.filter(topic__contains=required)
+    return render(request, "search.html", context={'people':people, 'institutes':institutes, 'subinstitutes':subinstitutes, 'groups':groups, 'papers':papers,'required':required})
+
+
+
+
+
+

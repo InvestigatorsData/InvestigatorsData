@@ -22,9 +22,11 @@ class HomePageView(TemplateView):
 class ProfilePageView(TemplateView):
     template_name = 'profile.html'
 class ProfileModifyPageView(TemplateView):
-    template_name = 'proof.html'
+    template_name = 'profileM.html'
 class AboutOfPageView(TemplateView):
     template_name = 'aboutOf.html'
+
 class UserProfielView(DetailView):
     model = People
     template_name = 'profile.html'
+    slug_field = 'user'

@@ -8,149 +8,41 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Acerca de</title>
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/util.css' %}">
     <link rel = "shortcut icon" href = "{% static 'images/icons/favicon.png' %}">
-
-
-<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/noui/nouislider.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-<!--===============================================================================================-->
 </head>
 <body>
+  <header>
+    <div id="container">
+      <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
+      <div id="help"> <a href="#help">  Ayuda </a> </div>
+    </div>
+  </header>
 
-<header>
-<div class="container">
-    
-        <div> RENAIN </div>
-    
-</div>
-</header>
 
 <div class="form">
-<div class="container-contact100">
-		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
-				<align="left"><p style="color: #3ccaed;">NUESTRA MISIÓN</p> <p style="color:white;">Ofrecer un sistema que sirva para que los investigadores puedan subir articulos, asi como la información que ellos quieran ofrecer para dar a conocer su trabajo</p>
-				<align="left"><p style="color: #54f13c;">NUESTRA HISTORIA</p><p style="color:white;">El profesor Canek Peláez Valdéz nos pidio que hicieramos un sistema que sirviera para que los investigadores dieran a conocer articulos acerca de investigación científica </p> 
-				<align="left"><p style="color: #3ccaed;">CONTACTO DE ADMINISTRADORES</p><p style="color:white;">renainsoporte@gmail.com</p>
-				<align="left"><p style="color: #54f13c">CREDITOS</p><p style="color:white;">Pagina creada sin fines de lucro, el credito de esta pagina es para, Sandra del Mar Soto Cordel, Rodrigo Fernando Velazquez Cruz, Marco Antonio Velazco Flores, Nicole Romina Traschikoff García, Quintero Villeda Erik.</p>
-				<align="left"><p style="color: #3ccaed;">AVISO DE PRIVACIDAD</p>
+    <div style="width: 530px; margin: 0 auto;">
+
+				<align="left"><p style="color: #06D181;">NUESTRA MISIÓN</p> <p style="color:black;">Ofrecer un sistema que sirva para que los investigadores puedan subir articulos, asi como la información que ellos quieran ofrecer para dar a conocer su trabajo</p>
+				<align="left"><p style="color: #3E5B77;">NUESTRA HISTORIA</p><p style="color:black;">El profesor Canek Peláez Valdéz nos pidio que hicieramos un sistema que sirviera para que los investigadores dieran a conocer articulos acerca de investigación científica </p>
+				<align="left"><p style="color: #06D181;">CONTACTO DE ADMINISTRADORES</p><p style="color:black;">renainsoporte@gmail.com</p>
+				<align="left"><p style="color: #3E5B77;">CRÉDITOS</p><p style="color:black;">Pagina creada sin fines de lucro, el credito de esta pagina es para, Sandra del Mar Soto Cordel, Rodrigo Fernando Velazquez Cruz, Marco Antonio Velazco Flores, Nicole Romina Traschikoff García, Quintero Villeda Erik.</p>
+				<align="left"><p style="color: #C06000;">AVISO DE PRIVACIDAD</p>
 				<a href="{% static 'docs/Aviso-de-Privacidad.pdf' %}" download="Ver de privacidad">
 				Descargar Aviso de privacidad
 				</a>
-			</form>
-		</div>
-	</div>
 
+      </div>
 </div>
-
-
-
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
-	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
-	<script>
-		$(".js-select2").each(function(){
-			$(this).select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $(this).next('.dropDownSelect2')
-			});
-
-
-			$(".js-select2").each(function(){
-				$(this).on('select2:close', function (e){
-					if($(this).val() == "Please chooses") {
-						$('.js-show-service').slideUp();
-					}
-					else {
-						$('.js-show-service').slideUp();
-						$('.js-show-service').slideDown();
-					}
-				});
-			});
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
-	<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'vendor/noui/nouislider.min.js' %}"></script>
-	<script>
-	    var filterBar = document.getElementById('filter-bar');
-
-	    noUiSlider.create(filterBar, {
-	        start: [ 1500, 3900 ],
-	        connect: true,
-	        range: {
-	            'min': 1500,
-	            'max': 7500
-	        }
-	    });
-
-	    var skipValues = [
-	    document.getElementById('value-lower'),
-	    document.getElementById('value-upper')
-	    ];
-
-	    filterBar.noUiSlider.on('update', function( values, handle ) {
-	        skipValues[handle].innerHTML = Math.round(values[handle]);
-	        $('.contact100-form-range-value input[name="from-value"]').val($('#value-lower').html());
-	        $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
-	    });
-	</script>
-<!--===============================================================================================-->
-	<script src="{% static 'js/main.js' %}"></script>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-23581568-13');
-</script>
-
-
 
 
 
 
 <div id="footer">
-  <p>Hecho en México, todos los derechos reservados 2018-2019. Esta página
-     puede ser reproducida con fines no lucrativos, siempre y cuando no se
-     mutile, se cite la fuente completa y su dirección electrónica. De otra
-     forma requiere permiso previo por escrito de la Institución. </p>
+  <p>2018 Red Nacional de Investigación | Hecho en México |
+    © Todos los derechos reservados. Esta página electrónica puede ser reproducida,
+     sin objeto comercial, siempre y cuando su contenido no se mutile o altere, se cite la fuente completa
+     y la dirección Web de conformidad con el artículo 148 de la Ley Federal del Derecho de Autor, de otra forma,
+     se requerirá permiso previo y por escrito de la RENAIN.</p>
 </div>
 
 </body>

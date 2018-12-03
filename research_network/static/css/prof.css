@@ -1,18 +1,16 @@
 
-html, body {
-  margin: 10px;;
-}
-
 body {
   font-family: sans-serif;
-  background-color: white;
+  background-color: #eff1f3;
 }
+
 
 a {
   text-decoration: none !important;
   color: white !important;
 
 }
+
 
 #container {
   padding: 10px;
@@ -45,6 +43,16 @@ a {
     border-radius: 20px;
 }
 
-.form {
-  text-align: justify;
+#mySearch {
+  border-radius: 5px;
+  display:
 }
+
+.logo {
+ color:white;
+ font-size:10px;
+ line-height:20px;
+ float:left;
+}
+
+/* Toggle functionality */
