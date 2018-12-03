@@ -6,7 +6,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   <title>INGRESAR|USUARIO</title>
+   <title>INGRESAR|ADMIN</title>
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
    <link rel="stylesheet" href="{% static 'css/main.css' %}">
    <link rel="stylesheet" href="{% static 'css/util.css' %}">
@@ -51,11 +51,10 @@
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
-					INGRESAR | USUARIO
+					INGRESAR | ADMINISTRADOR
 				</span>
-				<form method="POST" action="{% url 'login' %}">
-					{% csrf_token %}
-	        <p>  &nbsp;  &nbsp; &nbsp; &nbsp; </p>
+
+        <p>  &nbsp;  &nbsp; &nbsp; &nbsp; </p>
 				<br><div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Ingresa un correo válido (c@d.x)">
 					<span class="label-input100">CORREO</span>
 					<input class="input100" type="text" name="email" placeholder="Ingresa tu correo electrónico">
@@ -78,6 +77,9 @@
      </form>
      </div>
      </div>
+</div>
+
+
 
 <!--===============================================================================================-->
 	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>

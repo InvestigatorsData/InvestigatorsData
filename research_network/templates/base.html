@@ -31,19 +31,24 @@
 
     <!-- The nav menu -->
     <nav class="nav logo">
-        <a class="nav-item" href="">Inicio &nbsp;</a>
-		<a class="nav-item" href="{% url 'about' %}">Acerca de &nbsp;</a>
-		{% if user.is_authenticated %}
-		<a class="nav-item" href="{% url 'logout' %}">Salir &nbsp;</a>
-		{% else %}
-        <a class="nav-item" href="{% url 'login' %}">Ingresar &nbsp;</a>
 
-        <!--<a class="nav-item" href="{% url 'signup' %}">Registro &nbsp;</a>-->
-    <!--    <a class="nav-item" href="">Consulta &nbsp;</a> -->
-<!--    <input type="submit" class="nav-item" id="mySearch" onkeyup="myFunction()" placeholder="Buscar..." title="Type in a category">-->
-		<a class="nav-item" href="{% url 'signup' %}">Registro &nbsp;</a>
-		{%  endif %}
-	</nav>
+        <a class="nav-item" href="">Inicio &nbsp; &nbsp;</a>
+		<a class="nav-item" href="{% url 'about' %}">Acerca de &nbsp; &nbsp;</a>
+		{% if user.is_authenticated %}
+		<a class="nav-item" href="{% url 'logout'%}">Salir &nbsp; &nbsp;</a>
+		<a class="nav-item" href="{% url 'profile'%}">Perfil &nbsp; &nbsp;</a>
+		{% else %}
+        <a class="nav-item" href="{% url 'login' %}">Ingresar &nbsp; &nbsp;</a>
+        <a class="nav-item" href="{% url 'loginadmin' %}">Ingresar Admin &nbsp; &nbsp;</a>
+        <a class="nav-item" href="{% url 'signup' %}">Registro &nbsp; &nbsp;</a>	
+		{% endif%}
+        <a class="nav-item" href="{% url 'profileM' %}">Ayuda &nbsp; &nbsp;</a>
+        
+
+    </nav>
+
+
+
 </div>
 </header>
 
