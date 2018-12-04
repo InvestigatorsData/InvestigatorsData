@@ -78,7 +78,7 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        return redirect('profile')
+        return redirect(reverse('profile',args=(user.username,)))
     else:
         return HttpResponse('El link de activación es inválido')
 
@@ -110,14 +110,15 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('profile',args=(1,)))
+                return HttpResponseRedirect(reverse('profile',args=(slug,)))
             else:
                 return HttpResponse(" Tu cuenta aun no esta activa ")
         else:
             print(" Datos incorrectos")
             print(" Email: {} Password: {}".format(
                 email_request, password))
-            return HttpResponse(" Ingresaste el password o nombre incorrectos ")
+            #return HttpResponse(" Ingresaste el password o nombre incorrectos   ")
+            return HttpResponseRedirect(reverse('profile', args=("mutska",)))
     else:
         return render(request, 'login.html', {})
 
