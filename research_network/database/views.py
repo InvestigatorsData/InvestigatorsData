@@ -118,8 +118,7 @@ def user_login(request):
             print(" Datos incorrectos")
             print(" Email: {} Password: {}".format(
                 email_request, password))
-            #return HttpResponse(" Ingresaste el password o nombre incorrectos   ")
-            return HttpResponseRedirect(reverse('profile', args=("mutska",)))
+            return HttpResponse(" Ingresaste el password o nombre incorrectos")
     else:
         return render(request, 'login.html', {})
 
