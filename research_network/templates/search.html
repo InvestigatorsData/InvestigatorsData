@@ -69,7 +69,7 @@
                             <div id=" People">
                                 {% if people %}
                                 {% for person in people %}
-                                <p class="wrap-input100 validate-input bg1" style="color:black;">{{person.name}}</p>
+                                <p class="wrap-input100 validate-input bg1" style="color:black;">{{person.name}} <a href="/profile/{{person.url_name}}"> <font color="0a4a8e"> Ver perfil </font></a></p>
                                 {% endfor%}        
                                 {% else%}
                                 <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron coincidencias</p>

@@ -28,6 +28,11 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
     <!-- The nav menu -->
      <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
+     {% if user.is_authenticated %}
+     {% if user.is_superuser %}
+     <div id="admin_login"><a href="/admin/"> Ingresar como administrador </a> </div>
+     {% endif %}
+     {% endif %}
     <nav class="nav logo">
         <a class="nav-item" href="">Publicaciones &nbsp;</a>
         <a class="nav-item" href="">Grupos &nbsp;</a>

@@ -11,7 +11,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
-from .models import Institutes, Subinstitutes, States, Roles, People, Groups, Papers
+from .models import Institutes, Subinstitutes, States, People, Groups, Papers
 
 def index(request):
     return render(request, 'base.html')
@@ -31,7 +31,6 @@ def user_signup(request):
     institutes = Institutes.objects.all().order_by('name')
     subinstitues = Subinstitutes.objects.all().order_by('name')
     states = States.objects.all().order_by('name')
-    rol = Roles.objects.get(role='user')
     if request.method == 'POST':
         profile_form = UserProfileInfoForm(data=request.POST)
         if profile_form.is_valid():
@@ -44,7 +43,6 @@ def user_signup(request):
             user.save()
             profile.user = user
             profile.url_name = username_normalize
-            profile.role = rol
             profile.save()
             registered = True
             user.is_active = False
@@ -119,8 +117,7 @@ def user_login(request):
             print(" Datos incorrectos")
             print(" Email: {} Password: {}".format(
                 email_request, password))
-            #return HttpResponse(" Ingresaste el password o nombre incorrectos   ")
-            return HttpResponseRedirect(reverse('profile', args=("mutska",)))
+            return HttpResponse(" Ingresaste el password o nombre incorrectos")
     else:
         return render(request, 'login.html', {})
 
