@@ -39,7 +39,6 @@
 		<a class="nav-item" href="{% url 'profile' slug=user %}">Perfil &nbsp; &nbsp;</a>
 		{% else %}
         <a class="nav-item" href="{% url 'login' %}">Ingresar &nbsp; &nbsp;</a>
-        <a class="nav-item" href="{% url 'loginadmin' %}">Ingresar Admin &nbsp; &nbsp;</a>
         <a class="nav-item" href="{% url 'signup' %}">Registro &nbsp; &nbsp;</a>	
 		{% endif%}
         <a class="nav-item" href="{% url 'profileM' %}">Ayuda &nbsp; &nbsp;</a>
