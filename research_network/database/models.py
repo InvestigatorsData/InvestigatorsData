@@ -111,6 +111,7 @@ class Groups(models.Model):
 
 class People(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    url_name = models.CharField(max_length=200)
     id_people = models.AutoField(primary_key=True)
     email = models.CharField(max_length=200)
     academic_level = models.CharField(max_length=200, null=True, blank=True)
