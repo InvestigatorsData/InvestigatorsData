@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from database.models import *
+from django.views.generic import ListView,DetailView
 
 
 class BasePageView(TemplateView):
@@ -16,6 +17,8 @@ class RegisterPageView(TemplateView):
     template_name = 'signup.html'
 class LoginPageView(TemplateView):
     template_name = 'login.html'
+class LoginPageView(TemplateView):
+    template_name = 'loginadmin.html'
 class HomePageView(TemplateView):
     template_name = 'home.html'
 class ProfilePageView(TemplateView):
@@ -24,3 +27,8 @@ class ProfileModifyPageView(TemplateView):
     template_name = 'profileM.html'
 class AboutOfPageView(TemplateView):
     template_name = 'aboutOf.html'
+
+class UserProfielView(DetailView):
+    model = People
+    template_name = 'profile.html'
+    slug_field = 'name'
