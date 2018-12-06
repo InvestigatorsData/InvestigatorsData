@@ -4,7 +4,6 @@ from . import views
 import database.views
 
 urlpatterns = [
-
     path('', views.BasePageView.as_view(), name='base'),
     path('signup/', database.views.user_signup, name='signup'),
     path('activate/<uidb64>/<token>/',

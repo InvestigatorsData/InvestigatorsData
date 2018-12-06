@@ -43,6 +43,7 @@ def user_signup(request):
             user = User.objects.create_user(username_normalize, email, password)
             user.save()
             profile.user = user
+            profile.url_name = username_normalize
             profile.role = rol
             profile.save()
             registered = True
