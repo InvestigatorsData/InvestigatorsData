@@ -1,11 +1,5 @@
 [
-  {
-    "model": "database.College",
-    "pk": 0,
-    "fields": {
-      "name": "No está registrada"
-    }
-  },
+  
   {
     "model": "database.States",
     "pk": 0,
