@@ -108,7 +108,6 @@ def user_login(request):
         user = authenticate(username=name_normalize, password=password)
         slug = name_normalize
         if user:
-
             if user.is_active:
                 login(request, user)
                 return HttpResponseRedirect(reverse('profile',args=(slug,)))
@@ -121,7 +120,6 @@ def user_login(request):
             return HttpResponse(" Ingresaste el password o nombre incorrectos")
     else:
         return render(request, 'login.html', {})
-
 
 def user_search(request):
     required = request.POST.get('entry')
@@ -149,4 +147,3 @@ def upload_paper(request):
     return render(request,'upload_paper.html',{
         'form': form
     })
-

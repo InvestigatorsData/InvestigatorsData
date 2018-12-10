@@ -1,0 +1,17 @@
+{% autoescape off %}
+
+Hola,
+
+Para restablecer tu contraseña de RENAIN da click al siguiente enlace:
+
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+
+Si no quieres restablecer tu contraseña, puedes ignorar este mensaje; posiblemente alguien escribió tu nombre de usuario o tu email por error.
+
+No dudes en contactarnos para cualquier pregunta o aclaración en el email renainsoporte@gmail.com
+
+¡Gracias!
+
+El Equipo de RENAIN
+
+{% endautoescape %}
