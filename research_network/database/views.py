@@ -12,6 +12,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from .models import Institutes, Subinstitutes, States, People, Groups, Papers
+from .forms import *
 
 def index(request):
     return render(request, 'base.html')
@@ -129,3 +130,22 @@ def user_search(request):
     groups = Groups.objects.filter(name__contains=required)
     papers = Papers.objects.filter(topic__contains=required)
     return render(request, "search.html", context={'people':people, 'institutes':institutes, 'subinstitutes':subinstitutes, 'groups':groups, 'papers':papers,'required':required})
+
+def paper_list(request):
+    papers = Papers.objects.all()
+    return render(request,'paper_list.html',{
+    'papers':papers
+    })
+
+def upload_paper(request):
+    if request.method == 'POST':
+        form = PapersForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('paper_list')
+    else:
+        form = PapersForm()
+    return render(request,'upload_paper.html',{
+        'form': form
+    })
+

@@ -71,8 +71,7 @@ class Papers(models.Model):
     id_paper = models.AutoField(primary_key=True)
     topic = models.CharField(max_length=200)
     publication_date = models.CharField(max_length=200)
-    file_path = models.CharField(max_length=200, null=True, blank=True)
-    binary = models.BinaryField(null=True, blank=True)
+    file = models.FileField(upload_to='articles/')
     class Meta:
         db_table = "Papers"
     def __str__(self):
