@@ -46,6 +46,7 @@ class Institutes(models.Model):
     name = models.CharField(max_length=200)
     telephone = models.CharField(max_length=200, null=True, blank=True)
     address = models.CharField(max_length=200, null=True, blank=True)
+    url_name_institute = models.CharField(max_length=200)
     class Meta:
         unique_together = (("id_institute", "campus"),)
         db_table = "Institutes"

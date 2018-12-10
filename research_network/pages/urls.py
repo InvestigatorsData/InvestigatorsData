@@ -12,8 +12,10 @@ urlpatterns = [
     path('loginadmin/', database.views.user_login, name='loginadmin'),
     url(r'logout/$', database.views.user_logout, name='logout'),
     path('home/', views.HomePageView.as_view(), name='home'),
-    path('profileM/', views.ProfileModifyPageView.as_view(), name='profileM'),
     path('about/', views.AboutOfPageView.as_view(), name='about'),
     path('search/', database.views.user_search, name='search'),
     path('profile/<slug>/', views.UserProfielView.as_view(), name='profile'),
+    path('profile/<slug>/edit_profile/', views.ProfileModifyPageView.as_view(), name='edit_profile'),
+    path('institute/<slug>/', views.InstituteProfielView.as_view(), name='institute_profile'),
+    #path('profile/<slug>/groups/', views.UserProfielView.as_view(), name='profile_groups'),
 ]
