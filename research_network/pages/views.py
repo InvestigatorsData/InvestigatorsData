@@ -31,4 +31,4 @@ class AboutOfPageView(TemplateView):
 class UserProfielView(DetailView):
     model = People
     template_name = 'profile.html'
-    slug_field = 'name'
+    slug_field = 'url_name'

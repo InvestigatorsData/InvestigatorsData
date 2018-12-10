@@ -1,0 +1,33 @@
+{% block content %}
+    <h2>Paper list</h2>
+    <p>
+    <a href="{% url 'upload_paper' %}">Upload paper</a>
+    </p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Topic</th>
+            <th>Publication Date</th>
+            <th>Download</th>
+        </tr>
+
+
+        </thead>
+        <tbody>
+        {% for paper in papers %}
+            <tr>
+
+            <td> {{ paper.topic }} </td>
+
+            <td> {{ paper.publication_date }} </td>
+
+                <td> <a href="{{ paper.file.url }}" class="">Download paper</a></td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+{% endblock %}

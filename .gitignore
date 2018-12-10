@@ -8,4 +8,5 @@ research_network/research_network/__pycache__/*
 research_network/pages/__pycache__/*
 research_network/pages/migrations/					
 research_network/database/migrations/			
+research_network/media/
 *~

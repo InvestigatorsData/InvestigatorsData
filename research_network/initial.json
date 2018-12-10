@@ -1,0 +1,265 @@
+[
+  {
+    "model": "database.College",
+    "pk": 0,
+    "fields": {
+      "name": "No está registrada"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 0,
+    "fields": {
+      "key" : "MX-AGU",
+      "name" : "Aguascalientes"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 1,
+    "fields": {
+      "key" : "MX-BCN",
+      "name" : "Baja California"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 2,
+    "fields": {
+      "key" : "MX-BCS",
+      "name" : "Baja California Sur"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 3,
+    "fields": {
+      "key" : "MX-CAM",
+      "name" : "Campeche"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 4,
+    "fields": {
+      "key" : "MX-CHP",
+      "name" : "Chiapas"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 5,
+    "fields": {
+      "key" : "MX-CHH",
+      "name" : "Chihuahua"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 6,
+    "fields": {
+      "key" : "MX-COA",
+      "name" : "Coahuila"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 7,
+    "fields": {
+      "key" : "MX-COL",
+      "name" : "Colima"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 8,
+    "fields": {
+      "key" : "MX-CDMX",
+      "name" : "Ciudad de México"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 9,
+    "fields": {
+      "key" : "MX-DUR",
+      "name" : "Durango"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 10,
+    "fields": {
+      "key" : "MX-GUA",
+      "name" : "Guanajato"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 11,
+    "fields": {
+      "key" : "MX-GRO",
+      "name" : "Guerrero"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 12,
+    "fields": {
+      "key" : "MX-HID",
+      "name" : "Hidalgo"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 13,
+    "fields": {
+      "key" : "MX-JAL",
+      "name" : "Jalisco"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 14,
+    "fields": {
+      "key" : "MX-MEX",
+      "name" : "Estado de México"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 15,
+    "fields": {
+      "key" : "MX-MIC",
+      "name" : "Michoacán"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 16,
+    "fields": {
+      "key" : "MX-MOR",
+      "name" : "Morelos"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 17,
+    "fields": {
+      "key" : "MX-NAY",
+      "name" : "Nayarit"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 18,
+    "fields": {
+      "key" : "MX-NLE",
+      "name" : "Nuevo León"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 19,
+    "fields": {
+      "key" : "MX-OAX",
+      "name" : "Oaxaca"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 20,
+    "fields": {
+      "key" : "MX-PUE",
+      "name" : "Puebla"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 21,
+    "fields": {
+      "key" : "MX-QUE",
+      "name" : "Querétaro"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 22,
+    "fields": {
+      "key" : "MX-ROO",
+      "name" : "Quintana Roo"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 23,
+    "fields": {
+      "key" : "MX-SLP",
+      "name" : "San Luis Potosí"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 24,
+    "fields": {
+      "key" : "MX-SIN",
+      "name" : "Sinaloa"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 25,
+    "fields": {
+      "key" : "MX-SON",
+      "name" : "Sonora"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 26,
+    "fields": {
+      "key" : "MX-TAB",
+      "name" : "Tabasco"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 27,
+    "fields": {
+      "key" : "MX-TAM",
+      "name" : "Tamaulipas"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 28,
+    "fields": {
+      "key" : "MX-TLA",
+      "name" : "Tlaxcala"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 29,
+    "fields": {
+      "key" : "MX-VER",
+      "name" : "Veracruz"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 30,
+    "fields": {
+      "key" : "MX-YUC",
+      "name" : "Yucatán"
+    }
+  },
+  {
+    "model": "database.States",
+    "pk": 31,
+    "fields": {
+      "key" : "MX-ZAC",
+      "name" : "Zacatecas"
+    }
+  }
+]
