@@ -29,6 +29,8 @@ class ProfileModifyPageView(TemplateView):
     slug_field = 'url_name'
 class AboutOfPageView(TemplateView):
     template_name = 'aboutOf.html'
+class ChangePasswordView(TemplateView):
+    template_name = 'changePassword.html'
 class UserProfielView(DetailView):
     model = People
     template_name = 'profile.html'
@@ -36,4 +38,4 @@ class UserProfielView(DetailView):
 class InstituteProfielView(DetailView):
     model = Institutes
     template_name = 'institute_profile.html'
-    slug_field = 'url_name_institute'    
+    slug_field = 'url_name_institute'

@@ -17,5 +17,6 @@ urlpatterns = [
     path('profile/<slug>/', views.UserProfielView.as_view(), name='profile'),
     path('profile/<slug>/edit_profile/', views.ProfileModifyPageView.as_view(), name='edit_profile'),
     path('institute/<slug>/', views.InstituteProfielView.as_view(), name='institute_profile'),
+    path('reset/',views.ChangePasswordView.as_view(),name='change_password'),
     #path('profile/<slug>/groups/', views.UserProfielView.as_view(), name='profile_groups'),
 ]
