@@ -1,4 +1,3 @@
-load static
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
   <head>
@@ -6,7 +5,7 @@ load static
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>RESTAURAR CONTRASEÑA</title>
+    <title>INGRESO</title>
     <link rel="stylesheet" href="LogIn.css">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="util.css">
@@ -53,17 +52,28 @@ load static
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
-					Restaurar contraseña
+					INGRESO
 				</span>
+
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Ingresa un correo válido (e@a.x)">
+					<span class="label-input100">CORREO *</span>
+					<input class="input100" type="text" name="email" placeholder="Ingresa tu correo electrónico">
+				</div>
+				
 				<div class="wrap-input100 validate-input bg1" pat data-validate="Escribe una contraseña válida" >
 					<span class="label-input100">CONTRASEÑA (MÍNIMO 8 CARACTERES) *</span>
 					<input class="input100" type="password" name="name" placeholder="Ingresa tu contraseña">
 				</div>
-				<div class="wrap-input100 validate-input bg1" pat data-validate="Escribe una contraseña válida" >
-					<span class="label-input100">CONFIRMA TU CONTRASEÑA (MÍNIMO 8 CARACTERES) *</span>
-					<input class="input100" type="password" name="name" placeholder="Ingresa tu contraseña">
+				<input class="olvcon" type="button" style="color:white;" value="¿Olvidaste tu contraseña?" onClick="document.getElementById('oculto').style.visibility='visible'">
+				<input class="inutil" type="button" style="color:#404245;"value="mostrar resultados de investigadores">
+						<br>
+						<div id="oculto" style="visibility:hidden">
+							<div class="wrap-input100 validate-input bg1" data-validate="Ingresa un correo válido (e@a.x)" >
+							<span class="label-input100">*CORREO</span>
+							<input class="input100" type="text" name="name" placeholder="Ingresa tu correo para restablecer tu contraseña">
 				</div>
-					<input class="olvcon2" type="button" style="color:white;" value="Cambiar contraseña">
+				 <input class="olvcon2" type="button" style="color:white;" value="Enviar correo">
+						</div>
 			</form>
 		</div>
 	</div>
@@ -81,7 +91,6 @@ load static
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
-	{%block js%}
 	<script>
 		$(".js-select2").each(function(){
 			$(this).select2({
@@ -157,5 +166,6 @@ load static
      mutile, se cite la fuente completa y su dirección electrónica. De otra
      forma requiere permiso previo por escrito de la Institución. </p>
 </div>
+
 </body>
 </html>
