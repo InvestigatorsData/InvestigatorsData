@@ -24,11 +24,18 @@ class HomePageView(TemplateView):
 class ProfilePageView(TemplateView):
     template_name = 'profile.html'
 class ProfileModifyPageView(TemplateView):
+    model = People
     template_name = 'profileM.html'
+    slug_field = 'url_name'
 class AboutOfPageView(TemplateView):
     template_name = 'aboutOf.html'
-
+class ChangePasswordView(TemplateView):
+    template_name = 'changePassword.html'
 class UserProfielView(DetailView):
     model = People
     template_name = 'profile.html'
     slug_field = 'url_name'
+class InstituteProfielView(DetailView):
+    model = Institutes
+    template_name = 'institute_profile.html'
+    slug_field = 'url_name_institute'

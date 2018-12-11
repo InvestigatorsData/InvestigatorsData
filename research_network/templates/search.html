@@ -84,7 +84,7 @@
                                 <div  id="Institutes" >
                                     {% if institutes %}
                                     {% for institute in institutes %}    
-                                    <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ institute.name }} </p>
+                                    <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ institute.name }} <a href="/institute/{{institute.url_name_institute}}"> <font color="0a4a8e"> Ver informacion </font></a></p>
                                     {% endfor %}
                                     {% else %}
                                     <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron coincidencias</p>

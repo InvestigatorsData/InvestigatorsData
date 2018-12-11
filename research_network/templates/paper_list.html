@@ -1,15 +1,37 @@
+{% load static %}
+
 {% block content %}
-    <h2>Paper list</h2>
+
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+<link rel="stylesheet" href="{% static 'css/papers.css' %}">
+</head>
+
+<header>
+    <div id="container">
+      <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
+      <div id="help"> <a href="#help">  Ayuda </a> </div>
+    </div>
+</header>
+
+
+    <h2 id="title">Publicaciones</h2>
     <p>
-    <a href="{% url 'upload_paper' %}">Upload paper</a>
+    <a id="title2" href="{% url 'upload_paper' %}">Upload paper</a>
     </p>
-    <table class="table">
+    <table class="table"  width="80%" border="2"
+     align="center" cellspacing="0" bordercolor="black" bgcolor="white">
         <thead>
         <tr>
             <th>Topic</th>
             <th>Publication Date</th>
             <th>Download</th>
         </tr>
+        <br>
 
 
         </thead>
@@ -30,4 +52,16 @@
         </tbody>
 
     </table>
+    <br>
+    <div id="footer">
+      <p>2018 Red Nacional de Investigación | Hecho en México |
+        © Todos los derechos reservados. Esta página electrónica puede ser reproducida,
+         sin objeto comercial, siempre y cuando su contenido no se mutile o altere, se cite la fuente completa
+         y la dirección Web de conformidad con el artículo 148 de la Ley Federal del Derecho de Autor, de otra forma,
+         se requerirá permiso previo y por escrito de la RENAIN. </p>
+    </div>
+
+   </body>
+  </html>
+
 {% endblock %}

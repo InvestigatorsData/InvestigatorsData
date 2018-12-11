@@ -123,11 +123,11 @@ def user_login(request):
 
 def user_search(request):
     required = request.POST.get('entry')
-    people = People.objects.filter(name__contains=required)
-    institutes = Institutes.objects.filter(name__contains=required)
-    subinstitutes = Subinstitutes.objects.filter(name__contains=required)
-    groups = Groups.objects.filter(name__contains=required)
-    papers = Papers.objects.filter(topic__contains=required)
+    people = People.objects.filter(name__icontains=required)
+    institutes = Institutes.objects.filter(name__icontains=required)
+    subinstitutes = Subinstitutes.objects.filter(name__icontains=required)
+    groups = Groups.objects.filter(name__icontains=required)
+    papers = Papers.objects.filter(topic__icontains=required)
     return render(request, "search.html", context={'people':people, 'institutes':institutes, 'subinstitutes':subinstitutes, 'groups':groups, 'papers':papers,'required':required})
 
 def paper_list(request):
