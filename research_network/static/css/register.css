@@ -34,7 +34,7 @@ body {
   margin: 5px;
   padding: 50px;
   height: 40%;
-  
+
   color: white !important;
   background-color: #404245 !important;
   color: white !important;
@@ -52,6 +52,11 @@ body {
  font-size:10px;
  line-height:20px;
  float:left;
+}
+
+img {
+  width: 10%;
+  height: 10%;
 }
 
 /* Toggle functionality */
