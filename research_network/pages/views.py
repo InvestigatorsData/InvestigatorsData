@@ -29,6 +29,8 @@ class ProfileModifyPageView(TemplateView):
     slug_field = 'url_name'
 class AboutOfPageView(TemplateView):
     template_name = 'aboutOf.html'
+class ChangePasswordDone(TemplateView):
+    template_name = 'password_reset_done.html'
 class ChangePasswordView(TemplateView):
     template_name = 'changePassword.html'
 class UserProfielView(DetailView):
