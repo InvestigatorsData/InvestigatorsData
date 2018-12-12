@@ -13,7 +13,7 @@
    <link rel = "shortcut icon" href = "images/icons/favicon.png">
 
   <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href=" {% static 'images/icons/favicon.ico' %}"/>
+	<link rel="icon" type="image/png" href=" {% static 'images/icons/favicon.png' %}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
 <!--===============================================================================================-->
@@ -70,52 +70,9 @@
              Entrar
              <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
          </button>
-         <p style="color: #404245;">kosñññññllllllllllllllhjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjkhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
-        <input class="olvcon" type="button" style="color:#404245;" value="¿Olvidaste tu contraseña?" onClick="document.getElementById('oculto').style.visibility='visible'"> <align="left"><p style="color: #404245;">kosñññññllllllllllllllhjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjkhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
- 						<br>
- 						<div id="oculto" style="visibility:hidden">
- 							<div class="wrap-input100 validate-input bg1" data-validate="Ingresa un correo válido (e@a.x)" >
- 							<span class="label-input100">*CORREO</span>
- 							<input class="input100" type="text" name="name" placeholder="Ingresa tu correo para restablecer tu contraseña">
-          		  </div>
-                <div class="container-contact100-form-btn">
-                 <button class="contact100-form-btn" type="submit" formmethod='POST'>
-                    Recuperar contraseña
-                     <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-                 </button>
-            </div>
-       </div>
-                </form>
-     </form>
-
-<!-- AUN NO SE QUE HACER, PARA QUE FUNCIONE TENDRIAS QUE QUITAR EL CODIGO HTML DE AQUI HASTA EL SEGUNDO COMENTARIO  :V -->
-       <align="left><input class="olvcon" type="button" style="color:white;" value="¿Olvidaste tu contraseña?" onClick="document.getElementById('oculto').style.visibility='visible'">
-
-                    <div id="oculto" style="visibility:hidden">
-                        <form class="contact100-form validate-form"> -->
-							<div class="wrap-input100 validate-input bg1" data-validate="Ingresa un correo válido (e@a.x)" >
-							<span class="label-input100">*CORREO</span>
-							<input class="input100" type="text" name="name" placeholder="Ingresa tu correo para restablecer tu contraseña">
-				</div>
-<!-- El problema esta en este div con class="container-contact100-form-btn" porque trata de validar la entrada
-     y cuando lo hace no deja mandar  los datos de ingreso normal si no se te ha olvidado la contraseña,
-     basta con quitar ese div junto con la etiqueta que lo cierra, pero no se ve  bien (SOLO LA ETIQUETA) -->
-
-                    <div class="container-contact100-form-btn">
-         			<button class="contact100-form-btn" type="submit" formmethod='POST'  style="visibility:show" onClick="document.getElementById('oculto').style.visibility='hidden'">
-             				Enviar
-             			<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-					</button>
-				</div>
-                        </form>
-    -                </div>
-<!--HASTA AQUI -->
-     </div>
-
-     </div>
-
-
-
+         <br>
+         <a href="{% url 'change_password_sent' %}">¿Olvidaste tu contraseña?</a>
+        </form>
 </div>
 
 <!--===============================================================================================-->

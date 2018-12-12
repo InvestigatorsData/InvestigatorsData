@@ -79,7 +79,7 @@ class ManageDBTestCase(TestCase):
         #SELECT institute FROM People WHERE name LIKE %Alexander%
         person_t= People.objects.get(name__contains = "Alexander")
         self.assertEqual(str(person_t.institute), "Facultad de Ciencias")
-        #print(str(person_t.groups))
+        #print(str(person_t.groups))    
 
         #SELECT  * FROM People
         person_list = People.objects.all()

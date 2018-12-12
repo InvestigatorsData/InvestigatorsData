@@ -4,7 +4,7 @@ from . import views
 import database.views
 
 urlpatterns = [
-    path('', views.BasePageView.as_view(), name='base'),
+    path('', database.views.base, name='base'),
     path('signup/', database.views.user_signup, name='signup'),
     path('activate/<uidb64>/<token>/',
     database.views.activate, name='activate'),
@@ -17,6 +17,8 @@ urlpatterns = [
     path('profile/<slug>/', views.UserProfielView.as_view(), name='profile'),
     path('profile/<slug>/edit_profile/', views.ProfileModifyPageView.as_view(), name='edit_profile'),
     path('institute/<slug>/', views.InstituteProfielView.as_view(), name='institute_profile'),
-    path('reset/',views.ChangePasswordView.as_view(),name='change_password'),
+    path('reset/',database.views.email_reset, name='change_password_sent'),
+    path('reset/<uidb64>/<token>/',database.views.reset_password, name='changePassword'),
+
     #path('profile/<slug>/groups/', views.UserProfielView.as_view(), name='profile_groups'),
 ]

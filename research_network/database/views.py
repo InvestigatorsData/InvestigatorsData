@@ -27,6 +27,27 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('base'))
 
+def base(request):
+    dict = []
+    counter = 0
+    val = ''
+    while counter <= 31:
+        val = ''
+        state = States.objects.get(pk = counter)
+        key = str(state.key)
+        value = str(state.value)
+        val = '{id: \"'
+        val+= key
+        val+= '\", value:'
+        val+= value
+        val+= '}'
+        if counter < 31:
+            val += ','
+        print(val)
+        dict.append(str)
+        counter += 1
+    return render(request, 'base.html', {})
+
 def user_signup(request):
     registered = False
     institutes = Institutes.objects.all().order_by('name')
@@ -47,6 +68,13 @@ def user_signup(request):
             profile.save()
             registered = True
             user.is_active = False
+            person = People.objects.get(name=name)
+            person_state = person.state
+            state = States.objects.get(name=str(person_state))
+            value_old = int(state.value)
+            value_new = value_old + 1
+            state.value = value_new
+            state.save()
             current_site = get_current_site(request)
             mail_subject = 'Activa tu cuenta de RENAIN'
             message = render_to_string('acc_active_email.html', {
@@ -103,7 +131,6 @@ def user_login(request):
              person = People.objects.get(email=email_request)
         except:
             return HttpResponse(" Usuario no registrado")
-        name = person.name
         name_normalize = name.replace(' ','')
         user = authenticate(username=name_normalize, password=password)
         slug = name_normalize
@@ -120,6 +147,46 @@ def user_login(request):
             return HttpResponse(" Ingresaste el password o nombre incorrectos")
     else:
         return render(request, 'login.html', {})
+
+def email_reset(request):
+    if request.method == 'POST':
+        to_email = request.POST.get('email')
+        try:
+            user = User.objects.get(email = str(to_email))
+            current_site = get_current_site(request)
+            mail_subject = 'Petición cambio de contraseña RENAIN'
+            message = render_to_string('change_pass_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+                'token':default_token_generator.make_token(user),
+            })
+            email = EmailMessage(
+                        mail_subject, message, to=[to_email]
+            )
+            email.send()
+            return HttpResponse('Se te ha enviado un correo para cambiar tu contraseña')
+        except:
+            return HttpResponse("Ingresaste un correo no registrado en el sistema")
+    else:
+        return render(request, 'password_reset.html', {})
+
+def reset_password(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and default_token_generator.check_token(user, token):
+        if request.method == 'POST':
+            password = request.POST.get('password')
+            user.set_password(str(password))
+            user.save()
+            return HttpResponseRedirect(reverse('login'))
+        else:
+            return render(request, 'changePassword.html', {})
+    else:
+        return HttpResponse('El link de activación es inválido')
 
 def user_search(request):
     required = request.POST.get('entry')

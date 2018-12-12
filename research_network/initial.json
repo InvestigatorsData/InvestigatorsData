@@ -1,11 +1,11 @@
 [
-  
-  {
+{
     "model": "database.States",
     "pk": 0,
     "fields": {
       "key" : "MX-AGU",
-      "name" : "Aguascalientes"
+      "name" : "Aguascalientes",
+      "value" : 0
     }
   },
   {
@@ -13,7 +13,8 @@
     "pk": 1,
     "fields": {
       "key" : "MX-BCN",
-      "name" : "Baja California"
+      "name" : "Baja California",
+      "value" : 0
     }
   },
   {
@@ -21,7 +22,8 @@
     "pk": 2,
     "fields": {
       "key" : "MX-BCS",
-      "name" : "Baja California Sur"
+      "name" : "Baja California Sur",
+      "value" : 0
     }
   },
   {
@@ -29,7 +31,8 @@
     "pk": 3,
     "fields": {
       "key" : "MX-CAM",
-      "name" : "Campeche"
+      "name" : "Campeche",
+      "value" : 0
     }
   },
   {
@@ -37,7 +40,8 @@
     "pk": 4,
     "fields": {
       "key" : "MX-CHP",
-      "name" : "Chiapas"
+      "name" : "Chiapas",
+      "value" : 0
     }
   },
   {
@@ -45,7 +49,8 @@
     "pk": 5,
     "fields": {
       "key" : "MX-CHH",
-      "name" : "Chihuahua"
+      "name" : "Chihuahua",
+      "value" : 0
     }
   },
   {
@@ -53,7 +58,8 @@
     "pk": 6,
     "fields": {
       "key" : "MX-COA",
-      "name" : "Coahuila"
+      "name" : "Coahuila",
+      "value" : 0
     }
   },
   {
@@ -61,7 +67,8 @@
     "pk": 7,
     "fields": {
       "key" : "MX-COL",
-      "name" : "Colima"
+      "name" : "Colima",
+      "value" : 0
     }
   },
   {
@@ -69,7 +76,8 @@
     "pk": 8,
     "fields": {
       "key" : "MX-CDMX",
-      "name" : "Ciudad de México"
+      "name" : "Ciudad de México",
+      "value" : 0
     }
   },
   {
@@ -77,7 +85,8 @@
     "pk": 9,
     "fields": {
       "key" : "MX-DUR",
-      "name" : "Durango"
+      "name" : "Durango",
+      "value" : 0
     }
   },
   {
@@ -85,7 +94,8 @@
     "pk": 10,
     "fields": {
       "key" : "MX-GUA",
-      "name" : "Guanajato"
+      "name" : "Guanajato",
+      "value" : 0
     }
   },
   {
@@ -93,7 +103,8 @@
     "pk": 11,
     "fields": {
       "key" : "MX-GRO",
-      "name" : "Guerrero"
+      "name" : "Guerrero",
+      "value" : 0
     }
   },
   {
@@ -101,7 +112,8 @@
     "pk": 12,
     "fields": {
       "key" : "MX-HID",
-      "name" : "Hidalgo"
+      "name" : "Hidalgo",
+      "value" : 0
     }
   },
   {
@@ -109,7 +121,8 @@
     "pk": 13,
     "fields": {
       "key" : "MX-JAL",
-      "name" : "Jalisco"
+      "name" : "Jalisco",
+      "value" : 0
     }
   },
   {
@@ -117,7 +130,8 @@
     "pk": 14,
     "fields": {
       "key" : "MX-MEX",
-      "name" : "Estado de México"
+      "name" : "Estado de México",
+      "value" : 0
     }
   },
   {
@@ -125,7 +139,8 @@
     "pk": 15,
     "fields": {
       "key" : "MX-MIC",
-      "name" : "Michoacán"
+      "name" : "Michoacán",
+      "value" : 0
     }
   },
   {
@@ -133,7 +148,8 @@
     "pk": 16,
     "fields": {
       "key" : "MX-MOR",
-      "name" : "Morelos"
+      "name" : "Morelos",
+      "value" : 0
     }
   },
   {
@@ -141,7 +157,8 @@
     "pk": 17,
     "fields": {
       "key" : "MX-NAY",
-      "name" : "Nayarit"
+      "name" : "Nayarit",
+      "value" : 0
     }
   },
   {
@@ -149,7 +166,8 @@
     "pk": 18,
     "fields": {
       "key" : "MX-NLE",
-      "name" : "Nuevo León"
+      "name" : "Nuevo León",
+      "value" : 0
     }
   },
   {
@@ -157,7 +175,8 @@
     "pk": 19,
     "fields": {
       "key" : "MX-OAX",
-      "name" : "Oaxaca"
+      "name" : "Oaxaca",
+      "value" : 0
     }
   },
   {
@@ -165,7 +184,8 @@
     "pk": 20,
     "fields": {
       "key" : "MX-PUE",
-      "name" : "Puebla"
+      "name" : "Puebla",
+      "value" : 0
     }
   },
   {
@@ -173,7 +193,8 @@
     "pk": 21,
     "fields": {
       "key" : "MX-QUE",
-      "name" : "Querétaro"
+      "name" : "Querétaro",
+      "value" : 0
     }
   },
   {
@@ -181,7 +202,8 @@
     "pk": 22,
     "fields": {
       "key" : "MX-ROO",
-      "name" : "Quintana Roo"
+      "name" : "Quintana Roo",
+      "value" : 0
     }
   },
   {
@@ -189,7 +211,8 @@
     "pk": 23,
     "fields": {
       "key" : "MX-SLP",
-      "name" : "San Luis Potosí"
+      "name" : "San Luis Potosí",
+      "value" : 0
     }
   },
   {
@@ -197,7 +220,8 @@
     "pk": 24,
     "fields": {
       "key" : "MX-SIN",
-      "name" : "Sinaloa"
+      "name" : "Sinaloa",
+      "value" : 0
     }
   },
   {
@@ -205,7 +229,8 @@
     "pk": 25,
     "fields": {
       "key" : "MX-SON",
-      "name" : "Sonora"
+      "name" : "Sonora",
+      "value" : 0
     }
   },
   {
@@ -213,7 +238,8 @@
     "pk": 26,
     "fields": {
       "key" : "MX-TAB",
-      "name" : "Tabasco"
+      "name" : "Tabasco",
+      "value" : 0
     }
   },
   {
@@ -221,7 +247,8 @@
     "pk": 27,
     "fields": {
       "key" : "MX-TAM",
-      "name" : "Tamaulipas"
+      "name" : "Tamaulipas",
+      "value" : 0
     }
   },
   {
@@ -229,7 +256,8 @@
     "pk": 28,
     "fields": {
       "key" : "MX-TLA",
-      "name" : "Tlaxcala"
+      "name" : "Tlaxcala",
+      "value" : 0
     }
   },
   {
@@ -237,7 +265,8 @@
     "pk": 29,
     "fields": {
       "key" : "MX-VER",
-      "name" : "Veracruz"
+      "name" : "Veracruz",
+      "value" : 0
     }
   },
   {
@@ -245,7 +274,8 @@
     "pk": 30,
     "fields": {
       "key" : "MX-YUC",
-      "name" : "Yucatán"
+      "name" : "Yucatán",
+      "value" : 0
     }
   },
   {
@@ -253,7 +283,8 @@
     "pk": 31,
     "fields": {
       "key" : "MX-ZAC",
-      "name" : "Zacatecas"
+      "name" : "Zacatecas",
+      "value" : 0
     }
   }
 ]

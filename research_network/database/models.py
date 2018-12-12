@@ -9,6 +9,7 @@ class States(models.Model):
     id_state = models.AutoField(primary_key=True)
     key = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
+    value = models.IntegerField()
     class Meta:
         db_table = "States"
     def __str__(self):
@@ -101,7 +102,7 @@ class People(models.Model):
     state = models.ForeignKey(States, on_delete=models.PROTECT)
     subinstitute = models.ForeignKey(Subinstitutes,on_delete=models.PROTECT)
     institute = models.ForeignKey(Institutes,on_delete=models.PROTECT)
-    groups = models.    ManyToManyField(Groups)
+    groups = models.ManyToManyField(Groups)
     papers = models.ManyToManyField(Papers)
     class Meta:
         db_table = "People"
@@ -123,7 +124,3 @@ class Public(models.Model):
     def __str__(self):
         """A string representation of the model."""
         return self.name
-
-
-
-

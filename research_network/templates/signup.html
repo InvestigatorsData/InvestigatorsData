@@ -15,7 +15,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
 <!--===============================================================================================-->
@@ -54,7 +54,7 @@
 				</span>
 				<form action="{% url 'signup' %}" method="POST" name="user_signup">
 					{% csrf_token %}
-	
+
 					<div class="wrap-input100 validate-input bg1" data-validate="Por favor, llene el campo correctamente">
 						<span class="label-input100">NOMBRE(S) *</span>
 						<input class="form-control" type="text" name="name" placeholder="Ingrese su nombre completo" pattern="[a-zA-Z,_@+- ]{0,}"  title="Ingrese letras o solo caracteres especiales como (@,_+-)" required>
@@ -169,7 +169,7 @@
 	</div>
 </div>
 
-	<script> 
+	<script>
 	$('#password, #confirm_password').on('keyup', function () {
 			if ($('#password').val() == $('#confirm_password').val()) {
 				$('#message').html('Password correcto').css('color', 'green');
