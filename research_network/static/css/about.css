@@ -48,3 +48,22 @@ a {
 .form {
   text-align: justify;
 }
+
+#button {
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #e70e02;
+  border-radius: 6px;
+  border: 2px solid !important;
+
+
+}
+
+
+#button:hover{
+   color: #06D181;
+   background-color: #3E5B77;
+ }
