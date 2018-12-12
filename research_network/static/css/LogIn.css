@@ -15,9 +15,12 @@ body {
 a {
   text-decoration: none;
 }
-
+img {
+  width: 10%;
+  height: 10%;
+}
 .container {
-  color: white;	
+  color: white;
   margin: -45px;
   padding: 5px;
   height: 12%;
@@ -63,7 +66,6 @@ a {
 
 .olvcon2{
  border-radius: 20px;
- background-color: #030303; 
+ background-color: #030303;
 }
 /* Toggle functionality */
-

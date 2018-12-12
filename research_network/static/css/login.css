@@ -11,6 +11,10 @@ a {
 
 }
 
+img {
+  width: 10%  !important;
+  height: 10% !important;
+}
 
 #container {
   padding: 10px;

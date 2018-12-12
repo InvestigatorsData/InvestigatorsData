@@ -41,7 +41,7 @@
 
   <header>
       <div id="container">
-        <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
+        <img href="{% url 'base' %}" src="{% static 'images/icons/renain.png' %}" alt="logo">
         <div id="help"> <a href="#help">  Ayuda </a> </div>
       </div>
   </header>
@@ -70,10 +70,12 @@
              Entrar
              <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
          </button>
+
          <br>
          <a href="{% url 'change_password_sent' %}">¿Olvidaste tu contraseña?</a>
         </form>
 </div>
+
 
 <!--===============================================================================================-->
 	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>

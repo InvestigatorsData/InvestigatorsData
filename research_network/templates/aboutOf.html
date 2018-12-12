@@ -13,28 +13,35 @@
 <body>
   <header>
     <div id="container">
-      <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
+      <img href="{% url 'base' %}" src="{% static 'images/icons/renain.png' %}" alt="logo">
       <div id="help"> <a href="#help">  Ayuda </a> </div>
     </div>
   </header>
 
 
 <div class="form">
-    <div style="width: 530px; margin: 0 auto;">
+
+    <div id="about" style="width: 70%; margin: 10%;">
+
 				<align="left"><p style="color: #06D181;">NUESTRA MISIÓN</p> <p style="color:black;">Ofrecer un sistema que sirva para que los investigadores puedan subir articulos, asi como la información que ellos quieran ofrecer para dar a conocer su trabajo</p>
 				<align="left"><p style="color: #3E5B77;">NUESTRA HISTORIA</p><p style="color:black;">El profesor Canek Peláez Valdéz nos pidio que hicieramos un sistema que sirviera para que los investigadores dieran a conocer articulos acerca de investigación científica </p>
 				<align="left"><p style="color: #06D181;">CONTACTO DE ADMINISTRADORES</p><p style="color:black;">renainsoporte@gmail.com</p>
-				<align="left"><p style="color: #3E5B77;">CRÉDITOS</p><p style="color:black;">Pagina creada sin fines de lucro, el credito de esta pagina es para, Sandra del Mar Soto Corderi, Rodrigo Fernando Velazquez Cruz, Marco Antonio Velazco Flores, Nicole Romina Traschikoff García, Quintero Villeda Erik.</p>
-				<align="left"><p style="color: #C06000;">AVISO DE PRIVACIDAD</p>
-				<p style="color: blue;"><a href="{% static 'docs/Aviso-de-Privacidad.pdf' %}" download="Ver Aviso de privacidad"> Descargar Aviso de privacidad </a></p>
+				<align="left"><p style="color: #3E5B77;">CRÉDITOS</p><p style="color:black;">
+          Pagina creada sin fines de lucro, el credito de esta pagina es para,
+          Sandra del Mar Soto Cordel, Rodrigo Fernando Velazquez Cruz, Marco Antonio
+          Velazco Flores, Nicole Romina Traschikoff García, Quintero Villeda Erik.</p><br><br>
+
+				<a id="button" href="{% static 'docs/Aviso-de-Privacidad.pdf' %}" download="Ver de privacidad">
+				 Aviso de privacidad
+				</a>
       </div>
 </div>
 
 
 
 
-<div id="footer">
-  <p>2018 Red Nacional de Investigación | Hecho en México |
+<br><div id="footer">
+  <br><p>2018 Red Nacional de Investigación | Hecho en México |
     © Todos los derechos reservados. Esta página electrónica puede ser reproducida,
      sin objeto comercial, siempre y cuando su contenido no se mutile o altere, se cite la fuente completa
      y la dirección Web de conformidad con el artículo 148 de la Ley Federal del Derecho de Autor, de otra forma,

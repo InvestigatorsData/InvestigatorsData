@@ -11,5 +11,5 @@ class UserProfileInfoForm(forms.ModelForm):
 class PapersForm(forms.ModelForm):
     class Meta:
         model = Papers
-        fields = ('topic','publication_date','file')
+        fields = ('topic','publication_date','file')      
 
