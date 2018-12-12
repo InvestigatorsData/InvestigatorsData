@@ -9,6 +9,7 @@ class States(models.Model):
     id_state = models.AutoField(primary_key=True)
     key = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
+    value = models.IntegerField()
     class Meta:
         db_table = "States"
     def __str__(self):
@@ -123,7 +124,3 @@ class Public(models.Model):
     def __str__(self):
         """A string representation of the model."""
         return self.name
-
-
-
-

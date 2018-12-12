@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
+<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
+
+
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
@@ -86,7 +89,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
               <h5 class="w3-opacity"> <br><a class="link" href="{% url 'paper_list' slug=people.url_name %}"><b>Publicaciones</b></h5>
               <h5 class="w3-opacity"> <br><a class="link" href="#"><b>Otro algo más</b></h5>
               <h5 class="w3-opacity">  <br><a class="link" href="#"><b>Algo interesante</b></h5>
-                <h5 class="w3-opacity">  <br><a class="link" href="{% url 'edit_profile' slug=people.url_name %}"><b>Editar perfil</b></h5>
+
+              {% if people.url_name == user.username %}
+                  <h5 class="w3-opacity">  <br><a class="link" href="{% url 'edit_profile' slug=people.url_name %}"><b>Editar perfil</b></h5>
+              {% endif %}
       </div>
 
 

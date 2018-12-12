@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <link rel="stylesheet" href="{% static 'css/register.css' %}">
 <link rel="stylesheet" href="{% static 'css/papers.css' %}">
+
 <link rel = "shortcut icon" href = "{% static 'images/icons/favicon.png' %}">
 </head>
 
@@ -21,9 +22,13 @@
 
 
     <h2 id="title">Publicaciones</h2>
+{% if name == user.username %}
     <p>
+
     <a id="title2" href="{% url 'upload_paper' slug=user %}">Upload paper</a>
+
     </p>
+{% endif %}
     <table class="table"  width="80%" border="2"
      align="center" cellspacing="0" bordercolor="black" bgcolor="white">
         <thead>
