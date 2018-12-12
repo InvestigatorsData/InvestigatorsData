@@ -30,3 +30,8 @@ input[id^="spoiler"]:checked + label + .spoiler{
 height: auto;
 opacity: 1;
 }
+
+img {
+  width: 10%;
+  height: 10%;
+}

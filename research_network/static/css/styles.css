@@ -385,3 +385,8 @@ a {
   right: 0;
   background-color: black;
 }
+
+img {
+  width: 10%;
+  height: 10%;
+}

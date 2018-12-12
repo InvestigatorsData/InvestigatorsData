@@ -29,6 +29,10 @@ a {
 #help {
   text-align: right;
 }
+img {
+  width: 10% !important;
+  height: 10% !important;
+}
 
 #renain {
   text-align: left;

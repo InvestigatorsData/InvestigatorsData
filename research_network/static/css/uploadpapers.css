@@ -58,3 +58,16 @@ body {
    color: white;
    background-color: #3E5B77;
  }
+
+ #help {
+   text-align: right;
+ }
+
+ #renain {
+   text-align: left;
+ }
+
+ img {
+   width: 10%;
+   height: 10%;
+ }
