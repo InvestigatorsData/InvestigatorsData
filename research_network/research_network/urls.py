@@ -24,6 +24,7 @@ urlpatterns = [
     path('database/', include('database.urls')),
     path('', include('pages.urls')),
     path('', include('django.contrib.auth.urls')),
+    #path('database/', include('django.contrib.auth.urls')),
     path('papers/upload/',upload_paper,name = "upload_paper" ),
     path('papers/', paper_list, name="paper_list"),
 ]
