@@ -66,11 +66,11 @@ def user_signup(request):
             name = profile_form.cleaned_data.get('name')
             username_normalize = name.replace(' ','')
             email = profile_form.cleaned_data.get('email')
-            if name_is_repeated(name):
+            if name_is_repeated(name, request):
                 return HttpResponse("Ya existe un usuario registrado con ese nombre")
-            if email_is_repeated(email):
+            if email_is_repeated(email, request):
                 return HttpResponse("Ya existe un usuario registrado con ese email")    
-            if username_is_repeated(username_normalize):
+            if username_is_repeated(username_normalize, request):
                 return HttpResponse("Ya existe un usuario registrado con un nombre similar")    
             password = request.POST.get('password')
             user = User.objects.create_user(username_normalize, email, password)
@@ -146,7 +146,7 @@ def user_edit(request, slug):
             person_edit.user.save()
             person_edit.save()
             slug = new_username_normalize
-            return HttpResponseRedirect(reverse('profile',args=(slug,)))
+            return HttpResponseRedirect(reverse('login'))
         else:
             return HttpResponse("Ocurrio un error con el formulario")    
     else:
