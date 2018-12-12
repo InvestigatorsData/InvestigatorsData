@@ -66,11 +66,11 @@ def user_signup(request):
             name = profile_form.cleaned_data.get('name')
             username_normalize = name.replace(' ','')
             email = profile_form.cleaned_data.get('email')
-            if name_is_repeated(name):
+            if name_is_repeated(name,request):
                 return HttpResponse("Ya existe un usuario registrado con ese nombre")
-            if email_is_repeated(email):
+            if email_is_repeated(email,request):
                 return HttpResponse("Ya existe un usuario registrado con ese email")    
-            if username_is_repeated(username_normalize):
+            if username_is_repeated(username_normalize,request):
                 return HttpResponse("Ya existe un usuario registrado con un nombre similar")    
             password = request.POST.get('password')
             user = User.objects.create_user(username_normalize, email, password)
@@ -208,20 +208,23 @@ def user_search(request):
 
 
 
-def paper_list(request):
-    papers = Papers.objects.all()
+def paper_list(request,slug):
+    person = People.objects.get(url_name=slug)
+    papers = person.papers
     return render(request,'paper_list.html',{
     'papers':papers
     })
 
-def upload_paper(request):
+def upload_paper(request,slug):
+    person = People.objects.get(url_name=slug)
     if request.method == 'POST':
-        form = PapersForm(request.POST,request.FILES)
+        form = UploadPapersForm(request.POST,request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('paper_list')
+            paper = form.save()
+            person.papers.add(paper)
+            return redirect(reverse('paper_list',args=(slug,)))
     else:
-        form = PapersForm()
+        form = UploadPapersForm()
     return render(request,'upload_paper.html',{
         'form': form
     })

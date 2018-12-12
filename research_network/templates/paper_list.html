@@ -22,7 +22,7 @@
 
     <h2 id="title">Publicaciones</h2>
     <p>
-    <a id="title2" href="{% url 'upload_paper' %}">Upload paper</a>
+    <a id="title2" href="{% url 'upload_paper' slug=user %}">Upload paper</a>
     </p>
     <table class="table"  width="80%" border="2"
      align="center" cellspacing="0" bordercolor="black" bgcolor="white">
@@ -37,7 +37,7 @@
 
         </thead>
         <tbody>
-        {% for paper in papers %}
+        {% for paper in papers.iterator %}
             <tr>
 
             <td> {{ paper.topic }} </td>

@@ -83,10 +83,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="w3-container">
 
               <h5 class="w3-opacity"> <br><a class="link" href="#"><b>Grupos</b></h5> </a>
-              <h5 class="w3-opacity"> <br><a class="link" href="{% url 'paper_list' %}"><b>Publicaciones</b></h5>
+              <h5 class="w3-opacity"> <br><a class="link" href="{% url 'paper_list' slug=people.url_name %}"><b>Publicaciones</b></h5>
               <h5 class="w3-opacity"> <br><a class="link" href="#"><b>Otro algo más</b></h5>
               <h5 class="w3-opacity">  <br><a class="link" href="#"><b>Algo interesante</b></h5>
-              <h5 class="w3-opacity">  <br><a class="link" href="/profile/{{people.url_name}}/edit_profile"><b>Editar perfil</b></h5>
+                <h5 class="w3-opacity">  <br><a class="link" href="{% url 'edit_profile' slug=people.url_name %}"><b>Editar perfil</b></h5>
       </div>
 
 
