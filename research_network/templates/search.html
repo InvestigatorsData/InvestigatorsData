@@ -1,4 +1,4 @@
-{% block content %} 
+{% block content %}
 {% load static %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
@@ -14,11 +14,9 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
-    <link rel="shortcut icon" href="{% static 'images/icons/favicon.png' %}">
+    <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/renain.png' %}"> </a> </div>
 
 
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
     <!--===============================================================================================-->
@@ -47,9 +45,8 @@
 
     <header>
         <div class="container">
-
-            <div> RENAIN </div>
-
+          <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/renain.png' %}"> </a> </div>
+          <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/help.png' %}"> </a> </div>
         </div>
     </header>
 
@@ -70,20 +67,20 @@
                                 {% if people %}
                                 {% for person in people %}
                                 <p class="wrap-input100 validate-input bg1" style="color:black;">{{person.name}} <a href="/profile/{{person.url_name}}"> <font color="0a4a8e"> Ver perfil </font></a></p>
-                                {% endfor%}        
+                                {% endfor%}
                                 {% else%}
                                 <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron coincidencias</p>
                                 {%endif%}
-                            </div>  
+                            </div>
                             <align="left">
                                 <p style="color: #3ccaed;">
                                     <font size=5>Institutos</font>
                                 </p>
-                                
+
                                 <br>
                                 <div  id="Institutes" >
                                     {% if institutes %}
-                                    {% for institute in institutes %}    
+                                    {% for institute in institutes %}
                                     <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ institute.name }} <a href="/institute/{{institute.url_name_institute}}"> <font color="0a4a8e"> Ver informacion </font></a></p>
                                     {% endfor %}
                                     {% else %}
@@ -94,7 +91,7 @@
                                     <p style="color: #54f13c;">
                                         <font size=5>SubInstitutos</font>
                                     </p>
-                                    
+
                                     <br>
                                     <div  id="Subinstitutes" >
                                         {% if subinstitutes %}
@@ -109,7 +106,7 @@
                                         <p style="color: #3ccaed;">
                                             <font size=5>Grupos</font>
                                         </p>
-                                        
+
                                         <br>
                                         <div id="Groups" >
                                             {% if groups %}

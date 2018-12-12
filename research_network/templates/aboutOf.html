@@ -8,13 +8,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Acerca de</title>
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
-    <link rel = "shortcut icon" href = "{% static 'images/icons/favicon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
 </head>
 <body>
   <header>
     <div id="container">
-      <img href="{% url 'base' %}" src="{% static 'images/icons/renain.png' %}" alt="logo">
-      <div id="help"> <a href="#help">  Ayuda </a> </div>
+      <a href="{% url 'base' %}">   <img src="{% static 'images/icons/renain.png' %}" alt="logo"> </a>
+      <a href="{% url 'base' %}">   <img src="{% static 'images/icons/help.png' %}" alt="logo"> </a>
     </div>
   </header>
 

@@ -11,12 +11,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'css/prof.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
   </head>
 
     <header>
       <div id="container">
         <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/renain.png' %}"> </a> </div>
-        <div id="help"> <a href="#help">  Ayuda </a> </div>
+        <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/help.png' %}"> </a> </div>
+
       </div>
     </header>
     <br/> <br/> &nbsp;&nbsp;&nbsp;&nbsp;<b>Editar Perfil </b> <br/> <br/>
@@ -30,11 +32,11 @@
       Correo: * <input type="email" name="email" value ="{{ person_email }}" required/>  <br/> <br/>
 
       Teléfono: * <input type="text" name="personal_telephone" pattern="[0-9]{8,}" title="Ingresa solo digitos y al menos 8 digitos" value="{{ person_personal_telephone }}" required /> <button> <img src="{% static 'images/icons/internet.png' %}"> </button> <button> <img src="{% static 'images/icons/lock.png' %}"> </button> <br/> <br/>
-      
+
               <div class="wrap-input100 input100-select bg1">
                 <span class="form-control"> ESTADO *</span>
-                <div> 
-                  <select class="js-select2" name="state" required> 
+                <div>
+                  <select class="js-select2" name="state" required>
                     <option value="" selected disabled hidden>Selecciona</option>
                     {% for state in states %}
                     <tr>
@@ -43,11 +45,11 @@
                       </option>
                     </tr>
                     {% endfor %}
-              
+
                   </select>
                   <div class="dropDownSelect2"></div>
                 </div>
-              </div> <br /> 
+              </div> <br />
 
         <div class="wrap-input100 input100-select bg1">
           <span class="form-control"> NIVEL ACADEMICO *</span>
@@ -60,7 +62,7 @@
             <div class="dropDownSelect2"></div>
           </div>
         </div> <br />
-        
+
         <div class="wrap-input100 input100-select bg1">
           <span class="form-control"> GRADO DE ESTUDIOS *</span>
           <div>
@@ -73,8 +75,8 @@
             <div class="dropDownSelect2"></div>
           </div>
         </div> <br />
-        
-        
+
+
         <div class="wrap-input100 input100-select bg1">
           <span class="form-control"> INSTITUTO *</span>
           <div>
@@ -90,8 +92,8 @@
             </select>
             <div class="dropDownSelect2"></div>
           </div>
-        </div> <br /> 
-        
+        </div> <br />
+
         <div class="wrap-input100 input100-select bg1">
           <span class="form-control"> SUBINSTITUTO *</span>
           <div>
@@ -108,26 +110,26 @@
             <div class="dropDownSelect2"></div>
           </div>
         </div> <br />
-        
+
         ¿Desea cambiar contraseña?
 
         <input type="checkbox" id="spoiler2"></input> <label for="spoiler2">Si</label>
-        
+
         <div class="spoiler">
-          
+
           <div class="wrap-input100 validate-input bg1" data-validate="Introduzca su nuevo password">
             <span class="label-input100">CONTRASEÑA *</span>
             <input class="form-control" type="password" name="password" id="password" placeholder="Contraseña de al menos 8 caracteres"
               pattern=".{8,}" title="Ingresa un password de al menos 8 caracteres">
           </div>
-          
+
           <div class="wrap-input100 validate-input bg1" data-validate="Confirme el password">
             <span class="label-input100">CONFIRMAR CONTRASEÑA *</span>
             <input class="form-control" type="password" name="confirm_password" id="confirm_password" placeholder="Confirme su contraseña"
               pattern=".{8,}" title="Ingresa un password de al menos 8 caracteres">
             <span id='message'></span>
           </div>
-        </div>                 
+        </div>
 
         ¿Estaba su institución al momento de regístrarse?
 
@@ -138,13 +140,13 @@
           <p>Por favor, llene los siguientes campos.</p> <br/>
           Nombre de la institución:  <input type="text" name="ins" />  <br/>
           Campus: <input type="text" name="campus" />  <br/>
-        </div> <br/> 
+        </div> <br/>
         </div>
 
-      <input type="submit" value="Guardar cambios" formmethod="POST">  
+      <input type="submit" value="Guardar cambios" formmethod="POST">
 </form>
-  
-  <script> 
+
+  <script>
 	$('#password, #confirm_password').on('keyup', function () {
 			if ($('#password').val() == $('#confirm_password').val()) {
 				$('#message').html('Password correcto').css('color', 'green');
