@@ -20,9 +20,9 @@
     <h2 id="title">Subir Publicaciones</h2>
     <form id="form" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+        {{ form.as_p   }}
     <button id="button" type="submit">Subir</button>
-    </form>>
+    </form>
 {% endblock %}
 
 <div id="footer">

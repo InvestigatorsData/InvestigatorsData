@@ -227,9 +227,13 @@ def user_login(request):
         email_request = request.POST.get('email')
         password = request.POST.get('password')
         try:
-             person = People.objects.get(email=email_request)
+             user_person = User.objects.get(email=email_request)
         except:
-            return HttpResponse(" Usuario no registrado")
+            return HttpResponse("Usuario no registrado")
+        try:
+             person = People.objects.get(user=user_person)
+        except:
+            return HttpResponseRedirect('/admin/')
         name = person.name
         name_normalize = name.replace(' ','')
         user = authenticate(username=name_normalize, password=password)
@@ -297,20 +301,24 @@ def user_search(request):
 
 
 
-def paper_list(request):
-    papers = Papers.objects.all()
+def paper_list(request,slug):
+    person = People.objects.get(url_name=slug)
+    name = person.url_name
+    papers = person.papers
     return render(request,'paper_list.html',{
-    'papers':papers
+    'papers':papers,'name':name,
     })
 
-def upload_paper(request):
+def upload_paper(request,slug):
+    person = People.objects.get(url_name=slug)
     if request.method == 'POST':
-        form = PapersForm(request.POST,request.FILES)
+        form = UploadPapersForm(request.POST,request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('paper_list')
+            paper = form.save()
+            person.papers.add(paper)
+            return redirect(reverse('paper_list',args=(slug,)))
     else:
-        form = PapersForm()
-    return render(request,'upload_paper.html',{
-        'form': form
+        form = UploadPapersForm()
+    return render(request,'upload_paper.html', {
+        'form': form,
     })

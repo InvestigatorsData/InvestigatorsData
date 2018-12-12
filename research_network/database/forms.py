@@ -10,6 +10,10 @@ class UserProfileInfoForm(forms.ModelForm):
 
 class PapersForm(forms.ModelForm):
     class Meta:
-        model = Papers
-        fields = ('topic','publication_date','file')      
+        model = People
+        fields = ('papers',)
 
+class UploadPapersForm(forms.ModelForm):
+    class Meta:
+        model = Papers
+        fields = ('topic','publication_date','file',)

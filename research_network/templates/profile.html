@@ -9,11 +9,9 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-<<<<<<< HEAD
+
 <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
-=======
-<link rel="icon" type="image/png" href=" {% static 'images/icons/favicon.png' %}"/>
->>>>>>> 25fd054bdb8f97c0cb174b67b63a952d5af133c4
+
 
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
@@ -88,11 +86,12 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="w3-container">
 
               <h5 class="w3-opacity"> <br><a class="link" href="#"><b>Grupos</b></h5> </a>
-              <h5 class="w3-opacity"> <br><a class="link" href="{% url 'paper_list' %}"><b>Publicaciones</b></h5>
+              <h5 class="w3-opacity"> <br><a class="link" href="{% url 'paper_list' slug=people.url_name %}"><b>Publicaciones</b></h5>
               <h5 class="w3-opacity"> <br><a class="link" href="#"><b>Otro algo más</b></h5>
               <h5 class="w3-opacity">  <br><a class="link" href="#"><b>Algo interesante</b></h5>
+
               {% if people.url_name == user.username %}
-              <h5 class="w3-opacity">  <br><a class="link" href="/profile/{{people.url_name}}/edit_profile"><b>Editar perfil</b></h5>
+                  <h5 class="w3-opacity">  <br><a class="link" href="{% url 'edit_profile' slug=people.url_name %}"><b>Editar perfil</b></h5>
               {% endif %}
       </div>
 
