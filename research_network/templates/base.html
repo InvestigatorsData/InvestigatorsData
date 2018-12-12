@@ -52,7 +52,7 @@
 	<form action="{% url 'search' %}" method="post">
 		{% csrf_token %}
 		<button type="submit"> Buscar &nbsp;</button>
-		<input name="entry" formmethod='post' placeholder="Ingresa tu busqueda">
+		<input name="entry" formmethod='post' placeholder="Ingresa tu busqueda" required>
 	</form>
 
 

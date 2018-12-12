@@ -74,38 +74,10 @@
            </span>
          </button>
        </div>
-                </form>
      </form>
-
-<!-- AUN NO SE QUE HACER, PARA QUE FUNCIONE TENDRIAS QUE QUITAR EL CODIGO HTML DE AQUI HASTA EL SEGUNDO COMENTARIO  :V -->
-       <align="left><input class="olvcon" type="button" style="color:white;" value="¿Olvidaste tu contraseña?" onClick="document.getElementById('oculto').style.visibility='visible'">
-
-                    <div id="oculto" style="visibility:hidden">
-                        <form class="contact100-form validate-form"> -->
-							<div class="wrap-input100 validate-input bg1" data-validate="Ingresa un correo válido (e@a.x)" >
-							<span class="label-input100">*CORREO</span>
-							<input class="input100" type="text" name="name" placeholder="Ingresa tu correo para restablecer tu contraseña">
-				</div>
-<!-- El problema esta en este div con class="container-contact100-form-btn" porque trata de validar la entrada
-     y cuando lo hace no deja mandar  los datos de ingreso normal si no se te ha olvidado la contraseña,
-     basta con quitar ese div junto con la etiqueta que lo cierra, pero no se ve  bien (SOLO LA ETIQUETA) -->
-
-                    <div class="container-contact100-form-btn">
-         			<button class="contact100-form-btn" type="submit" formmethod='POST'  style="visibility:show" onClick="document.getElementById('oculto').style.visibility='hidden'">
-             				Enviar
-             			<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-					</button>
-				</div>
-                        </form>
-    -                </div>
-<!--HASTA AQUI -->
+     </form>
      </div>
-
      </div>
-
-
-
-</div>
 
 <!--===============================================================================================-->
 	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>

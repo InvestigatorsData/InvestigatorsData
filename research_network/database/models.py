@@ -101,7 +101,7 @@ class People(models.Model):
     state = models.ForeignKey(States, on_delete=models.PROTECT)
     subinstitute = models.ForeignKey(Subinstitutes,on_delete=models.PROTECT)
     institute = models.ForeignKey(Institutes,on_delete=models.PROTECT)
-    groups = models.    ManyToManyField(Groups)
+    groups = models.ManyToManyField(Groups)
     papers = models.ManyToManyField(Papers)
     class Meta:
         db_table = "People"
