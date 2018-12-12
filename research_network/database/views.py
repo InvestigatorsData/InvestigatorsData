@@ -145,7 +145,8 @@ def user_edit(request, slug):
                 person_edit.user.set_password(password)    
             person_edit.user.save()
             person_edit.save()
-            return HttpResponse('Datos actualizados satisfactoriamente')
+            slug = new_username_normalize
+            return HttpResponseRedirect(reverse('profile',args=(slug,)))
         else:
             return HttpResponse("Ocurrio un error con el formulario")    
     else:
