@@ -12,6 +12,7 @@ urlpatterns = [
     path('home/', views.HomePageView.as_view(), name='home'),
     path('about/', views.AboutOfPageView.as_view(), name='about'),
     path('search/', database.views.user_search, name='search'),
+    path('state/', database.views.state_search, name='search_state'),
     path('profile/<slug>/', views.UserProfielView.as_view(), name='profile'),
     path('profile/<slug>/edit_profile/', database.views.user_edit, name='edit_profile'),
     path('profile/<slug>/groups/', views.UserProfielView.as_view(), name='profile_groups'),

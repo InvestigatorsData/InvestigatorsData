@@ -43,15 +43,27 @@
 		{% endif%}
 
     </nav>
-
-
-
 </div>
 </header>
 
 	<form action="{% url 'search' %}" method="post">
 		{% csrf_token %}
 		<button type="submit"> Buscar &nbsp;</button>
+		<input name="entry" formmethod='post' placeholder="Ingresa tu busqueda" required>
+	</form>
+
+  <form action="{% url 'search_state' %}" method="post">
+		{% csrf_token %}
+    <select class="js-select2" name="state" required>
+      <option value="value" selected disabled hidden>Selecciona el estado</option>
+      {% for state in states %}
+      <tr>
+        <option value={{state.id_state}}> <td>{{state.name}}</td> </option>
+      </tr>
+      {% endfor %}
+    </select>
+    <div class="dropDownSelect2"></div>
+		<button type="submit"> Buscar por estado&nbsp;</button>
 		<input name="entry" formmethod='post' placeholder="Ingresa tu busqueda" required>
 	</form>
 
