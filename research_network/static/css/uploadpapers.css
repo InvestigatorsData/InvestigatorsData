@@ -21,6 +21,19 @@ body {
   height: 50%;
 }
 
+img.h {
+  margin-left: 80%;
+  width: 5% !important;
+  height: 5% !important;
+
+}
+
+img.r {
+  width: 10% !important;
+  height: 10% !important;
+}
+
+
 #container {
   margin: 20px;
   padding: 10px;

@@ -15,41 +15,36 @@
 
 <header>
     <div id="container">
-        <a href="{% url 'base' %}"> <img  src="{% static 'images/icons/renain.png' %}" alt="logo"></a>
+        <a href="{% url 'base' %}"> <img  src="{% static 'images/icons/renain.png' %}" alt="logo"> </a>
       <div id="help"> <a href="#help">  Ayuda </a> </div>
     </div>
 </header>
 
 
-    <h2 id="title">Publicaciones</h2>
-        {% if name == user.username %}
-        <p>
-        <a id="title2" href="{% url 'upload_paper' slug=user %}"> Subir publicacion</a>
-        </p>
-        {% endif %}
-        
+    <h2 id="title">Grupos</h2>
+{% if name == user.username %}
+    <p>
 
+    <a id="title2" href="{% url 'add_group' slug=user %}">Agregar grupo</a>
+
+    </p>
+{% endif %}
     <table class="table"  width="80%" border="2"
      align="center" cellspacing="0" bordercolor="black" bgcolor="white">
         <thead>
         <tr>
-            <th>Tema</th>
-            <th>Fecha de publicaion</th>
-            <th>Descarga</th>
+            <th>Nombre</th>
         </tr>
         <br>
 
 
         </thead>
         <tbody>
-        {% for paper in papers.iterator %}
+        {% for group in groups.iterator %}
             <tr>
 
-            <td> <center> {{ paper.topic }}  <a href="/paper/{{ paper.url_name_paper }}" class=""> <font color="0a4a8e"> <center> Ver informacion </center> </font> </a></center> </td>
+            <td> {{ group.name }} </td>
 
-            <td> <center> {{ paper.publication_date }}  </center> </td>
-
-            <td> <a href="{{ paper.file.url }}" class=""><font color="0a4a8e"> <center> Click aqui </center> </font></a></td>
 
             </tr>
 

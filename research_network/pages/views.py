@@ -32,6 +32,10 @@ class ChangePasswordDone(TemplateView):
     template_name = 'password_reset_done.html'
 class ChangePasswordView(TemplateView):
     template_name = 'changePassword.html'
+
+class GroupsView(TemplateView):
+    template_name = 'groups.html'
+
 class UserProfielView(DetailView):
     model = People
     template_name = 'profile.html'
@@ -63,6 +67,12 @@ def college_view(request, slug):
     institutes = Institutes.objects.filter(college=required_college)
     college_campus =Campus.objects.filter(college=required_college)
     return render(request, "college_profile.html", context={'institutes':institutes, 'college':required_college, 'college_campus':college_campus,})
+
+def group_view(request,slug):
+    groups = Groups.objects.get(url_name_group=slug)
+    integrantes = groups.people_set.all()
+    return render(request,"group_profile.html",context={'groups':groups,'integrantes':integrantes})
+
 
 
 

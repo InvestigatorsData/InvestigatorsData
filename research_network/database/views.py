@@ -103,6 +103,12 @@ def topic_is_repeated(topic_required, request):
     try:
         paper = Papers.objects.get(url_name_paper=topic_required)
     except:
+        return False 
+    return True                      
+def group_is_repeated(name, request):
+    try:
+        group = Groups.objects.get(url_name_group=name)
+    except:
         return False
     return True
 
@@ -350,4 +356,38 @@ def upload_paper(request,slug):
         form = UploadPapersForm()
     return render(request,'upload_paper.html', {
         'form': form, 'autors':persons,
+    })
+
+def group_list(request,slug):
+    person  = People.objects.get(url_name = slug)
+    name = person.url_name
+    groups = person.groups
+    return render(request,'groups.html',{
+        'groups':groups,'name':name,
+    })
+
+def add_group(request,slug):
+    person = People.objects.get(url_name=slug)
+    persons = People.objects.filter().exclude(url_name=slug)
+    if(request.method == 'POST'):
+        form = AddGroupsForm(request.POST)
+        if form.is_valid():
+            url = request.POST.get('name')
+            url = url.replace(" ","_")
+            if group_is_repeated(url,request):
+                return HttpResponse("Ya se encuentra un grupo con el mismo nombre")
+            group = form.save()
+            group.url_name_group = url
+            group.save()
+            person.groups.add(group)
+            integrantes = request.POST.getlist('integrantes')
+            if len(integrantes) > 0:
+                for integrante in integrantes:
+                    investigador = People.objects.get(id_people=integrante)
+                    investigador.groups.add(group)
+            return redirect(reverse('group_list',args=(slug,                )))
+    else:
+        form = AddGroupsForm()
+    return render(request,'add_group.html',{
+        'form':form,'integrantes':persons,
     })
