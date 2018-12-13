@@ -562,7 +562,7 @@
     "fields": {
       "campus": 5,
       "college": 5,
-      "name": "Instituto de Artes Visuales(Tecnologico_de_Monterrey)",
+      "name": "Instituto de Artes Visuales(Tecnologico de Monterrey)",
       "address": "Ave. Centenario s/n, 10058 Aguascalientes",
       "telephone": "13434346",
       "url_name_institute": "Instituto_de_Artes_Visuales(Tecnologico_de_Monterrey)"
@@ -573,7 +573,7 @@
     "pk" : 0,
     "fields" : {
       "institute": 0,
-      "name": "Departamento de Matematicas(Facultad_de_Ciencias)",
+      "name": "Departamento de Matematicas(Facultad de Ciencias)",
       "url_name_subinstitute": "Departamento_de_Matematicas(Facultad_de_Ciencias)",
       "telephone": "13443435"
     }

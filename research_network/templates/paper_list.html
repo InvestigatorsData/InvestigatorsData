@@ -22,20 +22,19 @@
 
 
     <h2 id="title">Publicaciones</h2>
-{% if name == user.username %}
-    <p>
-
-    <a id="title2" href="{% url 'upload_paper' slug=user %}">Upload paper</a>
-
-    </p>
-{% endif %}
+        {% if name == user.username %}
+        <p>
+        <a id="title2" href="{% url 'upload_paper' slug=user %}"> Subir publicacion</a>
+        </p>
+        {% endif %}
+        
     <table class="table"  width="80%" border="2"
      align="center" cellspacing="0" bordercolor="black" bgcolor="white">
         <thead>
         <tr>
-            <th>Topic</th>
-            <th>Publication Date</th>
-            <th>Download</th>
+            <th>Tema</th>
+            <th>Fecha de publicaion</th>
+            <th>Descarga</th>
         </tr>
         <br>
 
@@ -45,11 +44,11 @@
         {% for paper in papers.iterator %}
             <tr>
 
-            <td> {{ paper.topic }} </td>
+            <td> <center> {{ paper.topic }}  <a href="/paper/{{ paper.url_name_paper }}" class=""> <font color="0a4a8e"> <center> Ver informacion </center> </font> </a></center> </td>
 
-            <td> {{ paper.publication_date }} </td>
+            <td> <center> {{ paper.publication_date }}  </center> </td>
 
-            <td> <a href="{{ paper.file.url }}" class="">Download paper</a></td>
+            <td> <a href="{{ paper.file.url }}" class=""><font color="0a4a8e"> <center> Click aqui </center> </font></a></td>
 
             </tr>
 
