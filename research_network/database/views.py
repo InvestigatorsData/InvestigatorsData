@@ -11,7 +11,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
-from .models import Institutes, Subinstitutes, States, People, Groups, Papers
+from .models import Institutes, Subinstitutes, States, People, Groups, Papers,Campus
 from .forms import *
 
 def index(request):
@@ -309,12 +309,13 @@ def user_search(request):
     papers = Papers.objects.filter(topic__icontains=required).distinct()
     return render(request, "search.html", context={'people':people, 'institutes':institutes, 'subinstitutes':subinstitutes, 'groups':groups, 'papers':papers,'required':required})
 
-def state_search(request):
+def state_search(request,slug):
     state_name = request.POST.get('state')
-    state_obj = States.objects.get(name = state)
+    state_obj = States.objects.get(url_name_state = slug)
     campus = Campus.objects.filter(state = state_obj)
-    return render(request, "search_state.html", context={'state': state_obj, 'campus':campus})
-
+    if request.method == 'POST':
+        return redirect(reverse('search_profile',args=(slug,)))
+    return render(request, "search_state.html", context={'state': state_obj, 'campus':campus,})
 
 
 def paper_list(request,slug):

@@ -60,14 +60,14 @@
                         </p>
                               <align="left">
                                 <p style="color: #3ccaed;">
-                                    <font size=5>Institutos</font>
+                                    <font size=5>Campus</font>
                                 </p>
 
                                 <br>
                                 <div  id="Campus" >
                                     {% if campus %}
                                     {% for campi in campus %}
-                                    <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ campi.name }} <a href="/institute/{{campi.url_name_campus}}"> <font color="0a4a8e"> Ver informacion </font></a></p>
+                                    <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ campi.name }} <a href="/campus/{{campi.url_name_campus}}"> <font color="0a4a8e"> Ver informacion </font></a></p>
                                     {% endfor %}
                                     {% else %}
                                     <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron coincidencias</p>

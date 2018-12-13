@@ -52,19 +52,14 @@
 		<input name="entry" formmethod='post' placeholder="Ingresa tu busqueda" required>
 	</form>
 
-  <form action="{% url 'search_state' %}" method="post">
+  <form action="" method="post">
 		{% csrf_token %}
-    <select class="js-select2" name="state" required>
+    <select class="js-select2" name="state" required onchange="window.location.href = this.value">
       <option value="value" selected disabled hidden>Selecciona el estado</option>
       {% for state in states %}
-      <tr>
-        <option value={{state.id_state}}> <td>{{state.name}}</td> </option>
-      </tr>
+      <option value="/state/{{state.url_name_state}}"> <td>{{state.name}}</td> </option>
       {% endfor %}
     </select>
-    <div class="dropDownSelect2"></div>
-		<button type="submit"> Buscar por estado&nbsp;</button>
-		<input name="entry" formmethod='post' placeholder="Ingresa tu busqueda" required>
 	</form>
 
 
