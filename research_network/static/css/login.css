@@ -12,7 +12,7 @@ a {
 }
 
 img.h {
-  margin-left: 80%;
+  margin-left: 80% !important;
   width: 5% !important;
   height: 5% !important;
 
