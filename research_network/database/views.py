@@ -11,7 +11,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
-from .models import Institutes, Subinstitutes, States, People, Groups, Papers
+from .models import Institutes, Subinstitutes, States, People, Groups, Papers,Campus
 from .forms import *
 
 def index(request):
@@ -28,6 +28,7 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('base'))
 
 def base(request):
+    states = States.objects.all().order_by('name')
     Aguascalientes = States.objects.get(name = 'Aguascalientes')
     BajaCaliNort = States.objects.get(name = 'Baja California')
     BajaCaliSur = States.objects.get(name = 'Baja California Sur')
@@ -60,7 +61,7 @@ def base(request):
     Veracruz = States.objects.get(name = 'Veracruz')
     Yucatan = States.objects.get(name = 'Yucatán')
     Zacatecas = States.objects.get(name = 'Zacatecas')
-    return render(request, 'base.html', context={'Aguascalientes' : Aguascalientes,
+    return render(request, 'base.html', context={'states': states, 'Aguascalientes' : Aguascalientes,
     'BajaCaliNort' : BajaCaliNort, 'BajaCaliSur' : BajaCaliSur, 'Campeche' : Campeche,
     'Chiapas' : Chiapas, 'Chihuahua' : Chihuahua, 'Coahuila' : Coahuila, 'Colima' : Colima,
     'CiudadMX' : CiudadMX, 'Durango' : Durango, 'Guanajuato' : Guanajuato,
@@ -75,10 +76,10 @@ def name_is_repeated(name_required, request):
     try:
         person = People.objects.get(name=name_required)
     except:
-        return False 
+        return False
     if person.user == request.user:
-        return False    
-    return True   
+        return False
+    return True
 
 def email_is_repeated(email_required, request):
     try:
@@ -86,8 +87,8 @@ def email_is_repeated(email_required, request):
     except:
         return False
     if person.user == request.user:
-        return False    
-    return True 
+        return False
+    return True
 
 def username_is_repeated(username_required, request):
     try:
@@ -95,8 +96,8 @@ def username_is_repeated(username_required, request):
     except:
         return False
     if user == request.user:
-        return False    
-    return True 
+        return False
+    return True
 
 def topic_is_repeated(topic_required, request):
     try:
@@ -127,9 +128,9 @@ def user_signup(request):
             if name_is_repeated(name, request):
                 return HttpResponse("Ya existe un usuario registrado con ese nombre")
             if email_is_repeated(email, request):
-                return HttpResponse("Ya existe un usuario registrado con ese email")    
+                return HttpResponse("Ya existe un usuario registrado con ese email")
             if username_is_repeated(username_normalize, request):
-                return HttpResponse("Ya existe un usuario registrado con un nombre similar")    
+                return HttpResponse("Ya existe un usuario registrado con un nombre similar")
             password = request.POST.get('password')
             user = User.objects.create_user(username_normalize, email, password)
             user.save()
@@ -183,7 +184,7 @@ def user_edit(request, slug):
             if name_is_repeated(modify_form.cleaned_data.get('name'), request):
                 return HttpResponse("Ya existe un usuario registrado con ese nombre")
             if email_is_repeated(modify_form.cleaned_data.get('email'), request):
-                return HttpResponse("Ya existe un usuario registrado con ese email")    
+                return HttpResponse("Ya existe un usuario registrado con ese email")
             person_edit.name= modify_form.cleaned_data.get('name')
             new_username_normalize = person_edit.name.replace(' ','')
             if username_is_repeated(new_username_normalize, request):
@@ -200,19 +201,19 @@ def user_edit(request, slug):
             person_edit.user.username = new_username_normalize
             person_edit.user.email = person_edit.email = modify_form.cleaned_data.get('email')
             if len(password) > 0 :
-                person_edit.user.set_password(password)    
+                person_edit.user.set_password(password)
             person_edit.user.save()
             person_edit.save()
             slug = new_username_normalize
             return HttpResponseRedirect(reverse('login'))
         else:
-            return HttpResponse("Ocurrio un error con el formulario")    
+            return HttpResponse("Ocurrio un error con el formulario")
     else:
         modify_form = UserProfileInfoForm()
-    return render (request, 'profileM.html', context={'institutes':institutes, 'subinstitutes': subinstitues, 'states': states, 
-                    'person_name': person_name, 'person_email': person_email, 'person_personal_telephone': person_personal_telephone, 
+    return render (request, 'profileM.html', context={'institutes':institutes, 'subinstitutes': subinstitues, 'states': states,
+                    'person_name': person_name, 'person_email': person_email, 'person_personal_telephone': person_personal_telephone,
                     'person_state': person_state, 'person_academic_level': person_academic_level, 'person_degree': person_degree,
-                    'person_institute': person_institute, 'person_subinstitute': person_subinstitute, })    
+                    'person_institute': person_institute, 'person_subinstitute': person_subinstitute, })
 
 def activate(request, uidb64, token):
     try:
@@ -314,6 +315,13 @@ def user_search(request):
     papers = Papers.objects.filter(topic__icontains=required).distinct()
     return render(request, "search.html", context={'people':people, 'institutes':institutes, 'subinstitutes':subinstitutes, 'groups':groups, 'papers':papers,'required':required})
 
+def state_search(request,slug):
+    state_name = request.POST.get('state')
+    state_obj = States.objects.get(url_name_state = slug)
+    campus = Campus.objects.filter(state = state_obj)
+    if request.method == 'POST':
+        return redirect(reverse('search_profile',args=(slug,)))
+    return render(request, "search_state.html", context={'state': state_obj, 'campus':campus,})
 
 
 def paper_list(request,slug):

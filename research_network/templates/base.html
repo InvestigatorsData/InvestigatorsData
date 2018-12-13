@@ -44,10 +44,6 @@
         <a class="nav-item" href="{% url 'base' %}">   <img class="h" src="{% static 'images/icons/help.png' %}" alt="logo"> </a>
 		{% endif%}
     </nav>
-
-
-
-
 </div>
 </header>
 
@@ -55,6 +51,16 @@
 		{% csrf_token %}
 		<br><button class="1" type="submit"> Buscar &nbsp;</button>
 		<input class="2" name="entry" formmethod='post' placeholder="Ingresa tu busqueda" required>
+	</form>
+
+  <form action="" method="post">
+		{% csrf_token %}
+    <select class="js-select2" name="state" required onchange="window.location.href = this.value">
+      <option value="value" selected disabled hidden>Selecciona el estado</option>
+      {% for state in states %}
+      <option value="/state/{{state.url_name_state}}"> <td>{{state.name}}</td> </option>
+      {% endfor %}
+    </select>
 	</form>
 
 
