@@ -5,6 +5,7 @@
     "fields": {
       "key" : "MX-AGU",
       "name" : "Aguascalientes",
+      "url_name_state": "MX-AGU",
       "value" : 0
     }
   },
@@ -14,6 +15,7 @@
     "fields": {
       "key" : "MX-BCN",
       "name" : "Baja California",
+      "url_name_state": "MX-BCN",
       "value" : 0
     }
   },
@@ -23,6 +25,7 @@
     "fields": {
       "key" : "MX-BCS",
       "name" : "Baja California Sur",
+      "url_name_state": "MX-BCS",
       "value" : 0
     }
   },
@@ -32,6 +35,7 @@
     "fields": {
       "key" : "MX-CAM",
       "name" : "Campeche",
+      "url_name_state": "MX-CAM",
       "value" : 0
     }
   },
@@ -41,6 +45,7 @@
     "fields": {
       "key" : "MX-CHP",
       "name" : "Chiapas",
+      "url_name_state": "MX-CHP",
       "value" : 0
     }
   },
@@ -50,6 +55,7 @@
     "fields": {
       "key" : "MX-CHH",
       "name" : "Chihuahua",
+      "url_name_state": "MX-CHH",
       "value" : 0
     }
   },
@@ -59,6 +65,7 @@
     "fields": {
       "key" : "MX-COA",
       "name" : "Coahuila",
+      "url_name_state": "MX-COA",
       "value" : 0
     }
   },
@@ -68,6 +75,7 @@
     "fields": {
       "key" : "MX-COL",
       "name" : "Colima",
+      "url_name_state": "MX-COL",
       "value" : 0
     }
   },
@@ -77,6 +85,7 @@
     "fields": {
       "key" : "MX-CDMX",
       "name" : "Ciudad de México",
+      "url_name_state": "MX-CDMX",
       "value" : 0
     }
   },
@@ -86,6 +95,7 @@
     "fields": {
       "key" : "MX-DUR",
       "name" : "Durango",
+      "url_name_state": "MX-DUR",
       "value" : 0
     }
   },
@@ -95,6 +105,7 @@
     "fields": {
       "key" : "MX-GUA",
       "name" : "Guanajuato",
+      "url_name_state": "MX-GUA",
       "value" : 0
     }
   },
@@ -104,6 +115,7 @@
     "fields": {
       "key" : "MX-GRO",
       "name" : "Guerrero",
+      "url_name_state": "MX-GRO",
       "value" : 0
     }
   },
@@ -113,6 +125,7 @@
     "fields": {
       "key" : "MX-HID",
       "name" : "Hidalgo",
+      "url_name_state": "MX-HID",
       "value" : 0
     }
   },
@@ -122,6 +135,7 @@
     "fields": {
       "key" : "MX-JAL",
       "name" : "Jalisco",
+      "url_name_state": "MX-JAL",
       "value" : 0
     }
   },
@@ -131,6 +145,7 @@
     "fields": {
       "key" : "MX-MEX",
       "name" : "Estado de México",
+      "url_name_state": "MX-MEX",
       "value" : 0
     }
   },
@@ -140,6 +155,7 @@
     "fields": {
       "key" : "MX-MIC",
       "name" : "Michoacán",
+      "url_name_state": "MX-MIC",
       "value" : 0
     }
   },
@@ -149,6 +165,7 @@
     "fields": {
       "key" : "MX-MOR",
       "name" : "Morelos",
+      "url_name_state": "MX-MOR",
       "value" : 0
     }
   },
@@ -158,6 +175,7 @@
     "fields": {
       "key" : "MX-NAY",
       "name" : "Nayarit",
+      "url_name_state": "MX-NAY",
       "value" : 0
     }
   },
@@ -167,6 +185,7 @@
     "fields": {
       "key" : "MX-NLE",
       "name" : "Nuevo León",
+      "url_name_state": "MX-NLE",
       "value" : 0
     }
   },
@@ -176,6 +195,7 @@
     "fields": {
       "key" : "MX-OAX",
       "name" : "Oaxaca",
+      "url_name_state": "MX-OAX",
       "value" : 0
     }
   },
@@ -185,6 +205,7 @@
     "fields": {
       "key" : "MX-PUE",
       "name" : "Puebla",
+      "url_name_state": "MX-PUE",
       "value" : 0
     }
   },
@@ -194,6 +215,7 @@
     "fields": {
       "key" : "MX-QUE",
       "name" : "Querétaro",
+      "url_name_state": "MX-QUE",
       "value" : 0
     }
   },
@@ -203,6 +225,7 @@
     "fields": {
       "key" : "MX-ROO",
       "name" : "Quintana Roo",
+      "url_name_state": "MX-ROO",
       "value" : 0
     }
   },
@@ -212,6 +235,7 @@
     "fields": {
       "key" : "MX-SLP",
       "name" : "San Luis Potosí",
+      "url_name_state": "MX-SLP",
       "value" : 0
     }
   },
@@ -221,6 +245,7 @@
     "fields": {
       "key" : "MX-SIN",
       "name" : "Sinaloa",
+      "url_name_state": "MX-SIN",
       "value" : 0
     }
   },
@@ -230,6 +255,7 @@
     "fields": {
       "key" : "MX-SON",
       "name" : "Sonora",
+      "url_name_state": "MX-SON",
       "value" : 0
     }
   },
@@ -239,6 +265,7 @@
     "fields": {
       "key" : "MX-TAB",
       "name" : "Tabasco",
+      "url_name_state": "MX-TAB",
       "value" : 0
     }
   },
@@ -248,6 +275,7 @@
     "fields": {
       "key" : "MX-TAM",
       "name" : "Tamaulipas",
+      "url_name_state": "MX-TAM",
       "value" : 0
     }
   },
@@ -257,6 +285,7 @@
     "fields": {
       "key" : "MX-TLA",
       "name" : "Tlaxcala",
+      "url_name_state": "MX-TLA",
       "value" : 0
     }
   },
@@ -266,6 +295,7 @@
     "fields": {
       "key" : "MX-VER",
       "name" : "Veracruz",
+      "url_name_state": "MX-VER",
       "value" : 0
     }
   },
@@ -275,6 +305,7 @@
     "fields": {
       "key" : "MX-YUC",
       "name" : "Yucatán",
+      "url_name_state": "MX-YUC",
       "value" : 0
     }
   },
@@ -284,7 +315,327 @@
     "fields": {
       "key" : "MX-ZAC",
       "name" : "Zacatecas",
+      "url_name_state": "MX-ZAC",
       "value" : 0
+    }
+  },
+  
+  {
+    "model": "database.College",
+    "pk": 0,
+    "fields": {
+      "name" : "Universidad Nacional Autonoma de México",
+      "url_name_college" : "Universidad_Nacional_Autonoma_de_México",
+      "telephone" : "23546123",
+      "address" : "Torre de Rectoría, Circuito interior, Ciudad Universitaria, Coyoacan, Ciudad de México"
+    }
+  },
+
+  {
+    "model": "database.College",
+    "pk" : 1,
+    "fields":{
+      "name" : "Instituto Politecnico Nacional",
+      "url_name_college" : "Instituto_Politecnico_Nacional",
+      "telephone" : "94736538",
+      "address" : "Unidad Profesional Adolfo López Mateos, Zacatenco, Del. Gustavo A. Madero"
+    } 
+  },
+
+  {
+    "model": "database.College",
+    "pk" : 2,
+    "fields":{
+      "name" : "Universidad Autonoma Metropolitana",
+      "url_name_college" : "Universidad_Autonoma_Metropolitana",
+      "telephone" : "34567890",
+      "address" : "Prol. Canal de Miramontes 3855, Ex Hacienda San Juan de Dios, Tlalpan, C.P. 14387 Ciudad de México"
+    } 
+  },
+
+  {
+    "model": "database.College",
+    "pk" : 3,
+    "fields":{
+      "name" : "Universidad Autonoma de Guadalajara",
+      "url_name_college" : "Universidad_Autonoma_de_Guadalajara",
+      "telephone" : "12436509",
+      "address" : "Av. Patria 1201 Col. Lomas del Valle 3a. Sección Apartado Postal 1-440 C.P. 451293​ Guadalajara, Jalisco"
+    } 
+  },
+
+  {
+    "model": "database.College",
+    "pk" : 4,
+    "fields":{
+      "name" : "Universidad Autonoma de Nuevo Leon",
+      "url_name_college" : "Universidad_Autonoma_de_Nuevo_Leon",
+      "telephone" : "03049586",
+      "address" : " Pedro de Alba S/N, Niños Héroes, Ciudad Universitaria, San Nicolás de los Garza, N.L."
+    } 
+  },
+
+  {
+    "model": "database.College",
+    "pk" : 5,
+    "fields":{
+      "name" : "Tecnologico de Monterrey",
+      "url_name_college" : "Tecnologico_de_Monterrey",
+      "telephone" : "48849554",
+      "address" : "Eugenio Garza Sada 2501, Col. Tecnológico. Monterrey, Nuevo León"
+    } 
+  },
+
+  {
+    "model": "database.College",
+    "pk" : 6,
+    "fields":{
+      "name" : "Universidad Autonoma de Queretaro",
+      "url_name_college" : "Universidad_Autonoma_de_Queretaro",
+      "telephone" : "19238975",
+      "address" : "Centro Universitario, Cerro de las Campanas s/n C.P. 76010. Santiago de Querétaro, Qro. México."
+    } 
+  },
+
+  {
+    "model": "database.Campus",
+    "pk": 0,
+    "fields": {
+      "state" : 8,
+      "college" : 0,
+      "name" : "Ciudad Universitaria",
+      "url_name_campus" : "Ciudad_Universitaria",
+      "telephone" : "13245678",
+      "address" : "Av Universidad 3000, Cd. Universitaria, Coyoacán, 04510 Ciudad de México, CDMX"
+    }
+  },
+
+  {
+    "model": "database.Campus",
+    "pk": 1,
+    "fields": {
+      "state" : 8,
+      "college" : 1,
+      "name" : "Unidad Profesional Adolfo López Mateos",
+      "url_name_campus" : "Adolfo_Lopez_Mateos",
+      "telephone" : "11111122",
+      "address" : "San Pedro Zacatenco y Santa María Ticomán, al norte de la Ciudad de México"
+    }
+  },
+
+  {
+    "model": "database.Campus",
+    "pk": 2,
+    "fields": {
+      "state" : 8,
+      "college" : 2,
+      "name" : "Sede UAM Xochimilco",
+      "url_name_campus" : "UAM_Xochimilco",
+      "telephone" : "13579246",
+      "address" : "Calzada del Hueso 1100, Col. Villa Quietud, Delegación Coyoacán, 04960, D.F. México"
+    }
+  },
+  {
+    "model": "database.Campus",
+    "pk": 3,
+    "fields": {
+      "state" : 13,
+      "college" : 3,
+      "name" : "Ciudad Universitaria, Zapopan Jalisco",
+      "url_name_campus" : "U_A_G_C_U",
+      "telephone" : "10923874",
+      "address" : "Rectoria Zapopan Jalisco"
+    }
+  },
+  {
+    "model": "database.Campus",
+    "pk": 4,
+    "fields": {
+      "state" : 18,
+      "college" : 4,
+      "name" : "Ciudad Universitaria, San Nicolás de los Garza ",
+      "url_name_campus" : "U_A_N_L_C_U",
+      "telephone" : "15678765",
+      "address" : "Torre de Rectoria, Zona Metropolitana de Monterrey"
+    }
+  },
+  {
+    "model": "database.Campus",
+    "pk": 5,
+    "fields": {
+      "state" : 0,
+      "college" : 5,
+      "name" : "Campus Rectoria Norte Aguascalientes",
+      "url_name_campus" : "Campus_Rectoria_Norte_Aguascalientes",
+      "telephone" : "12435687",
+      "address" : "Av Eugenio Garza Sada 1500, Los Pocitos, 20328 Ags."
+    }
+  },
+  {
+    "model": "database.Campus",
+    "pk": 6,
+    "fields": {
+      "state" : 21,
+      "college" : 6,
+      "name" : "Campus Juriquilla",
+      "url_name_campus" : "Campus_Juriquilla",
+      "telephone" : "13345678",
+      "address" : "Av. de las Ciencias s/n, Juriquilla, Querétaro, Qro. C.P.76230. (442) 192-12-00, Extensión 5301"
+    }
+  },
+
+  {
+    "model": "database.Institutes",
+    "pk": 0, 
+    "fields": {
+      "campus": 0,
+      "college": 0,
+      "name": "Facultad de Ciencias(Universidad Nacional Autonoma de México)",
+      "address": "Cto. Exterior s/n, Ciudad Universitaria, 04510 Ciudad de México, CDMX",
+      "telephone": "1245785",
+      "url_name_institute": "Facultad_de_Ciencias(Universidad_Nacional_Autonoma_de_México)"
+    }
+  },
+  {
+    "model": "database.Institutes",
+    "pk": 1, 
+    "fields": {
+      "campus": 0,
+      "college": 0,
+      "name": "Facultad de Ingenieria(Universidad Nacional Autonoma de México)",
+      "address": "Escolar 04360, Ciudad Universitaria, Ciudad de México, CDMX",
+      "telephone": "15678975",
+      "url_name_institute": "Facultad_de_Ingenieria(Universidad_Nacional_Autonoma_de_México)"
+    }
+  },
+  {
+    "model": "database.Institutes",
+    "pk": 2, 
+    "fields": {
+      "campus": 1,
+      "college": 1,
+      "name": "Escuela Superior de Ingenieria Mecanica y Electronica(Instituto Politecnico Nacional)",
+      "address": " Calz. Ticomán 600, San José Ticoman, 07340 Ciudad de México, CDMX",
+      "telephone": "135785432",
+      "url_name_institute": "Escuela_Superior_de_Ingenieria_Mecanica_y_Electronica(Instituto_Politecnico_Nacional)"
+    }
+  },
+  {
+    "model": "database.Institutes",
+    "pk": 3, 
+    "fields": {
+      "campus": 2,
+      "college": 2,
+      "name": "Division de Ciencias Biologicas y de la Salud(Universidad Autonoma Metropolitana)",
+      "address": "Av. San Rafael Atlixco 186, Leyes de Reforma 1ra Secc, 09340 Ciudad de México, CDMX",
+      "telephone": "14677654",
+      "url_name_institute": "Division_de_Ciencias_Biologicas_y_de_la_Salud(Universidad_Autonoma_Metropolitana)"
+    }
+  },
+  {
+    "model": "database.Institutes",
+    "pk": 4, 
+    "fields": {
+      "campus": 3,
+      "college": 3,
+      "name": "Instituto de Ciencias Biologicas(Universidad Autonoma de Guadalajara)",
+      "address": "Av. Montevideo 3035, Lomas del Valle 3a. Sección, 44100 Guadalajara, Jal.",
+      "telephone": "1223456543",
+      "url_name_institute": "Instituto_de_Ciencias_Biologicas(Universidad_Autonoma_de_Guadalajara)"
+    }
+  },
+  {
+    "model": "database.Institutes",
+    "pk": 5, 
+    "fields": {
+      "campus": 4,
+      "college": 4,
+      "name": "Facultad de Filosofia y letras(Universidad Autonoma de Nuevo Leon)",
+      "address": "Ave. Universidad s/n, 66451 San Nicolás de los Garza",
+      "telephone": "2345676",
+      "url_name_institute": "Facultad_de_Filosofia_y_Letras(Universidad_Autonoma_de_Nuevo_Leon)"
+    }
+  },
+  {
+    "model": "database.Institutes",
+    "pk": 6, 
+    "fields": {
+      "campus": 5,
+      "college": 5,
+      "name": "Instituto de Artes Visuales(Tecnologico de Monterrey)",
+      "address": "Ave. Centenario s/n, 10058 Aguascalientes",
+      "telephone": "13434346",
+      "url_name_institute": "Instituto_de_Artes_Visuales(Tecnologico_de_Monterrey)"
+    }
+  },
+  {
+    "model": "database.Subinstitutes",
+    "pk" : 0,
+    "fields" : {
+      "institute": 0,
+      "name": "Departamento de Matematicas(Facultad de Ciencias)",
+      "url_name_subinstitute": "Departamento_de_Matematicas(Facultad_de_Ciencias)",
+      "telephone": "13443435"
+    }
+  },
+  {
+    "model": "database.Subinstitutes",
+    "pk" : 1,
+    "fields" : {
+      "institute": 1,
+      "name": "Departamento de Fisica(Facultad de Ingenieria)",
+      "url_name_subinstitute": "Departamento_de_Fisica(Facultad_de_Ingenieria)",
+      "telephone": "35657676"
+    }
+  },
+  {
+    "model": "database.Subinstitutes",
+    "pk" : 2,
+    "fields" : {
+      "institute": 2,
+      "name": "Departamento de Mecanica(ESIME)",
+      "url_name_subinstitute": "Departamento_de_Mecanica(ESIME)",
+      "telephone": "1123444333"
+    }
+  },
+  {
+    "model": "database.Subinstitutes",
+    "pk" : 3,
+    "fields" : {
+      "institute": 3,
+      "name": "Division de la Salud(Universidad Autonoma de México)",
+      "url_name_subinstitute": "Division_de_la_Salud(Universidad_Autonoma_De_México)",
+      "telephone": "12345454"
+    }
+  },
+  {
+    "model": "database.Subinstitutes",
+    "pk" : 4,
+    "fields" : {
+      "institute": 4,
+      "name": "Seccion de Ciencias Biologicas(Instituto Politecnico Nacional)",
+      "url_name_subinstitute": "Seccion_de_Ciencias_Biologicas(Instituto_Politecnico_Nacional)",
+      "telephone": "123454322"
+    }
+  },
+  {
+    "model": "database.Subinstitutes",
+    "pk" : 5,
+    "fields" : {
+      "institute": 5,
+      "name": "Departamento de Humanidades(Universidad Autonoma de Guadalajara)",
+      "url_name_subinstitute": "Departamento_de_Humanidades(Universidad_Autonoma_de_Guadalajara)",
+      "telephone": "122344334"
+    }
+  },
+  {
+    "model": "database.Subinstitutes",
+    "pk" : 6,
+    "fields" : {
+      "institute": 6,
+      "name": "Division de Diseño(Tecnologico de Monterrey)",
+      "url_name_subinstitute": "Division_de_Diseño(Tecnologico_de_Monterrey)",
+      "telephone": "12234212"
     }
   }
 ]
