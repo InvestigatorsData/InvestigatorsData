@@ -26,17 +26,22 @@ a {
   border-radius: 10px !important;
 }
 
-#help {
-  margin-left: 70%;
+img.h {
+  margin-left: 80%;
+  width: 5% !important;
+  height: 5% !important;
 
 }
-img {
+
+img.r {
   width: 10% !important;
   height: 10% !important;
 }
 
+
 #renain {
   text-align: left;
+
 }
 
 
@@ -44,7 +49,7 @@ img {
 #footer {
     margin: 5px !important;
     padding: 5px !important;
-    height: 150px !important;
+    height: 180px !important;
     width: 100% !important;
     background-color: #404245 !important;
     color: white !important;
