@@ -255,21 +255,23 @@ def user_login(request):
 def email_reset(request):
     if request.method == 'POST':
         to_email = request.POST.get('email')
-        user = User.objects.get(email = str(to_email))
-        current_site = get_current_site(request)
-        mail_subject = 'Petición cambio de contraseña RENAIN'
-        message = render_to_string('change_pass_email.html', {
-            'user': user,
-            'domain': current_site.domain,
-            'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
-            'token':default_token_generator.make_token(user),
-        })
-        email = EmailMessage(
+        try:
+            user = User.objects.get(email = str(to_email))
+            current_site = get_current_site(request)
+            mail_subject = 'Petición cambio de contraseña RENAIN'
+            message = render_to_string('change_pass_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+                'token':default_token_generator.make_token(user),
+            })
+            email = EmailMessage(
                     mail_subject, message, to=[to_email]
-        )
-        email.send()
-        return HttpResponse('Se te ha enviado un correo para cambiar tu contraseña')
-
+            )
+            email.send()
+            return HttpResponse('Se te ha enviado un correo para cambiar tu contraseña')
+        except:
+            return HttpResponse('El correo no esta registrado')
     else:
         return render(request, 'password_reset.html', {})
 
@@ -315,6 +317,9 @@ def upload_paper(request,slug):
         form = UploadPapersForm(request.POST,request.FILES)
         if form.is_valid():
             paper = form.save()
+            url = paper.topic.replace(" ","_")
+            paper.url_name_paper = url
+            paper.save()
             person.papers.add(paper)
             return redirect(reverse('paper_list',args=(slug,)))
     else:
