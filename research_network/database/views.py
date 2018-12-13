@@ -104,6 +104,12 @@ def topic_is_repeated(topic_required, request):
     except:
         return False 
     return True                      
+def group_is_repeated(name, request):
+    try:
+        group = Groups.objects.get(url_name_group=name)
+    except:
+        return False
+    return True
 
 
 def user_signup(request):
@@ -354,14 +360,26 @@ def group_list(request,slug):
 
 def add_group(request,slug):
     person = People.objects.get(url_name=slug)
+    persons = People.objects.filter().exclude(url_name=slug)
     if(request.method == 'POST'):
         form = AddGroupsForm(request.POST)
         if form.is_valid():
+            url = request.POST.get('name')
+            url = url.replace(" ","_")
+            if group_is_repeated(url,request):
+                return HttpResponse("Ya se encuentra un grupo con el mismo nombre")
             group = form.save()
+            group.url_name_group = url
+            group.save()
             person.groups.add(group)
+            integrantes = request.POST.getlist('integrantes')
+            if len(integrantes) > 0:
+                for integrante in integrantes:
+                    investigador = People.objects.get(id_people=integrante)
+                    investigador.groups.add(group)
             return redirect(reverse('group_list',args=(slug,                )))
     else:
         form = AddGroupsForm()
     return render(request,'add_group.html',{
-        'form':form,
+        'form':form,'integrantes':persons,
     })

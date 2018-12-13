@@ -31,7 +31,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     </label>
 
     <!-- The nav menu -->
-     <img href="{% url 'base' %}" src="{% static 'images/icons/renain.png' %}" alt="logo">
+    <a href="{% url 'base' %}">  <img  src="{% static 'images/icons/renain.png' %}" alt="logo"></a>
      {% if user.is_authenticated %}
      {% if user.is_superuser %}
      <div id="admin_login"><a href="/admin/"> Ingresar como administrador </a> </div>

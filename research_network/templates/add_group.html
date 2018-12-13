@@ -21,7 +21,13 @@
     <form id="form" method="post" enctype="multipart/form-data">
     {% csrf_token %}
         {{ form.as_p   }}
-    <button id="button" type="submit">Agregar</button>
+        <label for="id_autor"> Selecciona integrantes </label>
+        <select multiple="multiple" id="id_autors" name="integrantes" >
+            {% for integrante in integrantes %}
+                <option value={{integrante.id_people}}> {{integrante.name}} </option>
+            {% endfor %}
+        </select>
+    <button id="button" type="submit">Crear</button>
     </form>
 {% endblock %}
 

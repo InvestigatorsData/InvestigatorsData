@@ -27,7 +27,7 @@ urlpatterns = [
     path('profile/<slug>/papers/upload/',upload_paper,name = "upload_paper" ),
     path('profile/<slug>/papers/', paper_list, name="paper_list"),
     path('profile/<slug>/groups/add/',add_group,name = "add_group" ),
-    path('profile/<slug>/groups/', group_list, name="group_list"),
+
 ]
 
 if settings.DEBUG:
