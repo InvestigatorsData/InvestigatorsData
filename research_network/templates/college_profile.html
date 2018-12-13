@@ -3,7 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
   <head>
-    <title>PERFIL</title>
+    <title>{{college.name}}</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -46,29 +46,40 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     <div  class="w3-twothird" style="width:100%" style="height:100%">
 
       <div id="scroll" class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i> Datos de la institucion </h2>
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i> Datos del colegio </h2>
 
         <div class="w3-container">
             <h5 class="w3-opacity"><b>Nombre</b></h5>
-            <p> {{institutes.name}} </p>
+            <p> {{college.name}} </p>
             <hr>
         </div>
 
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Direccion</b></h5>
-          <p> {{institutes.address}} </p>
+          <p> {{college.address}} </p>
           <hr>
         </div>
 
         <div class="w3-container">
-          <h5 class="w3-opacity"><b>Campus</b></h5>
-          <p> {{institutes.campus}} <a href="/campus/{{institutes.campus.url_name_campus}}"> <font color="0a4a8e"> Ver informacion </font></a> </p> 
-          <hr>
+            <h5 class="w3-opacity"><b>Campus</b></h5>
+            {% for campus in college_campus %}
+            <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ campus.name }} <a href="/campus/{{campus.url_name_campus}}"> <font color="0a4a8e"> Ver informacion </font></a></p>
+            {% endfor %}
+            <hr>
         </div>
+
+        <div class="w3-container">
+            <h5 class="w3-opacity"><b>Instituciones</b></h5>
+            {% for institute in institutes %}
+            <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ institute.name }} <a href="/institute/{{institute.url_name_institute}}"> <font color="0a4a8e"> Ver informacion </font></a></p>
+            {% endfor %}
+            <hr>
+        </div>
+
 
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Telefono</b></h5>
-          <p> {{institutes.telephone}}</p><br>
+          <p> {{college.telephone}}</p><br>
         </div>
 
       </div>

@@ -16,24 +16,13 @@
     </div>
 </header>
 
-
-
 {% block content %}
-
-    <h2 id="title">Subir Publicaciones</h2>
+    <h2 id="title">Agregar Grupos</h2>
     <form id="form" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-        {{ form.as_p }}
-        <label for="id_autors"> Selecciona coautores </label>
-        <select multiple="multiple" id="id_autors" name="autors" >
-            {% for autor in autors %}
-                <option value={{autor.id_people}}> {{autor.name}} </option>
-            {% endfor %}
-        </select>
-    <button id="button" type="submit">Subir</button>
+        {{ form.as_p   }}
+    <button id="button" type="submit">Agregar</button>
     </form>
-
-
 {% endblock %}
 
 <div id="footer">

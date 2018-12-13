@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.http import Http404
 # Create your views here.
 from django.views.generic import TemplateView
 from django.http import HttpResponse
@@ -9,7 +9,6 @@ from django.urls import reverse_lazy
 from django.views import generic
 from database.models import *
 from django.views.generic import ListView,DetailView
-
 
 class BasePageView(TemplateView):
     template_name = 'base.html'
@@ -45,3 +44,31 @@ class InstituteProfielView(DetailView):
     model = Institutes
     template_name = 'institute_profile.html'
     slug_field = 'url_name_institute'
+class SubinstituteProfielView(DetailView):
+    model = Subinstitutes
+    template_name = 'subinstitute_profile.html'
+    slug_field = 'url_name_subinstitute'
+class GroupProfielView(DetailView):
+    model = Groups
+    template_name = 'group_profile.html'
+    slug_field = 'url_name_group'    
+class CampusProfileView(DetailView):
+    model = Campus
+    template_name = 'campus_profile.html'
+    slug_field = 'url_name_campus'
+
+def paper_view(request, slug):
+    papers = Papers.objects.get(url_name_paper=slug)
+    autors = papers.people_set.all()
+    return render(request, "paper_profile.html", context={'autors':autors, 'papers':papers,})
+
+def college_view(request, slug):
+    required_college = College.objects.get(url_name_college=slug)    
+    institutes = Institutes.objects.filter(college=required_college)
+    college_campus =Campus.objects.filter(college=required_college)
+    return render(request, "college_profile.html", context={'institutes':institutes, 'college':required_college, 'college_campus':college_campus,})
+
+
+
+
+

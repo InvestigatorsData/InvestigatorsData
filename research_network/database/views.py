@@ -96,7 +96,14 @@ def username_is_repeated(username_required, request):
         return False
     if user == request.user:
         return False    
-    return True    
+    return True 
+
+def topic_is_repeated(topic_required, request):
+    try:
+        paper = Papers.objects.get(url_name_paper=topic_required)
+    except:
+        return False 
+    return True                      
 
 
 def user_signup(request):
@@ -255,21 +262,23 @@ def user_login(request):
 def email_reset(request):
     if request.method == 'POST':
         to_email = request.POST.get('email')
-        user = User.objects.get(email = str(to_email))
-        current_site = get_current_site(request)
-        mail_subject = 'Petición cambio de contraseña RENAIN'
-        message = render_to_string('change_pass_email.html', {
-            'user': user,
-            'domain': current_site.domain,
-            'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
-            'token':default_token_generator.make_token(user),
-        })
-        email = EmailMessage(
+        try:
+            user = User.objects.get(email = str(to_email))
+            current_site = get_current_site(request)
+            mail_subject = 'Petición cambio de contraseña RENAIN'
+            message = render_to_string('change_pass_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+                'token':default_token_generator.make_token(user),
+            })
+            email = EmailMessage(
                     mail_subject, message, to=[to_email]
-        )
-        email.send()
-        return HttpResponse('Se te ha enviado un correo para cambiar tu contraseña')
-
+            )
+            email.send()
+            return HttpResponse('Se te ha enviado un correo para cambiar tu contraseña')
+        except:
+            return HttpResponse('El correo no esta registrado')
     else:
         return render(request, 'password_reset.html', {})
 
@@ -295,8 +304,8 @@ def user_search(request):
     people = People.objects.filter(name__icontains=required)
     institutes = Institutes.objects.filter(name__icontains=required)
     subinstitutes = Subinstitutes.objects.filter(name__icontains=required)
-    groups = Groups.objects.filter(name__icontains=required)
-    papers = Papers.objects.filter(topic__icontains=required)
+    groups = Groups.objects.filter(name__icontains=required).distinct()
+    papers = Papers.objects.filter(topic__icontains=required).distinct()
     return render(request, "search.html", context={'people':people, 'institutes':institutes, 'subinstitutes':subinstitutes, 'groups':groups, 'papers':papers,'required':required})
 
 
@@ -311,14 +320,48 @@ def paper_list(request,slug):
 
 def upload_paper(request,slug):
     person = People.objects.get(url_name=slug)
+    persons = People.objects.filter().exclude(url_name=slug)
     if request.method == 'POST':
         form = UploadPapersForm(request.POST,request.FILES)
         if form.is_valid():
+            url = request.POST.get('topic')
+            url = url.replace(" ","_")
+            if topic_is_repeated(url, request):
+                return HttpResponse("Ya existe un articulo con ese nombre, elige otro")
             paper = form.save()
+            paper.url_name_paper = url
+            paper.save()
             person.papers.add(paper)
+            autors = request.POST.getlist('autors')
+            if len(autors) > 0:
+                for autor in autors:
+                    coautor = People.objects.get(id_people=autor)
+                    coautor.papers.add(paper)
             return redirect(reverse('paper_list',args=(slug,)))
     else:
         form = UploadPapersForm()
     return render(request,'upload_paper.html', {
-        'form': form,
+        'form': form, 'autors':persons,
+    })
+
+def group_list(request,slug):
+    person  = People.objects.get(url_name = slug)
+    name = person.url_name
+    groups = person.groups
+    return render(request,'groups.html',{
+        'groups':groups,'name':name,
+    })
+
+def add_group(request,slug):
+    person = People.objects.get(url_name=slug)
+    if(request.method == 'POST'):
+        form = AddGroupsForm(request.POST)
+        if form.is_valid():
+            group = form.save()
+            person.groups.add(group)
+            return redirect(reverse('group_list',args=(slug,                )))
+    else:
+        form = AddGroupsForm()
+    return render(request,'add_group.html',{
+        'form':form,
     })
