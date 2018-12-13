@@ -18,6 +18,15 @@ a {
 }
 
 
+img.h {
+
+  width: 100% !important;
+  height: 100% !important;
+
+}
+
+
+
 .container {
   padding: 10px;
   height: 130px;

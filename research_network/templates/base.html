@@ -37,12 +37,14 @@
 		{% if user.is_authenticated %}
 		<a class="nav-item" href="{% url 'logout'%}">Salir &nbsp; &nbsp;</a>
 		<a class="nav-item" href="{% url 'profile' slug=user %}">Perfil &nbsp; &nbsp;</a>
+    <a class="nav-item" href="{% url 'base' %}">   <img class="h" src="{% static 'images/icons/help.png' %}" alt="logo"> </a>
 		{% else %}
         <a class="nav-item" href="{% url 'login' %}">Ingresar &nbsp; &nbsp;</a>
         <a class="nav-item" href="{% url 'signup' %}">Registro &nbsp; &nbsp;</a>
+        <a class="nav-item" href="{% url 'base' %}">   <img class="h" src="{% static 'images/icons/help.png' %}" alt="logo"> </a>
 		{% endif%}
-
     </nav>
+
 
 
 
@@ -51,8 +53,8 @@
 
 	<form action="{% url 'search' %}" method="post">
 		{% csrf_token %}
-		<button type="submit"> Buscar &nbsp;</button>
-		<input name="entry" formmethod='post' placeholder="Ingresa tu busqueda" required>
+		<br><button class="1" type="submit"> Buscar &nbsp;</button>
+		<input class="2" name="entry" formmethod='post' placeholder="Ingresa tu busqueda" required>
 	</form>
 
 
