@@ -33,6 +33,10 @@ class ChangePasswordDone(TemplateView):
     template_name = 'password_reset_done.html'
 class ChangePasswordView(TemplateView):
     template_name = 'changePassword.html'
+
+class GroupsView(TemplateView):
+    template_name = 'groups.html'
+
 class UserProfielView(DetailView):
     model = People
     template_name = 'profile.html'

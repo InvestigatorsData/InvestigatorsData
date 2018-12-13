@@ -18,6 +18,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
 </head>
 <header>
+
 <div class="container">
     <!-- This checkbox will give us the toggle behavior, it will be hidden, but functional -->
     <input id="toggle" type="checkbox">
@@ -31,7 +32,11 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     </label>
 
     <!-- The nav menu -->
-     <img href="{% url 'base' %}" src="{% static 'images/icons/renain.png' %}" alt="logo">
+
+     <a href="{% url 'base' %}">   <img  class="r" src="{% static 'images/icons/renain.png' %}" alt="logo"> </a>
+      <a href="{% url 'base' %}">   <img class="h" src="{% static 'images/icons/help.png' %}" alt="logo"> </a>
+
+
      {% if user.is_authenticated %}
      {% if user.is_superuser %}
      <div id="admin_login"><a href="/admin/"> Ingresar como administrador </a> </div>

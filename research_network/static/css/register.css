@@ -22,6 +22,19 @@ body {
   border-radius: 10px !important;
 }
 
+img.h {
+  margin-left: 80%;
+  width: 5% !important;
+  height: 5% !important;
+
+}
+
+img.r {
+  width: 10% !important;
+  height: 10% !important;
+}
+
+
 #help {
   text-align: right;
 }

@@ -18,6 +18,7 @@ urlpatterns = [
     path('institute/<slug>/', views.InstituteProfielView.as_view(), name='institute_profile'),
     path('reset/',database.views.email_reset, name='change_password_sent'),
     path('reset/<uidb64>/<token>/',database.views.reset_password, name='changePassword'),
+    path('groups/', views.GroupsView.as_view() , name='groups'),
 
     #path('profile/<slug>/groups/', views.UserProfielView.as_view(), name='profile_groups'),
 ]
