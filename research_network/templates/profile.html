@@ -85,7 +85,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Más Opciones</h2>
         <div class="w3-container">
 
-              <h5 class="w3-opacity"> <br><a class="link" href="#"><b>Grupos</b></h5> </a>
+              <h5 class="w3-opacity"> <br><a class="link" href="{% url 'group_list' slug=people.url_name%}"><b>Grupos</b></h5>
               <h5 class="w3-opacity"> <br><a class="link" href="{% url 'paper_list' slug=people.url_name %}"><b>Publicaciones</b></h5>
               <h5 class="w3-opacity"> <br><a class="link" href="#"><b>Otro algo más</b></h5>
               <h5 class="w3-opacity">  <br><a class="link" href="#"><b>Algo interesante</b></h5>

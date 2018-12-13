@@ -322,3 +322,25 @@ def upload_paper(request,slug):
     return render(request,'upload_paper.html', {
         'form': form,
     })
+
+def group_list(request,slug):
+    person  = People.objects.get(url_name = slug)
+    name = person.url_name
+    groups = person.groups
+    return render(request,'groups.html',{
+        'groups':groups,'name':name,
+    })
+
+def add_group(request,slug):
+    person = People.objects.get(url_name=slug)
+    if(request.method == 'POST'):
+        form = AddGroupsForm(request.POST)
+        if form.is_valid():
+            group = form.save()
+            person.groups.add(group)
+            return redirect(reverse('group_list',args=(slug,                )))
+    else:
+        form = AddGroupsForm()
+    return render(request,'add_group.html',{
+        'form':form,
+    })
