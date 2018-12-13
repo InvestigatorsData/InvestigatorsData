@@ -9,6 +9,7 @@ class States(models.Model):
     id_state = models.AutoField(primary_key=True)
     key = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
+    url_name_state = models.CharField(max_length=200)
     value = models.IntegerField()
     class Meta:
         db_table = "States"
@@ -19,6 +20,7 @@ class States(models.Model):
 class College(models.Model):
     id_college = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
+    url_name_college = models.CharField(max_length=200)
     telephone = models.CharField(max_length=200, null=True, blank=True)
     address = models.CharField(max_length=200, null=True, blank=True)
     class Meta:
@@ -32,6 +34,7 @@ class Campus(models.Model):
     state = models.ForeignKey(States,on_delete=models.PROTECT)
     college = models.ForeignKey(College,on_delete=models.PROTECT)
     name = models.CharField(max_length=200)
+    url_name_campus = models.CharField(max_length=200)
     telephone = models.CharField(max_length=200, null=True, blank=True)
     address = models.CharField(max_length=200, null=True, blank=True)
     class Meta:
@@ -44,6 +47,7 @@ class Campus(models.Model):
 class Institutes(models.Model):
     id_institute = models.AutoField(primary_key=True)
     campus = models.ForeignKey(Campus,on_delete=models.PROTECT, null=True, blank=True)
+    college = models.ForeignKey(College,on_delete=models.PROTECT)
     name = models.CharField(max_length=200)
     telephone = models.CharField(max_length=200, null=True, blank=True)
     address = models.CharField(max_length=200, null=True, blank=True)
@@ -60,29 +64,31 @@ class Subinstitutes(models.Model):
     institute = models.ForeignKey(Institutes,on_delete=models.PROTECT)
     id_reference_sub = models.ForeignKey('self',on_delete=models.PROTECT, null=True, blank=True)
     name = models.CharField(max_length=200)
-    address = models.CharField(max_length=200, null=True, blank=True)
+    url_name_subinstitute = models.CharField(max_length=200)
     telephone = models.CharField(max_length=200, null=True, blank=True)
     class Meta:
         db_table = "Subinstitutes"
 
     def __str__(self):
         """A string representation of the model."""
-        return self.name
+        return self.name        
 
 class Papers(models.Model):
     id_paper = models.AutoField(primary_key=True)
     topic = models.CharField(max_length=200)
     publication_date = models.CharField(max_length=200)
+    url_name_paper = models.CharField(max_length=200)
     file = models.FileField(upload_to='articles/')
     class Meta:
         db_table = "Papers"
     def __str__(self):
         """A string representation of the model."""
-        return self.topic
+        return self.topic    
 
 class Groups(models.Model):
     id_group = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
+    url_name_group = models.CharField(max_length=200)
     class Meta:
         db_table = "Groups"
 
