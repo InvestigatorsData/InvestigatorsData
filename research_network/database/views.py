@@ -132,16 +132,16 @@ def user_signup(request):
         profile_form = UserProfileInfoForm(data=request.POST)
         if profile_form.is_valid():
             profile = profile_form.save(commit=False)
-            email_report = ""
+            email_report = "Un usuario requiere los siguientes registros en la base de datos:" + '\n'
             report_data = False
             institute_required = profile_form.cleaned_data.get('institute')
             subinstitute_required = profile_form.cleaned_data.get('subinstitute')
             if institute_required.name == 'No esta registrado mi instituto':
                 report_data = True
-                email_report = "Registrar el instituto: " + request.POST.get('institute_required') + '\n'
+                email_report = email_report + "Instituto: " + request.POST.get('institute_required') + '\n'
             if subinstitute_required.name == 'No esta registrado mi subinstituto':
                 report_data = True 
-                email_report =  email_report + "Registrar el subinstituto: " + request.POST.get('subinstitute_required')
+                email_report =  email_report + "Subinstituto: " + request.POST.get('subinstitute_required')
             name = profile_form.cleaned_data.get('name')
             username_normalize = name.replace(' ','')
             email = profile_form.cleaned_data.get('email')
