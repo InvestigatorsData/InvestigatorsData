@@ -34,7 +34,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     <!-- The nav menu -->
 
      <a href="{% url 'base' %}">   <img  class="r" src="{% static 'images/icons/renain.png' %}" alt="logo"> </a>
-     <a href="{% url 'base' %}">   <img class="h" src="{% static 'images/icons/help.png' %}" alt="logo"> </a>
 
 
      {% if user.is_authenticated %}
@@ -77,7 +76,21 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <hr>
 
 
-            <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Acerca de ti: <p> {{ people.academic_level }}</p></b></p>
+            <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Acerca de ti:
+            <p><label>Universidad: </label> {{ people.institute.college.name }}</p>
+            <p><label>Instituto: </label> {{ people.institute.name }}</p>
+            {% if people.subinstitute %}
+            <p><label>Subsintituto: </label> {{ people.subinstitute.name }}</p>
+            {% endif  %}
+            <p><label>Nivel Académico: </label> {{ people.academic_level }}</p>
+            <p> <label>Grado académico: </label>{{ people.degree }}</p>
+            {% if people.personal_telephone %}
+
+                <p> <label>Teléfono: </label>{{ people.personal_telephone }}</p>
+
+            {% endif %}
+
+            </b></p>
 
         </div>
       </div><br>
