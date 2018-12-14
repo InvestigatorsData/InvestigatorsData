@@ -33,6 +33,7 @@
      align="center" cellspacing="0" bordercolor="black" bgcolor="white">
         <thead>
         <tr>
+            <th>Portada</th>
             <th>Tema</th>
             <th>Fecha de publicaion</th>
             <th>Descarga</th>
@@ -44,7 +45,14 @@
         <tbody>
         {% for paper in papers.iterator %}
             <tr>
+                <td>
+                    {% if paper.cover %}
+                        <img src = "{{ paper.cover.url }}" alt="{{ paper.topic }}" style="width: 250px; display: block;margin-left: auto;margin-right: auto;">
+                        {% else %}
+                        <span>Portada no disponible</span>
+                    {% endif %}
 
+                </td>
             <td> <center> {{ paper.topic }}  <a href="/paper/{{ paper.url_name_paper }}" class=""> <font color="0a4a8e"> <center> Ver informacion </center> </font> </a></center> </td>
 
             <td> <center> {{ paper.publication_date }}  </center> </td>

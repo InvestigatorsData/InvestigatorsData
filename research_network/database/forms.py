@@ -6,7 +6,7 @@ class UserProfileInfoForm(forms.ModelForm):
     class Meta():
         model = People
         fields = ('name','email','academic_level', 'degree','state',
-                  'personal_telephone', 'institute', 'subinstitute')
+                  'personal_telephone', 'institute', 'subinstitute','img',)
 
 class PapersForm(forms.ModelForm):
     class Meta:
@@ -16,7 +16,7 @@ class PapersForm(forms.ModelForm):
 class UploadPapersForm(forms.ModelForm):
     class Meta:
         model = Papers
-        fields = ('topic','publication_date','file',)
+        fields = ('topic','publication_date','file','cover',)
 
 class GroupsForm(forms.ModelForm):
     class Meta:

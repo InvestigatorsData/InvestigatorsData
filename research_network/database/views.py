@@ -170,6 +170,7 @@ def user_edit(request, slug):
         return HttpResponse(" Usuario no registrado")
     person_name = person.name
     person_email = person.email
+    person_cover = person.img
     person_personal_telephone = person.personal_telephone
     person_state = person.state
     person_academic_level = person.academic_level
@@ -178,7 +179,7 @@ def user_edit(request, slug):
     person_subinstitute = person.subinstitute
 
     if request.method == 'POST':
-        modify_form = UserProfileInfoForm(data=request.POST)
+        modify_form = UserProfileInfoForm(request.POST,request.FILES)
         if modify_form.is_valid():
             person_edit = People.objects.get(user=request.user)
             if name_is_repeated(modify_form.cleaned_data.get('name'), request):
@@ -195,6 +196,7 @@ def user_edit(request, slug):
             person_edit.academic_level =  modify_form.cleaned_data.get('academic_level')
             person_edit.degree = modify_form.cleaned_data.get('degree')
             person_edit.personal_telephone = modify_form.cleaned_data.get('personal_telephone')
+            person_edit.img = modify_form.cleaned_data['img']
             person_edit.state = modify_form.cleaned_data.get('state')
             person_edit.subinstitute = modify_form.cleaned_data.get('subinstitute')
             person_edit.institute = modify_form.cleaned_data.get('institute')
@@ -211,7 +213,7 @@ def user_edit(request, slug):
     else:
         modify_form = UserProfileInfoForm()
     return render (request, 'profileM.html', context={'institutes':institutes, 'subinstitutes': subinstitues, 'states': states,
-                    'person_name': person_name, 'person_email': person_email, 'person_personal_telephone': person_personal_telephone,
+                    'person_name': person_name, 'person_email': person_email,'person_cover':person_cover,'person_personal_telephone': person_personal_telephone,
                     'person_state': person_state, 'person_academic_level': person_academic_level, 'person_degree': person_degree,
                     'person_institute': person_institute, 'person_subinstitute': person_subinstitute, })
 

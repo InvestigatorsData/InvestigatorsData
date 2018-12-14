@@ -79,6 +79,7 @@ class Papers(models.Model):
     publication_date = models.CharField(max_length=200)
     url_name_paper = models.CharField(max_length=200)
     file = models.FileField(upload_to='articles/')
+    cover = models.ImageField(upload_to='articles/covers',null=True,blank=True)
     class Meta:
         db_table = "Papers"
     def __str__(self):
@@ -98,6 +99,7 @@ class Groups(models.Model):
 
 class People(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    img = models.ImageField(upload_to='profiles/', null=True, blank=True)
     url_name = models.CharField(max_length=200)
     id_people = models.AutoField(primary_key=True)
     email = models.CharField(max_length=200)
