@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from database.forms import UserProfileInfoForm
 from django.contrib.auth import authenticate, login, logout
@@ -13,6 +14,7 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from .models import Institutes, Subinstitutes, States, People, Groups, Papers
 from .forms import *
+from django.conf import settings
 
 def index(request):
     return render(request, 'base.html')
@@ -105,7 +107,6 @@ def topic_is_repeated(topic_required, request):
         return False 
     return True                      
 
-
 def user_signup(request):
     registered = False
     institutes = Institutes.objects.all().order_by('name')
@@ -115,6 +116,17 @@ def user_signup(request):
         profile_form = UserProfileInfoForm(data=request.POST)
         if profile_form.is_valid():
             profile = profile_form.save(commit=False)
+            email_report = ""
+            report_data = False
+            institute_required = profile_form.cleaned_data.get('institute')
+            subinstitute_required = profile_form.cleaned_data.get('subinstitute')
+            if institute_required.name == 'No esta registrado mi instituto':
+                report_data = True
+                email_report = "Falta por registrar el instituto: " + request.POST.get('institute_required') + '\n'
+            if subinstitute_required.name == 'No esta registrado mi subinstituto':
+                report_data = True 
+                email_report =  email_report + "Falta por registrar el subinstituto: " + request.POST.get('subinstitute_required')
+
             name = profile_form.cleaned_data.get('name')
             username_normalize = name.replace(' ','')
             email = profile_form.cleaned_data.get('email')
@@ -133,6 +145,13 @@ def user_signup(request):
             registered = True
             user.is_active = False
             current_site = get_current_site(request)
+            admins = User.objects.filter(is_superuser=True)
+            for admin in admins:
+                print(report_data)
+                if report_data:
+                    send_mail("Agregar nuevos datos", email_report, 'renainsoporte@gmail.com', [admin.email], fail_silently=False,)
+                    print(admin.email)
+
             mail_subject = 'Activa tu cuenta de RENAIN'
             message = render_to_string('acc_active_email.html', {
                 'user': user,
@@ -161,15 +180,6 @@ def user_edit(request, slug):
         person = People.objects.get(user=request.user)
     except:
         return HttpResponse(" Usuario no registrado")
-    person_name = person.name
-    person_email = person.email
-    person_personal_telephone = person.personal_telephone
-    person_state = person.state
-    person_academic_level = person.academic_level
-    person_degree = person.degree
-    person_institute = person.institute
-    person_subinstitute = person.subinstitute
-
     if request.method == 'POST':
         modify_form = UserProfileInfoForm(data=request.POST)
         if modify_form.is_valid():
@@ -204,9 +214,9 @@ def user_edit(request, slug):
     else:
         modify_form = UserProfileInfoForm()
     return render (request, 'profileM.html', context={'institutes':institutes, 'subinstitutes': subinstitues, 'states': states, 
-                    'person_name': person_name, 'person_email': person_email, 'person_personal_telephone': person_personal_telephone, 
-                    'person_state': person_state, 'person_academic_level': person_academic_level, 'person_degree': person_degree,
-                    'person_institute': person_institute, 'person_subinstitute': person_subinstitute, })    
+                    'person_name': person.name, 'person_email': person.email, 'person_personal_telephone': person.personal_telephone, 
+                    'person_state': person.state, 'person_academic_level': person.academic_level, 'person_degree': person.degree,
+                    'person_institute': person.institute, 'person_subinstitute': person.subinstitute, })    
 
 def activate(request, uidb64, token):
     try:

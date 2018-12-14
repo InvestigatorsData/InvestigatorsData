@@ -35,6 +35,14 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/noui/nouislider.min.css' %}">
 <!--===============================================================================================-->
+<style type="text/css">
+	.spoilerbutton {display:block; border:none; padding: 0px 0px; margin:10px 0px; font-size:100%; font-weight: bold; color:#000000; background-color:transparent; outline:0; 
+	}
+	.spoiler {overflow:hidden;}
+	.spoiler > div {-webkit-transition: all 0s ease;-moz-transition: margin 0s ease;-o-transition: all 0s ease;transition: margin 0s ease;}
+	.spoilerbutton[value="Si no se encuentras la opcion que buscas haz click aqui"] + .spoiler > div {margin-top:-500%;}
+	.spoilerbutton[value="Ocultar"] + .spoiler {padding:5px;} 
+</style> 
 </head>
 <body>
 
@@ -94,11 +102,10 @@
 
 								</select>
 								<div class="dropDownSelect2"></div>
-							</div>
-						</div>
-
-
-
+							</div>	
+					</div>
+					
+					
 					<div class="wrap-input100 input100-select bg1">
 						<span class="form-control"> NIVEL ACADEMICO *</span>
 						<div>
@@ -110,12 +117,12 @@
 							<div class="dropDownSelect2"></div>
 						</div>
 					</div>
-
+					
 					<div class="wrap-input100 input100-select bg1">
 						<span class="form-control"> GRADO DE ESTUDIOS *</span>
 						<div>
 							<select class="js-select2" name="degree" required >
-									<option value="" selected disabled hidden>Selecciona</option>
+								<option value="" selected disabled hidden>Selecciona</option>
 								<option>Licenciatura</option>
 								<option>Maestria</option>
 								<option>Doctorado</option>
@@ -123,7 +130,7 @@
 							<div class="dropDownSelect2"></div>
 						</div>
 					</div>
-
+				
 
 					<div class="wrap-input100 input100-select bg1">
 						<span class="form-control"> INSTITUTO *</span>
@@ -138,6 +145,20 @@
 							</select>
 							<div class="dropDownSelect2"></div>
 						</div>
+
+						<div class="spoiler">
+								<input class="spoilerbutton" type="button" value="Si no se encuentras la opcion que buscas haz click aqui" onclick="this.value=this.value=='Si no se encuentras la opcion que buscas haz click aqui'?'Ocultar':'Si no se encuentras la opcion que buscas haz click aqui';">
+								<div class="spoiler">
+									<div>
+										IMPORTANTE: Selecciona la opcion "No esta registrado mi instituto" y escribe tu instituto en este campo
+										<div class="wrap-input100 validate-input bg1" data-validate="Introduzca el instituto" >
+											<span class="label-input100"> INSTITUTO A SOLICITAR *</span>
+											<input class="form-control" type="text" name="institute_required" id="institute_required" placeholder="Escriba el instituto que pertenece">
+										 </div>
+							 		</div>
+								</div>
+						</div>
+
 					</div>
 
 					<div class="wrap-input100 input100-select bg1">
@@ -152,6 +173,19 @@
 								{% endfor %}
 							</select>
 							<div class="dropDownSelect2"></div>
+						</div>
+
+						<div class="spoiler">
+								<input class="spoilerbutton" type="button" value="Si no se encuentras la opcion que buscas haz click aqui" onclick="this.value=this.value=='Si no se encuentras la opcion que buscas haz click aqui'?'Ocultar':'Si no se encuentras la opcion que buscas haz click aqui';">
+								<div class="spoiler">
+									<div>
+										IMPORTANTE: Selecciona la opcion "No esta registrado mi subinstituto" y escribe tu subinstituto en este campo
+										<div class="wrap-input100 validate-input bg1" data-validate="Introduzca el subinstituto" >
+											<span class="label-input100"> SUBINSTITUTO A SOLICITAR *</span>
+											<input class="form-control" type="text" name="subinstitute_required" id="subinstitute_required" placeholder="Escriba el subinstituto que pertenece">
+										 </div>
+							 		</div>
+								</div>
 						</div>
 					</div>
 

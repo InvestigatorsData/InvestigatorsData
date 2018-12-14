@@ -32,7 +32,7 @@
 
       Correo: * <input type="email" name="email" value ="{{ person_email }}" required/>  <br/> <br/>
 
-      Teléfono: * <input type="text" name="personal_telephone" pattern="[0-9]{8,}" title="Ingresa solo digitos y al menos 8 digitos" value="{{ person_personal_telephone }}" required /> <button> <img src="{% static 'images/icons/internet.png' %}"> </button> <button> <img src="{% static 'images/icons/lock.png' %}"> </button> <br/> <br/>
+      Teléfono: * <input type="text" name="personal_telephone" pattern="[0-9]{8,}" title="Ingresa solo digitos y al menos 8 digitos" value="{{ person_personal_telephone }}" required /> <br/> <br/>
 
               <div class="wrap-input100 input100-select bg1">
                 <span class="form-control"> ESTADO *</span>
@@ -130,18 +130,6 @@
               pattern=".{8,}" title="Ingresa un password de al menos 8 caracteres">
             <span id='message'></span>
           </div>
-        </div>
-
-        ¿Estaba su institución al momento de regístrarse?
-
-        <input type="button" value="Sí">
-        <input type="checkbox" id="spoiler1"></input> <label for="spoiler1">No</label>
-
-        <div class="spoiler">
-          <p>Por favor, llene los siguientes campos.</p> <br/>
-          Nombre de la institución:  <input type="text" name="ins" />  <br/>
-          Campus: <input type="text" name="campus" />  <br/>
-        </div> <br/>
         </div>
 
       <input type="submit" value="Guardar cambios" formmethod="POST">
