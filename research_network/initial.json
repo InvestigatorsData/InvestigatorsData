@@ -319,7 +319,7 @@
       "value" : 0
     }
   },
-  
+
   {
     "model": "database.College",
     "pk": 0,
@@ -339,7 +339,7 @@
       "url_name_college" : "Instituto_Politecnico_Nacional",
       "telephone" : "94736538",
       "address" : "Unidad Profesional Adolfo López Mateos, Zacatenco, Del. Gustavo A. Madero"
-    } 
+    }
   },
 
   {
@@ -350,7 +350,7 @@
       "url_name_college" : "Universidad_Autonoma_Metropolitana",
       "telephone" : "34567890",
       "address" : "Prol. Canal de Miramontes 3855, Ex Hacienda San Juan de Dios, Tlalpan, C.P. 14387 Ciudad de México"
-    } 
+    }
   },
 
   {
@@ -361,7 +361,7 @@
       "url_name_college" : "Universidad_Autonoma_de_Guadalajara",
       "telephone" : "12436509",
       "address" : "Av. Patria 1201 Col. Lomas del Valle 3a. Sección Apartado Postal 1-440 C.P. 451293​ Guadalajara, Jalisco"
-    } 
+    }
   },
 
   {
@@ -372,7 +372,7 @@
       "url_name_college" : "Universidad_Autonoma_de_Nuevo_Leon",
       "telephone" : "03049586",
       "address" : " Pedro de Alba S/N, Niños Héroes, Ciudad Universitaria, San Nicolás de los Garza, N.L."
-    } 
+    }
   },
 
   {
@@ -383,7 +383,7 @@
       "url_name_college" : "Tecnologico_de_Monterrey",
       "telephone" : "48849554",
       "address" : "Eugenio Garza Sada 2501, Col. Tecnológico. Monterrey, Nuevo León"
-    } 
+    }
   },
 
   {
@@ -394,7 +394,16 @@
       "url_name_college" : "Universidad_Autonoma_de_Queretaro",
       "telephone" : "19238975",
       "address" : "Centro Universitario, Cerro de las Campanas s/n C.P. 76010. Santiago de Querétaro, Qro. México."
-    } 
+    }
+  },
+
+  {
+    "model": "database.College",
+    "pk" : 7,
+    "fields":{
+      "name" : "Universidad No Registrada",
+      "url_name_college" : "Universidad_No_Registrada"
+    }
   },
 
   {
@@ -485,8 +494,19 @@
   },
 
   {
+    "model": "database.Campus",
+    "pk" : 7,
+    "fields":{
+      "state" : 28,
+      "college" : 7,
+      "name" : "Campus No Registrado",
+      "url_name_campus" : "Campus_No_Registrado"
+    }
+  },
+
+  {
     "model": "database.Institutes",
-    "pk": 0, 
+    "pk": 0,
     "fields": {
       "campus": 0,
       "college": 0,
@@ -498,7 +518,7 @@
   },
   {
     "model": "database.Institutes",
-    "pk": 1, 
+    "pk": 1,
     "fields": {
       "campus": 0,
       "college": 0,
@@ -510,7 +530,7 @@
   },
   {
     "model": "database.Institutes",
-    "pk": 2, 
+    "pk": 2,
     "fields": {
       "campus": 1,
       "college": 1,
@@ -522,7 +542,7 @@
   },
   {
     "model": "database.Institutes",
-    "pk": 3, 
+    "pk": 3,
     "fields": {
       "campus": 2,
       "college": 2,
@@ -534,7 +554,7 @@
   },
   {
     "model": "database.Institutes",
-    "pk": 4, 
+    "pk": 4,
     "fields": {
       "campus": 3,
       "college": 3,
@@ -546,7 +566,7 @@
   },
   {
     "model": "database.Institutes",
-    "pk": 5, 
+    "pk": 5,
     "fields": {
       "campus": 4,
       "college": 4,
@@ -558,7 +578,7 @@
   },
   {
     "model": "database.Institutes",
-    "pk": 6, 
+    "pk": 6,
     "fields": {
       "campus": 5,
       "college": 5,
@@ -566,6 +586,16 @@
       "address": "Ave. Centenario s/n, 10058 Aguascalientes",
       "telephone": "13434346",
       "url_name_institute": "Instituto_de_Artes_Visuales(Tecnologico_de_Monterrey)"
+    }
+  },
+  {
+    "model": "database.Institutes",
+    "pk": 7,
+    "fields": {
+      "campus": 7,
+      "college": 7,
+      "name": "Instituto No Registrado",
+      "url_name_institute": "Instituto_No_Registrado"
     }
   },
   {
@@ -636,6 +666,15 @@
       "name": "Division de Diseño(Tecnologico de Monterrey)",
       "url_name_subinstitute": "Division_de_Diseño(Tecnologico_de_Monterrey)",
       "telephone": "12234212"
+    }
+  },
+  {
+    "model": "database.Subinstitutes",
+    "pk" : 7,
+    "fields" : {
+      "institute": 7,
+      "name": "Subinstituto No Registrado",
+      "url_name_subinstitute": "Subinstituto_No_Registrado"
     }
   }
 ]

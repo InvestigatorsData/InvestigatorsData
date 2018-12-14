@@ -1,9 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
-
 from .models import *
 
+#Modulo donde se registran los modelos en el sitio de administracion de Django
 admin.site.register(States)
 admin.site.register(Campus)
 admin.site.register(College)
