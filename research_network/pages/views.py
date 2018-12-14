@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import Http404
-# Create your views here.
 from django.views.generic import TemplateView
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView
@@ -10,6 +9,7 @@ from django.views import generic
 from database.models import *
 from django.views.generic import ListView,DetailView
 
+#Clases que declaran htmls como templates de Django
 class BasePageView(TemplateView):
     template_name = 'base.html'
 class RegisterPageView(TemplateView):
@@ -32,6 +32,8 @@ class ChangePasswordDone(TemplateView):
     template_name = 'password_reset_done.html'
 class ChangePasswordView(TemplateView):
     template_name = 'changePassword.html'
+class GroupsView(TemplateView):
+    template_name = 'groups.html'
 class UserProfielView(DetailView):
     model = People
     template_name = 'profile.html'
@@ -47,19 +49,21 @@ class SubinstituteProfielView(DetailView):
 class GroupProfielView(DetailView):
     model = Groups
     template_name = 'group_profile.html'
-    slug_field = 'url_name_group'    
+    slug_field = 'url_name_group'
 class CampusProfileView(DetailView):
     model = Campus
     template_name = 'campus_profile.html'
     slug_field = 'url_name_campus'
 
+#Metodo que muestra la vista de publicaciones con la informacion necesaria
 def paper_view(request, slug):
     papers = Papers.objects.get(url_name_paper=slug)
     autors = papers.people_set.all()
     return render(request, "paper_profile.html", context={'autors':autors, 'papers':papers,})
 
+#Metodo que muestra la vista de colegios con la informacion necesaria
 def college_view(request, slug):
-    required_college = College.objects.get(url_name_college=slug)    
+    required_college = College.objects.get(url_name_college=slug)
     institutes = Institutes.objects.filter(college=required_college)
     college_campus =Campus.objects.filter(college=required_college)
     return render(request, "college_profile.html", context={'institutes':institutes, 'college':required_college, 'college_campus':college_campus,})
@@ -79,6 +83,11 @@ def subinstitute_view(request, slug):
     people = People.objects.filter(subinstitute=required_subinstitute)
     return render(request, "subinstitute_profile.html", context={'subinstitutes': required_subinstitute, 'people': people,})
 
+#Metodo que muestra la vista de grupos con la informacion necesaria
+def group_view(request,slug):
+    groups = Groups.objects.get(url_name_group=slug)
+    integrantes = groups.people_set.all()
+    return render(request,"group_profile.html",context={'groups':groups,'integrantes':integrantes})
 
 
 

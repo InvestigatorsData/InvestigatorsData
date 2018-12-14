@@ -18,6 +18,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
 </head>
 <header>
+
 <div class="container">
     <!-- This checkbox will give us the toggle behavior, it will be hidden, but functional -->
     <input id="toggle" type="checkbox">
@@ -31,16 +32,17 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     </label>
 
     <!-- The nav menu -->
-     <img href="{% url 'base' %}" src="{% static 'images/icons/renain.png' %}" alt="logo">
+
+     <a href="{% url 'base' %}">   <img  class="r" src="{% static 'images/icons/renain.png' %}" alt="logo"> </a>
+     <a href="{% url 'base' %}">   <img class="h" src="{% static 'images/icons/help.png' %}" alt="logo"> </a>
+
+
      {% if user.is_authenticated %}
      {% if user.is_superuser %}
-     <div id="admin_login"><a href="/admin/"> Ingresar como administrador </a> </div>
+     <div id="admin_login"><a href="/admin/" style="color: #ffffff">Ingresar como administrador </a> </div>
      {% endif %}
      {% endif %}
-    <nav class="nav logo">
-        <a class="nav-item" href="">Publicaciones &nbsp;</a>
-        <a class="nav-item" href="">Grupos &nbsp;</a>
-    </nav>
+
 </div>
 </header>
 
@@ -57,7 +59,12 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container" style="width: 100%" style="height:30%">
+             {% if people.img %}
+                <img src = "{{ people.img.url }}" alt="{{ people.name }}" style="height:60%;width: 60%; display: block;margin-left: auto;margin-right: auto;margin-top: auto;">
+            {% else %}
           <img src="/static/images/icons/user.png" style="width:100%" alt="Avatar">
+                  {% endif %}
+
           <div class="w3-display-bottomleft w3-container w3-text-black">
             <h2></h2>
           </div>
@@ -82,13 +89,11 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     <div  class="w3-twothird" style="width: 65%" style="height:80%">
 
       <div id="scroll" class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Más Opciones</h2>
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Perfil</h2>
         <div class="w3-container">
 
-              <h5 class="w3-opacity"> <br><a class="link" href="#"><b>Grupos</b></h5> </a>
+              <h5 class="w3-opacity"> <br><a class="link" href="{% url 'group_list' slug=people.url_name%}"><b>Grupos</b></h5>
               <h5 class="w3-opacity"> <br><a class="link" href="{% url 'paper_list' slug=people.url_name %}"><b>Publicaciones</b></h5>
-              <h5 class="w3-opacity"> <br><a class="link" href="#"><b>Otro algo más</b></h5>
-              <h5 class="w3-opacity">  <br><a class="link" href="#"><b>Algo interesante</b></h5>
 
               {% if people.url_name == user.username %}
                   <h5 class="w3-opacity">  <br><a class="link" href="{% url 'edit_profile' slug=people.url_name %}"><b>Editar perfil</b></h5>

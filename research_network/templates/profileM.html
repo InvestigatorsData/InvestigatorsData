@@ -24,7 +24,7 @@
     </header>
     <br/> <br/> &nbsp;&nbsp;&nbsp;&nbsp;<b>Editar Perfil </b> <br/> <br/>
 
-    <form action="{% url 'edit_profile' user.username %}" method="POST" name="user_edit">
+    <form action="{% url 'edit_profile' user.username %}" method="POST" name="user_edit" enctype="multipart/form-data">
       {% csrf_token %}
     <div style="width: 530px; margin: 0 auto;">
 
@@ -33,6 +33,8 @@
       Correo: * <input type="email" name="email" value ="{{ person_email }}" required/>  <br/> <br/>
 
       Teléfono: * <input type="text" name="personal_telephone" pattern="[0-9]{8,}" title="Ingresa solo digitos y al menos 8 digitos" value="{{ person_personal_telephone }}" required /> <br/> <br/>
+
+      Foto de perfil: <input type="file" name="img" value="{{ person_cover }}"></br></br>
 
               <div class="wrap-input100 input100-select bg1">
                 <span class="form-control"> ESTADO *</span>

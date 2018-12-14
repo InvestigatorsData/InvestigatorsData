@@ -357,7 +357,7 @@
       "url_name_college" : "Instituto_Politecnico_Nacional",
       "telephone" : "94736538",
       "address" : "Unidad Profesional Adolfo López Mateos, Zacatenco, Del. Gustavo A. Madero"
-    } 
+    }
   },
   {
     "model": "database.College",
@@ -367,7 +367,7 @@
       "url_name_college" : "Universidad_Autonoma_Metropolitana",
       "telephone" : "34567890",
       "address" : "Prol. Canal de Miramontes 3855, Ex Hacienda San Juan de Dios, Tlalpan, C.P. 14387 Ciudad de México"
-    } 
+    }
   },
   {
     "model": "database.College",
@@ -377,7 +377,7 @@
       "url_name_college" : "Universidad_Autonoma_de_Guadalajara",
       "telephone" : "12436509",
       "address" : "Av. Patria 1201 Col. Lomas del Valle 3a. Sección Apartado Postal 1-440 C.P. 451293​ Guadalajara, Jalisco"
-    } 
+    }
   },
   {
     "model": "database.College",
@@ -387,7 +387,7 @@
       "url_name_college" : "Universidad_Autonoma_de_Nuevo_Leon",
       "telephone" : "03049586",
       "address" : " Pedro de Alba S/N, Niños Héroes, Ciudad Universitaria, San Nicolás de los Garza, N.L."
-    } 
+    }
   },
   {
     "model": "database.College",
@@ -397,7 +397,7 @@
       "url_name_college" : "Tecnologico_de_Monterrey",
       "telephone" : "48849554",
       "address" : "Eugenio Garza Sada 2501, Col. Tecnológico. Monterrey, Nuevo León"
-    } 
+    }
   },
   {
     "model": "database.College",
@@ -407,7 +407,7 @@
       "url_name_college" : "Universidad_Autonoma_de_Queretaro",
       "telephone" : "19238975",
       "address" : "Centro Universitario, Cerro de las Campanas s/n C.P. 76010. Santiago de Querétaro, Qro. México."
-    } 
+    }
   },
   {
     "model": "database.Campus",
@@ -507,7 +507,7 @@
   },
   {
     "model": "database.Institutes",
-    "pk": 0, 
+    "pk": 0,
     "fields": {
       "campus": 0,
       "college": 0,
@@ -601,7 +601,6 @@
       "url_name_institute": "Instituto_de_Artes_Visuales(Tecnologico_de_Monterrey)"
     }
   },
-
   {
     "model": "database.Subinstitutes",
     "pk" : 0,
@@ -682,5 +681,5 @@
       "url_name_subinstitute": "Division_de_Diseño(Tecnologico_de_Monterrey)",
       "telephone": "12234212"
     }
-  }
+  },
 ]

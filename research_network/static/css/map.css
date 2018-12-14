@@ -17,65 +17,19 @@ a {
 
 }
 
+
 img.h {
-  margin-left: 85%;
-  width: 3% !important;
-  height: 3% !important;
+
+  width: 100% !important;
+  height: 100% !important;
 
 }
 
-img.r {
-  margin-left: 3%;
-  width: 10% !important;
-  height: 10% !important;
-}
 
-.home {
-  border: none;
-  background: #3a7999;
-  color: #f2f2f2;
-  padding: 10px;
-  font-size: 18px;
-  border-radius: 5px;
-  position: relative;
-  box-sizing: border-box;
-  transition: all 500ms ease;
-}
 
-.input {
-  border: none;
-  background: #3a7999;
-  color: #f2f2f2;
-  padding: 10px;
-  font-size: 18px;
-  border-radius: 5px;
-  position: relative;
-  box-sizing: border-box;
-  transition: all 500ms ease;
-
-}
-
-#button:hover{
-   color: #06D181;
-   background-color: #3E5B77;
- }
-
- #button:hover{
-    color: #06D181;
-    background-color: #3E5B77;
-  }
 .container {
-  position: relative;
-  margin: -15px auto 0;
-  width: 100%;
-  height: 20%;
-  background-color: #404245;
-  border-radius: 20px;
-}
-
-#container {
   padding: 10px;
-  height: 20%;
+  height: 130px;
   width:auto;
   color: white !important;
   background-color: #404245 !important;
@@ -116,7 +70,7 @@ img.r {
 }
 
 #toggle:focus ~ .toggle-container .button-toggle {
-  box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.1), inset 0 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: -0 0 0 8px rgba(0, 0, 0, 0.1), inset 0 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 #toggle:checked ~ .toggle-container .button-toggle {
@@ -385,10 +339,10 @@ img.r {
 
 .circle {
   display: inline-block;
-  width: 85px;
-  height: 85px;
+  width: 30px;
+  height: 30px;
   background-color: pink;
-  border-radius: 100%;
+  border-radius: 60%;
 }
 
 .text span {

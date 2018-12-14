@@ -76,7 +76,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <h5 class="w3-opacity"><b>Subinstitutos pertenecientes a la institucion</b></h5>
           {% if subinstitutes %}
           {% for subinstitute in subinstitutes %}
-          <p> {{subinstitute.name}}</p> <a href="/subinstitute/{{subinstitute.url_name_subinstitute}}"> <font color="0a4a8e"> Ver informacion </font></a> </p> 
+          <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ subinstitute.name }} <a href="/subinstitute/{{subinstitute.url_name_subinstitute}}"> <font color="0a4a8e"> Ver informacion </font></a> </p> 
           {% endfor %}
           {% else %}
           <p> No hay subinstituciones en este instituto </p>
