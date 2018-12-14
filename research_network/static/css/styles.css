@@ -74,6 +74,8 @@ img.r {
 }
 
 #container {
+  position: relative;
+  margin: -15px auto 0;
   padding: 10px;
   height: 20%;
   width:auto;

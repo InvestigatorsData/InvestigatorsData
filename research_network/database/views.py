@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from database.forms import UserProfileInfoForm
 from django.contrib.auth import authenticate, login, logout
@@ -11,9 +12,11 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
-from .models import Institutes, Subinstitutes, States, People, Groups, Papers
+from .models import Institutes, Subinstitutes, States, People, Groups, Papers,Campus
 from .forms import *
+from django.conf import settings
 
+#Metodo que redirecciona al menu principal
 def index(request):
     return render(request, 'base.html')
 
@@ -27,7 +30,9 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('base'))
 
+#Metodo que llena el mapa con los investigadores y redirecciona a las busquedas del menu principal
 def base(request):
+    states = States.objects.all().order_by('name')
     Aguascalientes = States.objects.get(name = 'Aguascalientes')
     BajaCaliNort = States.objects.get(name = 'Baja California')
     BajaCaliSur = States.objects.get(name = 'Baja California Sur')
@@ -60,7 +65,7 @@ def base(request):
     Veracruz = States.objects.get(name = 'Veracruz')
     Yucatan = States.objects.get(name = 'Yucatán')
     Zacatecas = States.objects.get(name = 'Zacatecas')
-    return render(request, 'base.html', context={'Aguascalientes' : Aguascalientes,
+    return render(request, 'base.html', context={'states': states, 'Aguascalientes' : Aguascalientes,
     'BajaCaliNort' : BajaCaliNort, 'BajaCaliSur' : BajaCaliSur, 'Campeche' : Campeche,
     'Chiapas' : Chiapas, 'Chihuahua' : Chihuahua, 'Coahuila' : Coahuila, 'Colima' : Colima,
     'CiudadMX' : CiudadMX, 'Durango' : Durango, 'Guanajuato' : Guanajuato,
@@ -71,39 +76,45 @@ def base(request):
     'Sinaloa' : Sinaloa, 'Sonora' : Sonora, 'Tabasco' : Tabasco, 'Tamaulipas' : Tamaulipas,
     'Tlaxcala' : Tlaxcala, 'Veracruz' : Veracruz, 'Yucatan' : Yucatan, 'Zacatecas' : Zacatecas})
 
+#Metodo que no permite que los usuarios registren nombres repetidos
 def name_is_repeated(name_required, request):
     try:
         person = People.objects.get(name=name_required)
     except:
-        return False 
+        return False
     if person.user == request.user:
-        return False    
-    return True   
+        return False
+    return True
 
+#Metodo que no permite que los usuarios registren emails repetidos
 def email_is_repeated(email_required, request):
     try:
         person = People.objects.get(email=email_required)
     except:
         return False
     if person.user == request.user:
-        return False    
-    return True 
+        return False
+    return True
 
+#Metodo que no permite que los usuarios registren emails repetidos
 def username_is_repeated(username_required, request):
     try:
         user = User.objects.get(username=username_required)
     except:
         return False
     if user == request.user:
-        return False    
-    return True 
+        return False
+    return True
 
+#Metodo que no permite que los usuarios registren publicaciones repetidas
 def topic_is_repeated(topic_required, request):
     try:
         paper = Papers.objects.get(url_name_paper=topic_required)
     except:
-        return False 
-    return True                      
+        return False
+    return True
+
+#Metodo que no permite que los usuarios registren grupos repetidos
 def group_is_repeated(name, request):
     try:
         group = Groups.objects.get(url_name_group=name)
@@ -111,7 +122,7 @@ def group_is_repeated(name, request):
         return False
     return True
 
-
+#Metodo que registra al usuario en la base de datos y envia el correo de confirmacion
 def user_signup(request):
     registered = False
     institutes = Institutes.objects.all().order_by('name')
@@ -121,15 +132,25 @@ def user_signup(request):
         profile_form = UserProfileInfoForm(data=request.POST)
         if profile_form.is_valid():
             profile = profile_form.save(commit=False)
+            email_report = "Un usuario requiere los siguientes registros en la base de datos:" + '\n'
+            report_data = False
+            institute_required = profile_form.cleaned_data.get('institute')
+            subinstitute_required = profile_form.cleaned_data.get('subinstitute')
+            if institute_required.name == 'No esta registrado mi instituto':
+                report_data = True
+                email_report = email_report + "Instituto: " + request.POST.get('institute_required') + '\n'
+            if subinstitute_required.name == 'No esta registrado mi subinstituto':
+                report_data = True 
+                email_report =  email_report + "Subinstituto: " + request.POST.get('subinstitute_required')
             name = profile_form.cleaned_data.get('name')
             username_normalize = name.replace(' ','')
             email = profile_form.cleaned_data.get('email')
             if name_is_repeated(name, request):
                 return HttpResponse("Ya existe un usuario registrado con ese nombre")
             if email_is_repeated(email, request):
-                return HttpResponse("Ya existe un usuario registrado con ese email")    
+                return HttpResponse("Ya existe un usuario registrado con ese email")
             if username_is_repeated(username_normalize, request):
-                return HttpResponse("Ya existe un usuario registrado con un nombre similar")    
+                return HttpResponse("Ya existe un usuario registrado con un nombre similar")
             password = request.POST.get('password')
             user = User.objects.create_user(username_normalize, email, password)
             user.save()
@@ -139,6 +160,11 @@ def user_signup(request):
             registered = True
             user.is_active = False
             current_site = get_current_site(request)
+            admins = User.objects.filter(is_superuser=True)
+            if admins:
+                for admin in admins:
+                    if report_data:
+                        send_mail("Agregar nuevos registros", email_report, 'renainsoporte@gmail.com', [admin.email], fail_silently=False,)
             mail_subject = 'Activa tu cuenta de RENAIN'
             message = render_to_string('acc_active_email.html', {
                 'user': user,
@@ -159,6 +185,7 @@ def user_signup(request):
     return render(
         request, 'signup.html', context={'institutes':institutes, 'subinstitutes': subinstitues, 'states': states,})
 
+#Metodo que permite la edicion del usuario
 def user_edit(request, slug):
     institutes = Institutes.objects.all().order_by('name')
     subinstitues = Subinstitutes.objects.all().order_by('name')
@@ -169,21 +196,22 @@ def user_edit(request, slug):
         return HttpResponse(" Usuario no registrado")
     person_name = person.name
     person_email = person.email
+    person_cover = person.img
     person_personal_telephone = person.personal_telephone
     person_state = person.state
     person_academic_level = person.academic_level
     person_degree = person.degree
     person_institute = person.institute
     person_subinstitute = person.subinstitute
-
+    #Si el usuario guarda los cambios, actualizamos la base de datos
     if request.method == 'POST':
-        modify_form = UserProfileInfoForm(data=request.POST)
+        modify_form = UserProfileInfoForm(request.POST,request.FILES)
         if modify_form.is_valid():
             person_edit = People.objects.get(user=request.user)
             if name_is_repeated(modify_form.cleaned_data.get('name'), request):
                 return HttpResponse("Ya existe un usuario registrado con ese nombre")
             if email_is_repeated(modify_form.cleaned_data.get('email'), request):
-                return HttpResponse("Ya existe un usuario registrado con ese email")    
+                return HttpResponse("Ya existe un usuario registrado con ese email")
             person_edit.name= modify_form.cleaned_data.get('name')
             new_username_normalize = person_edit.name.replace(' ','')
             if username_is_repeated(new_username_normalize, request):
@@ -194,26 +222,44 @@ def user_edit(request, slug):
             person_edit.academic_level =  modify_form.cleaned_data.get('academic_level')
             person_edit.degree = modify_form.cleaned_data.get('degree')
             person_edit.personal_telephone = modify_form.cleaned_data.get('personal_telephone')
+            person_edit.img = modify_form.cleaned_data['img']
+            #Actualizamos el valor del estado viejo
+            old_state = person_edit.state
+            obj_old_state = States.objects.get(name=str(old_state))
+            value_old = int(obj_old_state.value)
+            value_new = value_old - 1
+            if(value_new == -1):
+                value_new = 0
+            obj_old_state.value = value_new
+            obj_old_state.save()
+            #Actualizamos el valor del estado nuevo
             person_edit.state = modify_form.cleaned_data.get('state')
+            new_state = person_edit.state
+            obj_new_state = States.objects.get(name=str(new_state))
+            value_old_new = int(obj_new_state.value)
+            value_new_new = value_old_new + 1
+            obj_new_state.value = value_new_new
+            obj_new_state.save()
             person_edit.subinstitute = modify_form.cleaned_data.get('subinstitute')
             person_edit.institute = modify_form.cleaned_data.get('institute')
             person_edit.user.username = new_username_normalize
             person_edit.user.email = person_edit.email = modify_form.cleaned_data.get('email')
             if len(password) > 0 :
-                person_edit.user.set_password(password)    
+                person_edit.user.set_password(password)
             person_edit.user.save()
             person_edit.save()
             slug = new_username_normalize
             return HttpResponseRedirect(reverse('login'))
         else:
-            return HttpResponse("Ocurrio un error con el formulario")    
+            return HttpResponse("Ocurrio un error con el formulario")
     else:
         modify_form = UserProfileInfoForm()
-    return render (request, 'profileM.html', context={'institutes':institutes, 'subinstitutes': subinstitues, 'states': states, 
-                    'person_name': person_name, 'person_email': person_email, 'person_personal_telephone': person_personal_telephone, 
+    return render (request, 'profileM.html', context={'institutes':institutes, 'subinstitutes': subinstitues, 'states': states,
+                    'person_name': person_name, 'person_email': person_email,'person_cover':person_cover,'person_personal_telephone': person_personal_telephone,
                     'person_state': person_state, 'person_academic_level': person_academic_level, 'person_degree': person_degree,
-                    'person_institute': person_institute, 'person_subinstitute': person_subinstitute, })    
+                    'person_institute': person_institute, 'person_subinstitute': person_subinstitute, })
 
+#Metodo que da el estado de activo al usuario una vez que aceptan el correo
 def activate(request, uidb64, token):
     try:
         uid = urlsafe_base64_decode(uidb64).decode()
@@ -230,11 +276,15 @@ def activate(request, uidb64, token):
         state.value = value_new
         state.save()
         user_ac.save()
+        if person.institute.name == "No esta registrado mi instituto" or person.subinstitute.name == "No esta registrado mi subinstituto":
+            email_request = "Se han enviado los datos academicos que solicitaste, espera a que los administradores los agreguen y posteriormente actualiza tus datos de perfil" + '\n' +  "No dudes en contactarnos para cualquier pregunta o aclaración en el email renainsoporte@gmail.com"  + '\n' + "¡Saludos!" + '\n' + "El equipo de RENAIN"
+            send_mail("Solicitud de registro de datos", email_request, 'renainsoporte@gmail.com', [person.email], fail_silently=False,)
         login(request, user_ac)
         return redirect(reverse('profile',args=(user_ac.username,)))
     else:
         return HttpResponse('El link de activación es inválido')
 
+#Metodo que permite al usuario acceder con su contraseña y password
 def user_login(request):
     if request.method == 'POST':
         email_request = request.POST.get('email')
@@ -265,6 +315,7 @@ def user_login(request):
     else:
         return render(request, 'login.html', {})
 
+#Metodo que envia un correo para cambio de contraseña
 def email_reset(request):
     if request.method == 'POST':
         to_email = request.POST.get('email')
@@ -288,6 +339,7 @@ def email_reset(request):
     else:
         return render(request, 'password_reset.html', {})
 
+#Metodo que permite el cambio de contraseña una vez activado el link de cambio
 def reset_password(request, uidb64, token):
     try:
         uid = urlsafe_base64_decode(uidb64).decode()
@@ -305,17 +357,26 @@ def reset_password(request, uidb64, token):
     else:
         return HttpResponse('El link de activación es inválido')
 
+#Metodo que permite buscar en todos los campos de la base de datos
 def user_search(request):
     required = request.POST.get('entry')
     people = People.objects.filter(name__icontains=required)
-    institutes = Institutes.objects.filter(name__icontains=required)
-    subinstitutes = Subinstitutes.objects.filter(name__icontains=required)
+    institutes = Institutes.objects.filter(name__icontains=required).exclude(url_name_institute='Instituto_Sin_Registro')
+    subinstitutes = Subinstitutes.objects.filter(name__icontains=required).exclude(url_name_subinstitute='Subinstituto_Sin_Registro')
     groups = Groups.objects.filter(name__icontains=required).distinct()
     papers = Papers.objects.filter(topic__icontains=required).distinct()
     return render(request, "search.html", context={'people':people, 'institutes':institutes, 'subinstitutes':subinstitutes, 'groups':groups, 'papers':papers,'required':required})
 
+#Metodo que permite buscar institutos por estados
+def state_search(request,slug):
+    state_name = request.POST.get('state')
+    state_obj = States.objects.get(url_name_state = slug)
+    campus = Campus.objects.filter(state = state_obj)
+    if request.method == 'POST':
+        return redirect(reverse('search_profile',args=(slug,)))
+    return render(request, "search_state.html", context={'state': state_obj, 'campus':campus,})
 
-
+#Metodo que permite mostrar todas las publicaciones de un usuario
 def paper_list(request,slug):
     person = People.objects.get(url_name=slug)
     name = person.url_name
@@ -324,6 +385,7 @@ def paper_list(request,slug):
     'papers':papers,'name':name,
     })
 
+#Metodo que permite subir publicaciones en el perfil
 def upload_paper(request,slug):
     person = People.objects.get(url_name=slug)
     persons = People.objects.filter().exclude(url_name=slug)
@@ -349,7 +411,14 @@ def upload_paper(request,slug):
     return render(request,'upload_paper.html', {
         'form': form, 'autors':persons,
     })
+def delete_paper(request,slug,pk):
+    person = People.objects.get(url_name=slug)
+    if request.method == 'POST':
+        paper = person.papers.filter(pk=pk)
+        paper.delete()
+    return redirect(reverse('paper_list',args=(slug,)))
 
+#Metodo que permite mostrar todos los grupos de un usuario
 def group_list(request,slug):
     person  = People.objects.get(url_name = slug)
     name = person.url_name
@@ -358,6 +427,7 @@ def group_list(request,slug):
         'groups':groups,'name':name,
     })
 
+#Metodo que permite crear un grupo
 def add_group(request,slug):
     person = People.objects.get(url_name=slug)
     persons = People.objects.filter().exclude(url_name=slug)

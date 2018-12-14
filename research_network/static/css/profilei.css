@@ -34,17 +34,6 @@ img.r {
   transition: all 500ms ease;
 }
 
-#container {
-padding: 10px;
-height: 20%;
-width:auto;
-color: white !important;
-background-color: #404245 !important;
-color: white !important;
-text-align: left !important;
-border-radius: 10px !important;
-}
-
 .input {
   border: none;
   background: #3a7999;
@@ -70,6 +59,7 @@ border-radius: 10px !important;
 
 
 #container {
+  margin: 20px;
   padding: 10px;
   height: 20%;
   width:auto;

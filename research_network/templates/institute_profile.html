@@ -1,5 +1,4 @@
-{% block content %}                                                                                                                    
-{% load static %}
+{% block content %}                                                                                                                    {% load static %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
   <head>
@@ -10,27 +9,15 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-<link rel="stylesheet" href="{% static 'css/links.css' %}">
-<link rel="icon" type="image/png" href=" {% static 'images/icons/favicon.png' %}"/>
+<link rel="stylesheet" href="{% static 'css/papers.css' %}">
+<link rel="icon" heightype="image/png" href=" {% static 'images/icons/favicon.png' %}"/>
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
 </head>
 <header>
 <div class="container">
-    <!-- This checkbox will give us the toggle behavior, it will be hidden, but functional -->
-    <input id="toggle" type="checkbox">
-
-    <!-- IMPORTANT: Any element that we want to modify when the checkbox state changes go here, being "sibling" of the checkbox element -->
-
-    <!-- This label is tied to the checkbox, and it will contain the toggle "buttons" -->
-    <label class="toggle-container" for="toggle">
-        <!-- If menu is open, it will be the "X" icon, otherwise just a clickable area behind the hamburger menu icon -->
-        <span class="button button-toggle"></span>
-    </label>
-
-    <!-- The nav menu -->
-     <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
+    <a href="{% url 'base' %}"> <img class="r" src="{% static 'images/icons/renain.png' %}"> </a> </div>
 </div>
 </header>
 
@@ -62,7 +49,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Campus</b></h5>
-          <p> {{institutes.campus}} <a href="/campus/{{institutes.campus.url_name_campus}}"> <font color="0a4a8e"> Ver informacion </font></a> </p> 
+          <p> {{institutes.campus}}</p>
           <hr>
         </div>
 

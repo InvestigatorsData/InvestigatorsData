@@ -1,7 +1,7 @@
 {% block content %}
 {% load static %}
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,29 +12,25 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/util.css' %}">
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/noui/nouislider.min.css' %}">
-<!--===============================================================================================-->
+<style type="text/css">
+	.spoilerbutton {display:block; border:none; padding: 0px 0px; margin:10px 0px; font-size:100%; font-weight: bold; color:#000000; background-color:transparent; outline:0;
+	}
+	.spoiler {overflow:hidden;}
+	.spoiler > div {-webkit-transition: all 0s ease;-moz-transition: margin 0s ease;-o-transition: all 0s ease;transition: margin 0s ease;}
+	.spoilerbutton[value="Si no se encuentras la opcion que buscas haz click aqui"] + .spoiler > div {margin-top:-500%;}
+	.spoilerbutton[value="Ocultar"] + .spoiler {padding:5px;}
+</style>
 </head>
 <body>
 
@@ -83,7 +79,7 @@
 					</div>
 
 					<div class="wrap-input100 input100-select bg1">
-							<span class="form-control"> ESTADO *</span>
+							<span class="form-control"> ESTADO DONDE INVESTIGA*</span>
 							<div>
 								<select class="js-select2" name="state" required>
 									<option value="" selected disabled hidden>Selecciona</option>
@@ -96,8 +92,7 @@
 								</select>
 								<div class="dropDownSelect2"></div>
 							</div>
-						</div>
-
+					</div>
 
 
 					<div class="wrap-input100 input100-select bg1">
@@ -116,7 +111,7 @@
 						<span class="form-control"> GRADO DE ESTUDIOS *</span>
 						<div>
 							<select class="js-select2" name="degree" required >
-									<option value="" selected disabled hidden>Selecciona</option>
+								<option value="" selected disabled hidden>Selecciona</option>
 								<option>Licenciatura</option>
 								<option>Maestria</option>
 								<option>Doctorado</option>
@@ -139,6 +134,20 @@
 							</select>
 							<div class="dropDownSelect2"></div>
 						</div>
+
+						<div class="spoiler">
+								<input class="spoilerbutton" type="button" value="Si no se encuentras la opcion que buscas haz click aqui" onclick="this.value=this.value=='Si no se encuentras la opcion que buscas haz click aqui'?'Ocultar':'Si no se encuentras la opcion que buscas haz click aqui';">
+								<div class="spoiler">
+									<div>
+										IMPORTANTE: Selecciona la opcion "No esta registrado mi instituto" y escribe tu instituto en este campo
+										<div class="wrap-input100 validate-input bg1" data-validate="Introduzca el instituto" >
+											<span class="label-input100"> INSTITUTO A SOLICITAR *</span>
+											<input class="form-control" type="text" name="institute_required" id="institute_required" placeholder="Escriba el instituto que pertenece">
+										 </div>
+							 		</div>
+								</div>
+						</div>
+
 					</div>
 
 					<div class="wrap-input100 input100-select bg1">
@@ -153,6 +162,19 @@
 								{% endfor %}
 							</select>
 							<div class="dropDownSelect2"></div>
+						</div>
+
+						<div class="spoiler">
+								<input class="spoilerbutton" type="button" value="Si no se encuentras la opcion que buscas haz click aqui" onclick="this.value=this.value=='Si no se encuentras la opcion que buscas haz click aqui'?'Ocultar':'Si no se encuentras la opcion que buscas haz click aqui';">
+								<div class="spoiler">
+									<div>
+										IMPORTANTE: Selecciona la opcion "No esta registrado mi subinstituto" y escribe tu subinstituto en este campo
+										<div class="wrap-input100 validate-input bg1" data-validate="Introduzca el subinstituto" >
+											<span class="label-input100"> SUBINSTITUTO A SOLICITAR *</span>
+											<input class="form-control" type="text" name="subinstitute_required" id="subinstitute_required" placeholder="Escriba el subinstituto que pertenece">
+										 </div>
+							 		</div>
+								</div>
 						</div>
 					</div>
 
@@ -178,14 +200,10 @@
 				$('#message').html('Password incorrecto').css('color', 'red');
 		});
 	</script>
-<!--===============================================================================================-->
 	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-<!--===============================================================================================-->
 	<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
-<!--===============================================================================================-->
 	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
 	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-<!--===============================================================================================-->
 	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
 	<script>
 		$(".js-select2").each(function(){
@@ -208,12 +226,9 @@
 			});
 		})
 	</script>
-<!--===============================================================================================-->
 	<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
 	<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
-<!--===============================================================================================-->
 	<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
-<!--===============================================================================================-->
 	<script src="{% static 'vendor/noui/nouislider.min.js' %}"></script>
 	<script>
 	    var filterBar = document.getElementById('filter-bar');
@@ -238,10 +253,7 @@
 	        $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
 	    });
 	</script>
-<!--===============================================================================================-->
 	<script src="{% static 'js/main.js' %}"></script>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
   window.dataLayer = window.dataLayer || [];

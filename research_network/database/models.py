@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.urls import reverse
-# Create your models here
+
+#Descripcion de los modelos de la base de datos que se usaran
 
 class States(models.Model):
     id_state = models.AutoField(primary_key=True)
@@ -71,7 +72,7 @@ class Subinstitutes(models.Model):
 
     def __str__(self):
         """A string representation of the model."""
-        return self.name        
+        return self.name
 
 class Papers(models.Model):
     id_paper = models.AutoField(primary_key=True)
@@ -79,11 +80,16 @@ class Papers(models.Model):
     publication_date = models.CharField(max_length=200)
     url_name_paper = models.CharField(max_length=200)
     file = models.FileField(upload_to='articles/')
+    cover = models.ImageField(upload_to='articles/covers',null=True,blank=True)
     class Meta:
         db_table = "Papers"
     def __str__(self):
         """A string representation of the model."""
-        return self.topic    
+        return self.topic
+    def delete(self,*args,**kwargs):
+        self.file.delete()
+        self.cover.delete()
+        super().delete(*args,**kwargs)
 
 class Groups(models.Model):
     id_group = models.AutoField(primary_key=True)
@@ -98,6 +104,7 @@ class Groups(models.Model):
 
 class People(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    img = models.ImageField(upload_to='profiles/', null=True, blank=True)
     url_name = models.CharField(max_length=200)
     id_people = models.AutoField(primary_key=True)
     email = models.CharField(max_length=200)

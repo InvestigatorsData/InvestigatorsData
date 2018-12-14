@@ -1,6 +1,6 @@
 from django.conf import settings
 
-
+#Metodo que permite tener una base de datos en mysql o en postgres
 def info():
     db_settings = settings.DATABASES['default']
     if 'postgres' in db_settings['ENGINE']:
@@ -16,4 +16,3 @@ def info():
         'engine': engine,
         'url': url,
         }
-

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
-    <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/renain.png' %}"> </a> </div>
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
 
 
     <!--===============================================================================================-->
@@ -45,8 +45,7 @@
 
     <header>
         <div class="container">
-          <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/renain.png' %}"> </a> </div>
-          <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/help.png' %}"> </a> </div>
+          <a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/renain.png' %}"> </a> </div>
         </div>
     </header>
 
@@ -66,7 +65,7 @@
                             <div id=" People">
                                 {% if people %}
                                 {% for person in people %}
-                                <p class="wrap-input100 validate-input bg1" style="color:black;">{{person.name}} <a href="/profile/{{ person.url_name }}"> <font color="0a4a8e"> Ver perfil </font></a></p>
+                                <p class="wrap-input100 validate-input bg1" style="color:black;">{{person.name}} <a href="/profile/{{person.url_name}}"> <font color="0a4a8e"> Ver perfil </font></a></p>
                                 {% endfor%}
                                 {% else%}
                                 <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron coincidencias</p>
@@ -96,7 +95,7 @@
                                     <div  id="Subinstitutes" >
                                         {% if subinstitutes %}
                                         {% for subinstitute in subinstitutes %}
-                                        <p class="wrap-input100 validate-input bg1" style="color:black;">{{subinstitute.name}} <a href="/subinstitute/{{subinstitute.url_name_subinstitute}}"> <font color="0a4a8e"> Ver informacion </font></a> </p>
+                                        <p class="wrap-input100 validate-input bg1" style="color:black;">{{subinstitute.name}} <a href="/subinstitute/{{subinstitute.url_name_subinstitute}}"><font color="0a4a8e">Ver información</font></a> </p>
                                         {% endfor %}
                                         {% else %}
                                         <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron coincidencias</p>
@@ -111,7 +110,7 @@
                                         <div id="Groups" >
                                             {% if groups %}
                                             {% for group in groups %}
-                                            <p class="wrap-input100 validate-input bg1" style="color:black;">{{group.name}} <a href="/group/{{group.url_name_group}}"> <font color="0a4a8e"> Ver informacion </font></a> </p>
+                                            <p class="wrap-input100 validate-input bg1" style="color:black;">{{group.name}}<a href="/group/{{group.url_name_group}}"><font color="0a4a8e">Ver información</font></a> </p>
                                             {% endfor%}
                                             {% else %}
                                             <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron coincidencias</p>
@@ -125,7 +124,7 @@
                                             <div id="Papers" >
                                                 {% if papers %}
                                                 {% for paper in papers %}
-                                                <p class="wrap-input100 validate-input bg1" style="color:black;">{{paper.topic}} <a href="/paper/{{paper.url_name_paper}}"> <font color="0a4a8e"> Ver informacion </font></a> </p>
+                                                <p class="wrap-input100 validate-input bg1" style="color:black;">{{paper.topic}} <a href="/paper/{{paper.url_name_paper}}"><font color="0a4a8e">Ver información</font></a> </p>
                                                 {% endfor %}
                                                 {% else %}
                                                 <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron coincidencias</p>
@@ -135,13 +134,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-    function get_url(name_string){
-        url = name_string.replace(" ","_")
-        return url 
-    }
-    </script>
 
 
 

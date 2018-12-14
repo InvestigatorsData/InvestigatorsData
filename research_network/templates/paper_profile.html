@@ -1,7 +1,7 @@
-{% block content %}                                                                                                                    
+{% block content %}
 {% load static %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en">
+<html lang="es">
   <head>
     <title>{{papers.topic}}</title>
 <meta charset="UTF-8">
@@ -18,48 +18,36 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </head>
 <header>
 <div class="container">
-    <!-- This checkbox will give us the toggle behavior, it will be hidden, but functional -->
-    <input id="toggle" type="checkbox">
-
-    <!-- IMPORTANT: Any element that we want to modify when the checkbox state changes go here, being "sibling" of the checkbox element -->
-
-    <!-- This label is tied to the checkbox, and it will contain the toggle "buttons" -->
-    <label class="toggle-container" for="toggle">
-        <!-- If menu is open, it will be the "X" icon, otherwise just a clickable area behind the hamburger menu icon -->
-        <span class="button button-toggle"></span>
-    </label>
-
-    <!-- The nav menu -->
-     <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
+  <a href="{% url 'base' %}">   <img class="r" src="{% static 'images/icons/renain.png' %}" alt="logo"> </a>
 </div>
 </header>
 
 <body class="w3-light-grey">
 
-<!-- Page Container -->
 <div class="w3-content w3-margin-top" style="max-width:1000px;">
-
-  <!-- The Grid -->
   <div class="w3-row-padding">
-
-    <!-- Right Column -->
     <div  class="w3-twothird" style="width:100%" style="height:100%">
-
       <div id="scroll" class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i> Datos de la publicacion </h2>
-
+      <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i> Datos de la publicacion </h2>
+       <div class="w3-container">
+            <h5 class="w3-opacity"><b>Portada</b></h5>
+            {% if papers.cover %}
+                <img src = "{{ papers.cover.url }}" alt="{{ papers.topic }}" style="width: 250px; display: block;margin-left: auto;margin-right: auto;">
+            {% else %}
+              <span>Portada no disponible</span>
+                  {% endif %}
+            <hr>
+        </div>
         <div class="w3-container">
             <h5 class="w3-opacity"><b>Tema</b></h5>
             <p> {{papers.topic}} </p>
             <hr>
         </div>
-
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Fecha de publicacion</b></h5>
           <p> {{papers.publication_date}} </p>
           <hr>
         </div>
-
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Autores</b></h5>
           {% for autor in autors %}
@@ -67,24 +55,13 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           {% endfor %}
           <hr>
         </div>
-
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Descargar archivo</b></h5>
           <p> <a href="{{ papers.file.url }}" class="">  <font color="0a4a8e"> Haz click aqui </font></a></p><br>
         </div>
-
       </div>
-
-
-
-    <!-- End Right Column -->
     </div>
-
-  <!-- End Grid -->
-<!-- End Grid -->
 </div>
-
-  <!-- End Page Container -->
 </div>
 
     <div id="footer">

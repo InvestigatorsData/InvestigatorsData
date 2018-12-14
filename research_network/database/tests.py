@@ -14,12 +14,10 @@ from .models import Groups
 from .models import People
 
 class DbEngine(TestCase):
-    """
-    Test that checks that the datbase is PostgreSQL
-    """
     def setUp(self):
         os.environ['ENGINE'] = 'PostgreSQL'
 
+#Prueba que revisa que la base de datos sea en PostgreSQL
     def test_engine_setup(self):
         settings = info()
         self.assertEqual(settings['engine'], 'PostgreSQL')
@@ -50,6 +48,7 @@ class ManageDBTestCase(TestCase):
         user_profile =profile_i, institute=institute_i, subinstitute=subinstitute_ii,
         role=user_role, name="Alexander Hansen")
 
+#Prueba unitaria que revisa que la base de datos inserte datos correctamente
     def test_insert_in_db(self):
         """
         Test that checks the database inserts correctly the data
@@ -72,20 +71,12 @@ class ManageDBTestCase(TestCase):
 
         self.assertEqual(string_insert, "Ciudad de México, UNAM, Ciudad Universitaria, Facultad de Ciencias, Departamento de Matemáticas, Cubículo 2, Administrador, Investigador, Ciencias de la Computación , Grupo Animalitos, Barbara Hamilton")
 
+#Prueba unitaria que revisa que la base de datos haga consultas correctas
     def test_consult_in_db(self):
-        """
-        Test that checks that the database makes correct consults
-        """
-        #SELECT institute FROM People WHERE name LIKE %Alexander%
         person_t= People.objects.get(name__contains = "Alexander")
         self.assertEqual(str(person_t.institute), "Facultad de Ciencias")
-        #print(str(person_t.groups))    
-
-        #SELECT  * FROM People
         person_list = People.objects.all()
         sperson = ''
         for person in person_list:
             sperson = sperson + str(person) + ' '
         self.assertEqual(sperson, "Barbara Hamilton Alexander Hansen ")
-
-        #SELECT * FROM People JOIN Groups

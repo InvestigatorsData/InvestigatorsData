@@ -1,0 +1,135 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Busquedas</title>
+    <link rel="stylesheet" href="{% static 'css/LogIn.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/noui/nouislider.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+
+<body>
+    <header>
+        <div id="container">
+          <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/renain.png' %}"> </a> </div>
+
+        </div>
+    </header>
+    <div class="form">
+        <div class="container-contact100">
+            <div class="wrap-contact100">
+                <form class="contact100-form validate-form">
+                    <align="left">
+                        <p style="color: white;">
+                            <font size=6>Resultados de las busquedas de: {{state}}</font>
+                        </p>
+                              <align="left">
+                                <p style="color: #3ccaed;">
+                                    <font size=5>Campus</font>
+                                </p>
+
+                                <br>
+                                <div  id="Campus" >
+                                    {% if campus %}
+                                    {% for campi in campus %}
+                                    <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ campi.name }} <a href="/campus/{{campi.url_name_campus}}"> <font color="0a4a8e"> Ver informacion </font></a></p>
+                                    {% endfor %}
+                                    {% else %}
+                                    <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron coincidencias</p>
+                                    {% endif %}
+                                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+    function get_url(name_string){
+        url = name_string.replace(" ","_")
+        return url
+    }
+    </script>
+    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <script>
+        $(".js-select2").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+            $(".js-select2").each(function () {
+                $(this).on('select2:close', function (e) {
+                    if ($(this).val() == "Please chooses") {
+                        $('.js-show-service').slideUp();
+                    }
+                    else {
+                        $('.js-show-service').slideUp();
+                        $('.js-show-service').slideDown();
+                    }
+                });
+            });
+        })
+    </script>
+    <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+    <script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+    <script src="{% static 'vendor/noui/nouislider.min.js' %}"></script>
+    <script>
+        var filterBar = document.getElementById('filter-bar');
+        noUiSlider.create(filterBar, {
+            start: [1500, 3900],
+            connect: true,
+            range: {
+                'min': 1500,
+                'max': 7500
+            }
+        });
+        var skipValues = [
+            document.getElementById('value-lower'),
+            document.getElementById('value-upper')
+        ];
+        filterBar.noUiSlider.on('update', function (values, handle) {
+            skipValues[handle].innerHTML = Math.round(values[handle]);
+            $('.contact100-form-range-value input[name="from-value"]').val($('#value-lower').html());
+            $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
+        });
+    </script>
+    <script src="js/main.js"></script>
+    <script async src="{% static 'https://www.googletagmanager.com/gtag/js?id=UA-23581568-13' %}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-23581568-13');
+    </script>
+
+    <div id="footer">
+        <p>Hecho en México, todos los derechos reservados 2018-2019. Esta página
+            puede ser reproducida con fines no lucrativos, siempre y cuando no se
+            mutile, se cite la fuente completa y su dirección electrónica. De otra
+            forma requiere permiso previo por escrito de la Institución. </p>
+    </div>
+</body>
+</html>
+{% endblock %}
