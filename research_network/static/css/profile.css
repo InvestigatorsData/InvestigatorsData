@@ -9,7 +9,6 @@ width: 60px;
 border-radius: 2px;
 background-color: gray;
 
-
 cursor: pointer;
 }
 /* Estilo botón cuando su INPUT está seleccionado */
@@ -34,4 +33,9 @@ opacity: 1;
 img {
   width: 10%;
   height: 10%;
+}
+
+img.map {
+  width: 100%;
+  height: 100%;
 }

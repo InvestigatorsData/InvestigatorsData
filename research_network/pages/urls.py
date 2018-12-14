@@ -25,5 +25,9 @@ urlpatterns = [
     path('reset/',database.views.email_reset, name='change_password_sent'),
     path('reset/<uidb64>/<token>/',database.views.reset_password, name='changePassword'),
     path('profile/<slug>/groups/', database.views.group_list, name="group_list"),
+    path('help-home/', views.HomeHelp.as_view(), name = 'help_home'),
+    path('help-register/', views.RegisterHelp.as_view(), name = 'help_register'),
+    path('help-login/', views.LoginHelp.as_view(), name = 'help_login'),
+
 
 ]
