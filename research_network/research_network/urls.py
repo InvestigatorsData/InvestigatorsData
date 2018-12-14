@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.conf.urls import url, include
 from django.urls import path,include
-from database.views import paper_list,upload_paper,group_list,add_group
+from database.views import paper_list,upload_paper,group_list,add_group,delete_paper
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -13,6 +13,7 @@ urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('profile/<slug>/papers/upload/',upload_paper,name = "upload_paper" ),
     path('profile/<slug>/papers/', paper_list, name="paper_list"),
+    path('profile/<slug>/papers/<int:pk>', delete_paper, name="delete_paper"),
     path('profile/<slug>/groups/add/',add_group,name = "add_group" ),
 
 ]

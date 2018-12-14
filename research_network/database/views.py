@@ -406,6 +406,12 @@ def upload_paper(request,slug):
     return render(request,'upload_paper.html', {
         'form': form, 'autors':persons,
     })
+def delete_paper(request,slug,pk):
+    person = People.objects.get(url_name=slug)
+    if request.method == 'POST':
+        paper = person.papers.filter(pk=pk)
+        paper.delete()
+    return redirect(reverse('paper_list',args=(slug,)))
 
 #Metodo que permite mostrar todos los grupos de un usuario
 def group_list(request,slug):

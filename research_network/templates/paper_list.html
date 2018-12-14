@@ -37,6 +37,7 @@
             <th>Tema</th>
             <th>Fecha de publicaion</th>
             <th>Descarga</th>
+            <th>Eliminar</th>
         </tr>
         <br>
 
@@ -59,6 +60,15 @@
 
             <td> <a href="{{ paper.file.url }}" class=""><font color="0a4a8e"> <center> Click aqui </center> </font></a></td>
 
+            <td>
+                <center method="post" action="{% url 'delete_paper' slug=user.username  pk=paper.pk%}">
+                    {% csrf_token %}
+                    <center></center><button type="submit" style="color: #fff;background: #ed3330;border: none;border-radius:5px;margin-left: auto;margin-right: auto;">Eliminar</button></center>
+
+
+                </form>
+
+            </td>
             </tr>
 
         {% endfor %}
