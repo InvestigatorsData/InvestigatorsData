@@ -54,6 +54,12 @@ class CampusProfileView(DetailView):
     model = Campus
     template_name = 'campus_profile.html'
     slug_field = 'url_name_campus'
+class HomeHelp(TemplateView):
+    template_name = 'helpHome.html'
+class LoginHelp(TemplateView):
+    template_name = 'HelpLogIn.html'
+class RegisterHelp(TemplateView):
+    template_name = 'HelpRegister.html'
 
 #Metodo que muestra la vista de publicaciones con la informacion necesaria
 def paper_view(request, slug):
@@ -71,7 +77,7 @@ def college_view(request, slug):
 def institute_view(request, slug):
     required_institute = Institutes.objects.get(url_name_institute=slug)
     subinstitutes = Subinstitutes.objects.filter(institute=required_institute)
-    return render(request, "institute_profile.html", context={'institutes': required_institute, 'subinstitutes': subinstitutes,})    
+    return render(request, "institute_profile.html", context={'institutes': required_institute, 'subinstitutes': subinstitutes,})
 
 def campus_view(request, slug):
     required_campus = Campus.objects.get(url_name_campus=slug)
@@ -88,7 +94,3 @@ def group_view(request,slug):
     groups = Groups.objects.get(url_name_group=slug)
     integrantes = groups.people_set.all()
     return render(request,"group_profile.html",context={'groups':groups,'integrantes':integrantes})
-
-
-
-
