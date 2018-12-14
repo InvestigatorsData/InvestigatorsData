@@ -86,6 +86,10 @@ class Papers(models.Model):
     def __str__(self):
         """A string representation of the model."""
         return self.topic
+    def delete(self,*args,**kwargs):
+        self.file.delete()
+        self.cover.delete()
+        super().delete(*args,**kwargs)
 
 class Groups(models.Model):
     id_group = models.AutoField(primary_key=True)

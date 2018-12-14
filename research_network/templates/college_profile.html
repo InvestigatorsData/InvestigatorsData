@@ -1,4 +1,4 @@
-{% block content %}                                                                                                                    
+{% block content %}
 {% load static %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
@@ -18,48 +18,30 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </head>
 <header>
 <div class="container">
-    <!-- This checkbox will give us the toggle behavior, it will be hidden, but functional -->
     <input id="toggle" type="checkbox">
-
-    <!-- IMPORTANT: Any element that we want to modify when the checkbox state changes go here, being "sibling" of the checkbox element -->
-
-    <!-- This label is tied to the checkbox, and it will contain the toggle "buttons" -->
     <label class="toggle-container" for="toggle">
-        <!-- If menu is open, it will be the "X" icon, otherwise just a clickable area behind the hamburger menu icon -->
-        <span class="button button-toggle"></span>
+    <span class="button button-toggle"></span>
     </label>
-
-    <!-- The nav menu -->
-     <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
+    <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
 </div>
 </header>
 
 <body class="w3-light-grey">
-
-<!-- Page Container -->
 <div class="w3-content w3-margin-top" style="max-width:1000px;">
-
-  <!-- The Grid -->
   <div class="w3-row-padding">
-
-    <!-- Right Column -->
     <div  class="w3-twothird" style="width:100%" style="height:100%">
-
       <div id="scroll" class="w3-container w3-card w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i> Datos del colegio </h2>
-
         <div class="w3-container">
             <h5 class="w3-opacity"><b>Nombre</b></h5>
             <p> {{college.name}} </p>
             <hr>
         </div>
-
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Direccion</b></h5>
           <p> {{college.address}} </p>
           <hr>
         </div>
-
         <div class="w3-container">
             <h5 class="w3-opacity"><b>Campus</b></h5>
             {% for campus in college_campus %}
@@ -67,7 +49,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             {% endfor %}
             <hr>
         </div>
-
         <div class="w3-container">
             <h5 class="w3-opacity"><b>Instituciones</b></h5>
             {% for institute in institutes %}
@@ -75,27 +56,14 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             {% endfor %}
             <hr>
         </div>
-
-
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Telefono</b></h5>
           <p> {{college.telephone}}</p><br>
         </div>
-
       </div>
-
-
-
-    <!-- End Right Column -->
     </div>
-
-  <!-- End Grid -->
-<!-- End Grid -->
 </div>
-
-  <!-- End Page Container -->
 </div>
-
     <div id="footer">
       <p>2018 Red Nacional de Investigación | Hecho en México |
         © Todos los derechos reservados. Esta página electrónica puede ser reproducida,
@@ -103,7 +71,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
          y la dirección Web de conformidad con el artículo 148 de la Ley Federal del Derecho de Autor, de otra forma,
          se requerirá permiso previo y por escrito de la RENAIN. </p>
     </div>
-
    </body>
   </html>
 {% endblock content %}

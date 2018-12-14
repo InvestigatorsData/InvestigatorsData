@@ -223,11 +223,13 @@ def user_edit(request, slug):
             person_edit.degree = modify_form.cleaned_data.get('degree')
             person_edit.personal_telephone = modify_form.cleaned_data.get('personal_telephone')
             person_edit.img = modify_form.cleaned_data['img']
-            #Actualizamos el valor del estad viejo
+            #Actualizamos el valor del estado viejo
             old_state = person_edit.state
             obj_old_state = States.objects.get(name=str(old_state))
             value_old = int(obj_old_state.value)
             value_new = value_old - 1
+            if(value_new == -1):
+                value_new = 0
             obj_old_state.value = value_new
             obj_old_state.save()
             #Actualizamos el valor del estado nuevo
@@ -274,9 +276,9 @@ def activate(request, uidb64, token):
         state.value = value_new
         state.save()
         user_ac.save()
-        if person.institute.name == "No esta registrado mi instituto" or person.subinstitute.name == "No esta registrado mi subinstituto": 
+        if person.institute.name == "No esta registrado mi instituto" or person.subinstitute.name == "No esta registrado mi subinstituto":
             email_request = "Se han enviado los datos academicos que solicitaste, espera a que los administradores los agreguen y posteriormente actualiza tus datos de perfil" + '\n' +  "No dudes en contactarnos para cualquier pregunta o aclaración en el email renainsoporte@gmail.com"  + '\n' + "¡Saludos!" + '\n' + "El equipo de RENAIN"
-            send_mail("Solicitud de registro de datos", email_request, 'renainsoporte@gmail.com', [person.email], fail_silently=False,)        
+            send_mail("Solicitud de registro de datos", email_request, 'renainsoporte@gmail.com', [person.email], fail_silently=False,)
         login(request, user_ac)
         return redirect(reverse('profile',args=(user_ac.username,)))
     else:
@@ -409,6 +411,12 @@ def upload_paper(request,slug):
     return render(request,'upload_paper.html', {
         'form': form, 'autors':persons,
     })
+def delete_paper(request,slug,pk):
+    person = People.objects.get(url_name=slug)
+    if request.method == 'POST':
+        paper = person.papers.filter(pk=pk)
+        paper.delete()
+    return redirect(reverse('paper_list',args=(slug,)))
 
 #Metodo que permite mostrar todos los grupos de un usuario
 def group_list(request,slug):
