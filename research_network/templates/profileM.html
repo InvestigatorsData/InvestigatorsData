@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,54 +8,143 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>PERFIL</title>
 
-
+    <link rel="icon" type="image/png" href=" {% static 'images/icons/favicon.png' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'css/prof.css' %}">
-
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
+  </head>
 
     <header>
       <div id="container">
-        <div id="renain"><a href="home.html"> RENAIN </a> </div>
-        <div id="help"> <a href="#help">  Ayuda </a> </div>
+        <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/renain.png' %}"> </a> </div>
+        <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/help.png' %}"> </a> </div>
+
       </div>
     </header>
     <br/> <br/> &nbsp;&nbsp;&nbsp;&nbsp;<b>Editar Perfil </b> <br/> <br/>
 
+    <form action="{% url 'edit_profile' user.username %}" method="POST" name="user_edit" enctype="multipart/form-data">
+      {% csrf_token %}
     <div style="width: 530px; margin: 0 auto;">
 
+      Nombre: * <input type="text" name="name" title="Ingrese letras o solo caracteres especiales como (@,_+-)" value="{{ person_name }}" required/>  <br/> <br/>
 
-      Nombre: * <input type="text" name="name" />  <br/> <br/>
+      Correo: * <input type="email" name="email" value ="{{ person_email }}" required/>  <br/> <br/>
 
-      Correo: * <input type="text" name="email" />  <br/> <br/>
+      Teléfono: * <input type="text" name="personal_telephone" pattern="[0-9]{8,}" title="Ingresa solo digitos y al menos 8 digitos" value="{{ person_personal_telephone }}" required /> <br/> <br/>
 
-      Teléfono: <input type="text" name="phone" /> <button> <img src="{% static 'images/icons/internet.png' %}"> </button> <button> <img src="{% static 'images/icons/lock.png' %}"> </button> <br/> <br/>
+      Foto de perfil: <input type="file" name="img" value="{{ person_cover }}"></br></br>
 
-      Cumpleaños: <input type="text" name="birthday" /> <button> <img src="{% static 'images/icons/internet.png' %}"> </button> <button> <img src="{% static 'images/icons/lock.png' %}"> </button> <br/> <br/>
+              <div class="wrap-input100 input100-select bg1">
+                <span class="form-control"> ESTADO *</span>
+                <div>
+                  <select class="js-select2" name="state" required>
+                    <option value="" selected disabled hidden>Selecciona</option>
+                    {% for state in states %}
+                    <tr>
+                      <option value={{state.id_state}}>
+                        <td>{{state.name}}</td>
+                      </option>
+                    </tr>
+                    {% endfor %}
 
-      ¿Estaba su institución al momento de regístrarse?
+                  </select>
+                  <div class="dropDownSelect2"></div>
+                </div>
+              </div> <br />
 
-        <input type="button" value="Sí">
-        <input type="checkbox" id="spoiler1"></input> <label for="spoiler1">No</label>
+        <div class="wrap-input100 input100-select bg1">
+          <span class="form-control"> NIVEL ACADEMICO *</span>
+          <div>
+            <select class="js-select2" name="academic_level" required>
+              <option value="" selected disabled hidden>Selecciona</option>
+              <option>Investigador</option>
+              <option>Estudiante</option>
+            </select>
+            <div class="dropDownSelect2"></div>
+          </div>
+        </div> <br />
 
+        <div class="wrap-input100 input100-select bg1">
+          <span class="form-control"> GRADO DE ESTUDIOS *</span>
+          <div>
+            <select class="js-select2" name="degree" required>
+              <option value="" selected disabled hidden>Selecciona</option>
+              <option>Licenciatura</option>
+              <option>Maestria</option>
+              <option>Doctorado</option>
+            </select>
+            <div class="dropDownSelect2"></div>
+          </div>
+        </div> <br />
+
+
+        <div class="wrap-input100 input100-select bg1">
+          <span class="form-control"> INSTITUTO *</span>
+          <div>
+            <select class="js-select2" name="institute" required>
+              <option value="" selected disabled hidden>Selecciona</option>
+              {% for institute in institutes %}
+              <tr>
+                <option value={{institute.id_institute}}>
+                  <td>{{institute.name}}</td>
+                </option>
+              </tr>
+              {% endfor %}
+            </select>
+            <div class="dropDownSelect2"></div>
+          </div>
+        </div> <br />
+
+        <div class="wrap-input100 input100-select bg1">
+          <span class="form-control"> SUBINSTITUTO *</span>
+          <div>
+            <select class="js-select2" name="subinstitute" required>
+              <option value="" selected disabled hidden>Selecciona</option>
+              {% for subinstitute in subinstitutes %}
+              <tr>
+                <option value={{subinstitute.id_subinstitute}}>
+                  <td>{{subinstitute.name}}</td>
+                </option>
+              </tr>
+              {% endfor %}
+            </select>
+            <div class="dropDownSelect2"></div>
+          </div>
+        </div> <br />
+
+        ¿Desea cambiar contraseña?
+
+        <input type="checkbox" id="spoiler2"></input> <label for="spoiler2">Si</label>
 
         <div class="spoiler">
-          <p>Por favor, llene los siguientes campos.</p> <br/>
 
-          Nombre de la institución:  <input type="text" name="ins" />  <br/>
+          <div class="wrap-input100 validate-input bg1" data-validate="Introduzca su nuevo password">
+            <span class="label-input100">CONTRASEÑA *</span>
+            <input class="form-control" type="password" name="password" id="password" placeholder="Contraseña de al menos 8 caracteres"
+              pattern=".{8,}" title="Ingresa un password de al menos 8 caracteres">
+          </div>
 
-          Campus: <input type="text" name="campus" />  <br/>
+          <div class="wrap-input100 validate-input bg1" data-validate="Confirme el password">
+            <span class="label-input100">CONFIRMAR CONTRASEÑA *</span>
+            <input class="form-control" type="password" name="confirm_password" id="confirm_password" placeholder="Confirme su contraseña"
+              pattern=".{8,}" title="Ingresa un password de al menos 8 caracteres">
+            <span id='message'></span>
+          </div>
+        </div>
 
-        </div> <br/> <br/> <br/> <br/>
-      </div>
+      <input type="submit" value="Guardar cambios" formmethod="POST">
+</form>
 
-
-
-
-
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Guardar cambios">  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;   <input type="button" value="Convertirme en investigador"> <br/> <br/> <br/>
-
-
-
+  <script>
+	$('#password, #confirm_password').on('keyup', function () {
+			if ($('#password').val() == $('#confirm_password').val()) {
+				$('#message').html('Password correcto').css('color', 'green');
+			} else
+				$('#message').html('Password incorrecto').css('color', 'red');
+		});
+	</script>
 
     <div id="footer">
       <p>2018 Red Nacional de Investigación | Hecho en México |

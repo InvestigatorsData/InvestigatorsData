@@ -1,0 +1,84 @@
+{% block content %}
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+  <head>
+    <title>{{campus.name}}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'css/links.css' %}">
+<link rel="icon" type="image/png" href=" {% static 'images/icons/favicon.png' %}"/>
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+</head>
+<header>
+<div class="container">
+    <input id="toggle" type="checkbox">
+    <label class="toggle-container" for="toggle">
+        <span class="button button-toggle"></span>
+    </label>
+     <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
+</div>
+</header>
+
+<body class="w3-light-grey">
+<div class="w3-content w3-margin-top" style="max-width:1000px;">
+  <div class="w3-row-padding">
+    <div  class="w3-twothird" style="width:100%" style="height:100%">
+      <div id="scroll" class="w3-container w3-card w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i> Datos del campus </h2>
+        <div class="w3-container">
+            <h5 class="w3-opacity"><b>Nombre</b></h5>
+            <p> {{campus.name}} </p>
+            <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Direccion</b></h5>
+          <p> {{campus.address}} </p>
+          <hr>
+        </div>
+        <div class="w3-container">
+            <h5 class="w3-opacity"><b>Colegio</b></h5>
+            <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ campus.college }} <a href="/college/{{campus.college.url_name_college}}"> <font color="0a4a8e"> Ver informacion </font></a></p>
+            <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Estado</b></h5>
+          <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ campus.state }} <a href="/state/{{campus.state.url_name_state}}"> <font color="0a4a8e"> Ver informacion </font></a></p>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Telefono</b></h5>
+          <p> {{campus.telephone}}</p><br>
+        </div>
+        <div class="w3-container">
+            <h5 class="w3-opacity"><b> Instituciones que se encuentran en el campus </b></h5>
+            {% if institutes%}
+            {% for institute in institutes %}
+            <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ institute.name }} <a href="/institute/{{institute.url_name_institute}}"> <font color="0a4a8e"> Ver informacion </font></a></p>
+            {% endfor%}
+            {% else %}
+            <p> No existen registros de instituciones de este campus </p><br>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+    <div id="footer">
+      <p>2018 Red Nacional de Investigación | Hecho en México |
+        © Todos los derechos reservados. Esta página electrónica puede ser reproducida,
+         sin objeto comercial, siempre y cuando su contenido no se mutile o altere, se cite la fuente completa
+         y la dirección Web de conformidad con el artículo 148 de la Ley Federal del Derecho de Autor, de otra forma,
+         se requerirá permiso previo y por escrito de la RENAIN. </p>
+    </div>
+
+   </body>
+  </html>
+{% endblock content %}

@@ -11,6 +11,18 @@ a {
 
 }
 
+img.h {
+  margin-left: 80% !important;
+  width: 5% !important;
+  height: 5% !important;
+
+}
+
+img.r {
+  width: 10% !important;
+  height: 10% !important;
+}
+
 
 #container {
   padding: 10px;
@@ -41,7 +53,7 @@ a {
     text-align: justify;
     border-radius: 10px;
 }
-
+.
 
 #mySearch {
   border-radius: 5px;

@@ -7,53 +7,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>RENAIN</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/map.css' %}">
     <link rel="stylesheet" href="{% static 'css/ammap.css' %}">
     <link rel="stylesheet" href="{% static 'css/ammap.css' %}" type="text/css">
     <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
-
-
 </head>
-<body>
 
+<body>
 <header>
 <div class="container">
-    <!-- This checkbox will give us the toggle behavior, it will be hidden, but functional -->
     <input id="toggle" type="checkbox">
-
-    <!-- IMPORTANT: Any element that we want to modify when the checkbox state changes go here, being "sibling" of the checkbox element -->
-
-    <!-- This label is tied to the checkbox, and it will contain the toggle "buttons" -->
     <label class="toggle-container" for="toggle">
-        <!-- If menu is open, it will be the "X" icon, otherwise just a clickable area behind the hamburger menu icon -->
         <span class="button button-toggle"></span>
     </label>
-
-    <!-- The nav menu -->
-    <nav class="nav logo">
-        <a class="nav-item" href="">Inicio &nbsp;</a>
-		<a class="nav-item" href="{% url 'about' %}">Acerca de &nbsp;</a>
+    <nav  class="nav logo">
+    <a class="nav-item" href="">Inicio &nbsp; &nbsp;</a>
+		<a class="nav-item" href="{% url 'about' %}">Acerca de &nbsp; &nbsp;</a>
 		{% if user.is_authenticated %}
-		<a class="nav-item" href="{% url 'logout' %}">Salir &nbsp;</a>
+		<a class="nav-item" href="{% url 'logout'%}">Salir &nbsp; &nbsp;</a>
+		<a class="nav-item" href="{% url 'profile' slug=user %}">Perfil &nbsp; &nbsp;</a>
+    <a class="nav-item" href="{% url 'base' %}">   <img class="h" src="{% static 'images/icons/help.png' %}" alt="logo"> </a>
 		{% else %}
-        <a class="nav-item" href="{% url 'login' %}">Ingresar &nbsp;</a>
-		<a class="nav-item" href="{% url 'signup' %}">Registro &nbsp;</a>
-		{% endif %}
-	</nav>
+        <a class="nav-item" href="{% url 'login' %}">Ingresar &nbsp; &nbsp;</a>
+        <a class="nav-item" href="{% url 'signup' %}">Registro &nbsp; &nbsp;</a>
+        <a class="nav-item" href="{% url 'base' %}">   <img class="h" src="{% static 'images/icons/help.png' %}" alt="logo"> </a>
+		{% endif%}
+    </nav>
 </div>
 </header>
 
 	<form action="{% url 'search' %}" method="post">
 		{% csrf_token %}
-		<button type="submit"> Buscar &nbsp;</button>
-		<input name="entry" formmethod='post' placeholder="Ingresa tu busqueda">
+		<br><button class="1" type="submit"> Buscar &nbsp;</button>
+		<input class="2" name="entry" formmethod='post' placeholder="Ingresa tu busqueda" required>
+	</form>
+
+  <form action="" method="post">
+		{% csrf_token %}
+    <select class="js-select2" name="state" required onchange="window.location.href = this.value">
+      <option value="value" selected disabled hidden>Selecciona el estado</option>
+      {% for state in states %}
+      <option value="/state/{{state.url_name_state}}"> <td>{{state.name}}</td> </option>
+      {% endfor %}
+    </select>
 	</form>
 
       <div class="map">
       <link rel="stylesheet" href="{% static 'css/ammap.css' %}" type="text/css">
       <script src="{% static 'css/ammap.js' %}" type="text/javascript"></script>
 	    <script src="{% static 'css/mexicoHigh.js' %}" type="text/javascript"></script>
-        <script>
+      <script>
 
 			var map;
 
@@ -63,102 +66,102 @@
 			    var dataProvider = {
 			        mapVar: AmCharts.maps.mexicoHigh,
 			        areas: [
-			            {
-			            id: "MX-AGU",
-			            value: 1065416},
-			        {
-			            id: "MX-BCN",
-			            value: 2844469},
-			        {
-			            id: "MX-BCS",
-			            value: 512170},
-			        {
-			            id: "MX-CAM",
-			            value: 754730},
-			        {
-			            id: "MX-CHP",
-			            value: 4293459},
-			        {
-			            id: "MX-CHH",
-			            value: 3241444},
-			        {
-			            id: "MX-COA",
-			            value: 2495200},
-			        {
-			            id: "MX-COL",
-			            value: 567996},
-			        {
-			            id: "MX-CDMX",
-			            value: 8720916},
-			        {
-			            id: "MX-DUR",
-			            value: 1509117},
-			        {
-			            id: "MX-GUA",
-			            value: 4893812},
-			        {
-			            id: "MX-GRO",
-			            value: 3115202},
-			        {
-			            id: "MX-HID",
-			            value: 2345514},
-			        {
-			            id: "MX-JAL",
-			            value: 6752113},
-			        {
-			            id: "MX-MEX",
-			            value: 14007495},
-			        {
-			            id: "MX-MIC",
-			            value: 3966073},
-			        {
-			            id: "MX-MOR",
-			            value: 1612899},
-			        {
-			            id: "MX-NAY",
-			            value: 949684},
-			        {
-			            id: "MX-NLE",
-			            value: 4199292},
-			        {
-			            id: "MX-OAX",
-			            value: 3506821},
-			        {
-			            id: "MX-PUE",
-			            value: 2382133},
-			        {
-			            id: "MX-QUE",
-			            value: 1598139},
-			        {
-			            id: "MX-ROO",
-			            value: 1135309},
-			        {
-			            id: "MX-SLP",
-			            value: 2410414},
-			        {
-			            id: "MX-SIN",
-			            value: 2608442},
-			        {
-			            id: "MX-SON",
-			            value: 2394861},
-			        {
-			            id: "MX-TAB",
-			            value: 1989969},
-			        {
-			            id: "MX-TAM",
-			            value: 3024238},
-			        {
-			            id: "MX-TLA",
-			            value: 1068207},
-			        {
-			            id: "MX-VER",
-			            value: 7110214},
-			        {
-			            id: "MX-YUC",
-			            value: 1818948},
-			        {
-			            id: "MX-ZAC",
-			            value: 1367692}]
+                {
+  			            id: "MX-AGU",
+  			            value: {{Aguascalientes.value}}},
+  			        {
+  			            id: "MX-BCN",
+  			            value: {{BajaCaliNort.value}}},
+  			        {
+  			            id: "MX-BCS",
+  			            value: {{BajaCaliSur.value}}},
+  			        {
+  			            id: "MX-CAM",
+  			            value: {{Campeche.value}}},
+  			        {
+  			            id: "MX-CHP",
+  			            value: {{Chiapas.value}}},
+  			        {
+  			            id: "MX-CHH",
+  			            value: {{Chihuahua.value}}},
+  			        {
+  			            id: "MX-COA",
+  			            value: {{Coahuila.value}}},
+  			        {
+  			            id: "MX-COL",
+  			            value: {{Colima.value}}},
+  			        {
+  			            id: "MX-CDMX",
+  			            value: {{CiudadMX.value}}},
+  			        {
+  			            id: "MX-DUR",
+  			            value: {{Durango.value}}},
+  			        {
+  			            id: "MX-GUA",
+  			            value: {{Guanajuato.value}}},
+  			        {
+  			            id: "MX-GRO",
+  			            value: {{Guerrero.value}}},
+  			        {
+  			            id: "MX-HID",
+  			            value: {{Hidalgo.value}}},
+  			        {
+  			            id: "MX-JAL",
+  			            value: {{Jalisco.value}}},
+  			        {
+  			            id: "MX-MEX",
+  			            value: {{EstadoMex.value}}},
+  			        {
+  			            id: "MX-MIC",
+  			            value: {{Michoacan.value}}},
+  			        {
+  			            id: "MX-MOR",
+  			            value: {{Morelos.value}}},
+  			        {
+  			            id: "MX-NAY",
+  			            value: {{Nayarit.value}}},
+  			        {
+  			            id: "MX-NLE",
+  			            value: {{NuevoLeo.value}}},
+  			        {
+  			            id: "MX-OAX",
+  			            value: {{Oaxaca.value}}},
+  			        {
+  			            id: "MX-PUE",
+  			            value: {{Puebla.value}}},
+  			        {
+  			            id: "MX-QUE",
+  			            value: {{Queretaro.value}}},
+  			        {
+  			            id: "MX-ROO",
+  			            value: {{QuintanaRoo.value}}},
+  			        {
+  			            id: "MX-SLP",
+  			            value: {{SanLuisPotosi.value}}},
+  			        {
+  			            id: "MX-SIN",
+  			            value: {{Sinaloa.value}}},
+  			        {
+  			            id: "MX-SON",
+  			            value: {{Sonora.value}}},
+  			        {
+  			            id: "MX-TAB",
+  			            value: {{Tabasco.value}}},
+  			        {
+  			            id: "MX-TAM",
+  			            value: {{Tamaulipas.value}}},
+  			        {
+  			            id: "MX-TLA",
+  			            value: {{Tlaxcala.value}}},
+  			        {
+  			            id: "MX-VER",
+  			            value: {{Veracruz.value}}},
+  			        {
+  			            id: "MX-YUC",
+  			            value: {{Yucatan.value}}},
+  			        {
+  			            id: "MX-ZAC",
+  			            value: {{Zacatecas.value}}}]
 			    };
 			    map.areasSettings = {
 			        autoZoom: true
@@ -173,8 +176,7 @@
 			});
 		</script>
   </div>
-          <div id="mapdiv" style="width: 100%; background-color:#EEEEEE; height: 500px;"></div>
-
+        <div id="mapdiv" style="width: 100%; background-color:#EEEEEE; height: 500px;"></div>
         <div id="footer">
           <p> 2018 Red Nacional de Investigación | Hecho en México |
             © Todos los derechos reservados. Esta página electrónica puede ser reproducida,
@@ -182,6 +184,5 @@
              y la dirección Web de conformidad con el artículo 148 de la Ley Federal del Derecho de Autor, de otra forma,
 se requerirá permiso previo y por escrito de la RENAIN</p>
         </div>
-
     </body>
 </html>

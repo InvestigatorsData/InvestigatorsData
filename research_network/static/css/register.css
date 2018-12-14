@@ -22,6 +22,19 @@ body {
   border-radius: 10px !important;
 }
 
+img.h {
+  margin-left: 80%;
+  width: 5% !important;
+  height: 5% !important;
+
+}
+
+img.r {
+  width: 10% !important;
+  height: 10% !important;
+}
+
+
 #help {
   text-align: right;
 }
@@ -34,7 +47,7 @@ body {
   margin: 5px;
   padding: 50px;
   height: 40%;
-  
+
   color: white !important;
   background-color: #404245 !important;
   color: white !important;
@@ -52,6 +65,11 @@ body {
  font-size:10px;
  line-height:20px;
  float:left;
+}
+
+img {
+  width: 10%;
+  height: 10%;
 }
 
 /* Toggle functionality */
