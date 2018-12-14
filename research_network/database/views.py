@@ -142,7 +142,6 @@ def user_signup(request):
             if subinstitute_required.name == 'No esta registrado mi subinstituto':
                 report_data = True 
                 email_report =  email_report + "Registrar el subinstituto: " + request.POST.get('subinstitute_required')
-
             name = profile_form.cleaned_data.get('name')
             username_normalize = name.replace(' ','')
             email = profile_form.cleaned_data.get('email')
@@ -162,9 +161,10 @@ def user_signup(request):
             user.is_active = False
             current_site = get_current_site(request)
             admins = User.objects.filter(is_superuser=True)
-            for admin in admins:
-                if report_data:
-                    send_mail("Agregar nuevos registros", email_report, 'renainsoporte@gmail.com', [admin.email], fail_silently=False,)
+            if admins:
+                for admin in admins:
+                    if report_data:
+                        send_mail("Agregar nuevos registros", email_report, 'renainsoporte@gmail.com', [admin.email], fail_silently=False,)
             mail_subject = 'Activa tu cuenta de RENAIN'
             message = render_to_string('acc_active_email.html', {
                 'user': user,
@@ -274,6 +274,9 @@ def activate(request, uidb64, token):
         state.value = value_new
         state.save()
         user_ac.save()
+        if person.institute.name == "No esta registrado mi instituto" or person.subinstitute.name == "No esta registrado mi subinstituto": 
+            email_request = "Se han enviado los datos academicos que solicitaste, espera a que los administradores los agreguen y posteriormente actualiza tus datos de perfil" + '\n' +  "No dudes en contactarnos para cualquier pregunta o aclaración en el email renainsoporte@gmail.com"  + '\n' + "¡Saludos!" + '\n' + "El equipo de RENAIN"
+            send_mail("Solicitud de registro de datos", email_request, 'renainsoporte@gmail.com', [person.email], fail_silently=False,)        
         login(request, user_ac)
         return redirect(reverse('profile',args=(user_ac.username,)))
     else:
