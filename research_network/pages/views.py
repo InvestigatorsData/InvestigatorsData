@@ -64,6 +64,21 @@ def college_view(request, slug):
     college_campus =Campus.objects.filter(college=required_college)
     return render(request, "college_profile.html", context={'institutes':institutes, 'college':required_college, 'college_campus':college_campus,})
 
+def institute_view(request, slug):
+    required_institute = Institutes.objects.get(url_name_institute=slug)
+    subinstitutes = Subinstitutes.objects.filter(institute=required_institute)
+    return render(request, "institute_profile.html", context={'institutes': required_institute, 'subinstitutes': subinstitutes,})    
+
+def campus_view(request, slug):
+    required_campus = Campus.objects.get(url_name_campus=slug)
+    institutes = Institutes.objects.filter(campus=required_campus)
+    return render(request, "campus_profile.html", context={'institutes':institutes, 'campus': required_campus,})
+
+def subinstitute_view(request, slug):
+    required_subinstitute = Subinstitutes.objects.get(url_name_subinstitute=slug)
+    people = People.objects.filter(subinstitute=required_subinstitute)
+    return render(request, "subinstitute_profile.html", context={'subinstitutes': required_subinstitute, 'people': people,})
+
 
 
 

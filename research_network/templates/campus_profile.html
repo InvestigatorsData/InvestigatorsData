@@ -77,6 +77,17 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <p> {{campus.telephone}}</p><br>
         </div>
 
+        <div class="w3-container">
+            <h5 class="w3-opacity"><b> Instituciones que se encuentran en el campus </b></h5>
+            {% if institutes%}
+            {% for institute in institutes %}
+            <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ institute.name }} <a href="/institute/{{institute.url_name_institute}}"> <font color="0a4a8e"> Ver informacion </font></a></p>
+            {% endfor%}
+            {% else %}
+            <p> No existen registros de instituciones de este campus </p><br>
+            {% endif %}
+        </div>
+
       </div>
 
 

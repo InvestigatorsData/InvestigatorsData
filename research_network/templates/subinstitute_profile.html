@@ -71,6 +71,18 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <p> {{subinstitutes.telephone}}</p><br>
         </div>
 
+        <div class="w3-container">
+            <h5 class="w3-opacity"><b>Personas pertenecientes a este subinstituto </b></h5>
+            {% if people %}
+            {% for person in people %}
+            <p> {{person.name}}</p> <a href="/profile/{{person.url_name}}"> <font color="0a4a8e"> Ver perfil </font></a> </p> 
+            {% endfor %}
+            {% else %}
+            <p> No hay personas en este subinstituto </p>
+            {% endif %}
+            <hr>
+          </div>
+
       </div>
 
 
