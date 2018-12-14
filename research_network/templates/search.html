@@ -1,39 +1,54 @@
 {% block content %}
 {% load static %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Búsquedas</title>
+    <title>Busquedas</title>
     <link rel="stylesheet" href="{% static 'css/LogIn.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/util.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
+
+
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/noui/nouislider.min.css' %}">
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <!--===============================================================================================-->
 </head>
 
 <body>
+
     <header>
         <div class="container">
-          <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/renain.png' %}"> </a> </div>
-          <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/help.png' %}"> </a> </div>
+          <a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/renain.png' %}"> </a> </div>
         </div>
     </header>
+
     <div class="form">
         <div class="container-contact100">
             <div class="wrap-contact100">
@@ -50,7 +65,7 @@
                             <div id=" People">
                                 {% if people %}
                                 {% for person in people %}
-                                <p class="wrap-input100 validate-input bg1" style="color:black;">{{person.name}} <a href="/profile/{{ person.url_name }}"> <font color="0a4a8e"> Ver perfil </font></a></p>
+                                <p class="wrap-input100 validate-input bg1" style="color:black;">{{person.name}} <a href="/profile/{{person.url_name}}"> <font color="0a4a8e"> Ver perfil </font></a></p>
                                 {% endfor%}
                                 {% else%}
                                 <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron coincidencias</p>
@@ -60,6 +75,7 @@
                                 <p style="color: #3ccaed;">
                                     <font size=5>Institutos</font>
                                 </p>
+
                                 <br>
                                 <div  id="Institutes" >
                                     {% if institutes %}
@@ -72,14 +88,14 @@
                                 </div>
                                 <align="left">
                                     <p style="color: #54f13c;">
-                                        <font size=5>Subinstitutos</font>
+                                        <font size=5>SubInstitutos</font>
                                     </p>
 
                                     <br>
                                     <div  id="Subinstitutes" >
                                         {% if subinstitutes %}
                                         {% for subinstitute in subinstitutes %}
-                                        <p class="wrap-input100 validate-input bg1" style="color:black;">{{subinstitute.name}} <a href="/subinstitute/{{subinstitute.url_name_subinstitute}}"> <font color="0a4a8e"> Ver informacion </font></a> </p>
+                                        <p class="wrap-input100 validate-input bg1" style="color:black;">{{subinstitute.name}} <a href="/subinstitute/{{subinstitute.url_name_subinstitute}}"><font color="0a4a8e">Ver información</font></a> </p>
                                         {% endfor %}
                                         {% else %}
                                         <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron coincidencias</p>
@@ -89,11 +105,12 @@
                                         <p style="color: #3ccaed;">
                                             <font size=5>Grupos</font>
                                         </p>
+
                                         <br>
                                         <div id="Groups" >
                                             {% if groups %}
                                             {% for group in groups %}
-                                            <p class="wrap-input100 validate-input bg1" style="color:black;">{{group.name}} <a href="/group/{{group.url_name_group}}"> <font color="0a4a8e"> Ver informacion </font></a> </p>
+                                            <p class="wrap-input100 validate-input bg1" style="color:black;">{{group.name}}<a href="/group/{{group.url_name_group}}"><font color="0a4a8e">Ver información</font></a> </p>
                                             {% endfor%}
                                             {% else %}
                                             <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron coincidencias</p>
@@ -107,7 +124,7 @@
                                             <div id="Papers" >
                                                 {% if papers %}
                                                 {% for paper in papers %}
-                                                <p class="wrap-input100 validate-input bg1" style="color:black;">{{paper.topic}} <a href="/paper/{{paper.url_name_paper}}"> <font color="0a4a8e"> Ver informacion </font></a> </p>
+                                                <p class="wrap-input100 validate-input bg1" style="color:black;">{{paper.topic}} <a href="/paper/{{paper.url_name_paper}}"><font color="0a4a8e">Ver información</font></a> </p>
                                                 {% endfor %}
                                                 {% else %}
                                                 <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron coincidencias</p>
@@ -117,16 +134,17 @@
             </div>
         </div>
     </div>
-    <script>
-    function get_url(name_string){
-        url = name_string.replace(" ","_")
-        return url
-    }
-    </script>
+
+
+
+    <!--===============================================================================================-->
     <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <!--===============================================================================================-->
     <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+    <!--===============================================================================================-->
     <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
     <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
     <script>
         $(".js-select2").each(function () {
@@ -147,9 +165,12 @@
             });
         })
     </script>
+    <!--===============================================================================================-->
     <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
     <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+    <!--===============================================================================================-->
     <script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+    <!--===============================================================================================-->
     <script src="{% static 'vendor/noui/nouislider.min.js' %}"></script>
     <script>
         var filterBar = document.getElementById('filter-bar');
@@ -171,7 +192,10 @@
             $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
         });
     </script>
+    <!--===============================================================================================-->
     <script src="js/main.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="{% static 'https://www.googletagmanager.com/gtag/js?id=UA-23581568-13' %}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -179,6 +203,11 @@
         gtag('js', new Date());
         gtag('config', 'UA-23581568-13');
     </script>
+
+
+
+
+
 
     <div id="footer">
         <p>Hecho en México, todos los derechos reservados 2018-2019. Esta página
@@ -188,5 +217,6 @@
     </div>
 
 </body>
+
 </html>
 {% endblock %}

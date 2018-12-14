@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE HTML>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,13 +18,12 @@
     <header>
       <div id="container">
         <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/renain.png' %}"> </a> </div>
-        <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/help.png' %}"> </a> </div>
 
       </div>
     </header>
     <br/> <br/> &nbsp;&nbsp;&nbsp;&nbsp;<b>Editar Perfil </b> <br/> <br/>
 
-    <form action="{% url 'edit_profile' user.username %}" method="POST" name="user_edit" enctype="multipart/form-data">
+    <form action="{% url 'edit_profile' user.username %}" method="POST" name="user_edit">
       {% csrf_token %}
     <div style="width: 530px; margin: 0 auto;">
 
@@ -32,9 +31,7 @@
 
       Correo: * <input type="email" name="email" value ="{{ person_email }}" required/>  <br/> <br/>
 
-      Teléfono: * <input type="text" name="personal_telephone" pattern="[0-9]{8,}" title="Ingresa solo digitos y al menos 8 digitos" value="{{ person_personal_telephone }}" required /> <br/> <br/>
-
-      Foto de perfil: <input type="file" name="img" value="{{ person_cover }}"></br></br>
+      Teléfono: * <input type="text" name="personal_telephone" pattern="[0-9]{8,}" title="Ingresa solo digitos y al menos 8 digitos" value="{{ person_personal_telephone }}" required /> <button> <img src="{% static 'images/icons/internet.png' %}"> </button> <button> <img src="{% static 'images/icons/lock.png' %}"> </button> <br/> <br/>
 
               <div class="wrap-input100 input100-select bg1">
                 <span class="form-control"> ESTADO *</span>
@@ -132,6 +129,18 @@
               pattern=".{8,}" title="Ingresa un password de al menos 8 caracteres">
             <span id='message'></span>
           </div>
+        </div>
+
+        ¿Estaba su institución al momento de regístrarse?
+
+        <input type="button" value="Sí">
+        <input type="checkbox" id="spoiler1"></input> <label for="spoiler1">No</label>
+
+        <div class="spoiler">
+          <p>Por favor, llene los siguientes campos.</p> <br/>
+          Nombre de la institución:  <input type="text" name="ins" />  <br/>
+          Campus: <input type="text" name="campus" />  <br/>
+        </div> <br/>
         </div>
 
       <input type="submit" value="Guardar cambios" formmethod="POST">

@@ -2,6 +2,7 @@
 body {
   font-family: sans-serif;
   background-color: #eff1f3;
+
 }
 
 
@@ -45,24 +46,9 @@ img.r {
 }
 
 #footer {
-    margin: 50px 10px 50px 10px;
-    padding: 60px;
-    height: 35%;
-    background-color: #404245;
-    color: white;
-    text-align: justify;
-    border-radius: 10px;
-}
-.
-
-#mySearch {
-  border-radius: 5px;
-  display:
-}
-
-.logo {
- color:white;
- font-size:10px;
- line-height:20px;
- float:left;
+  height: 40em;
+  background-color: #404245 !important;
+  color: white !important;
+  text-align: center !important;
+  border-radius: 20px !important;
 }

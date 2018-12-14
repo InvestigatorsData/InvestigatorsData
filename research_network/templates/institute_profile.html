@@ -1,71 +1,75 @@
-{% block content %}
-{% load static %}
+{% block content %}                                                                                                                    {% load static %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
   <head>
-    <title>{{ institutes.name }}</title>
+    <title>PERFIL</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-<link rel="stylesheet" href="{% static 'css/links.css' %}">
-<link rel="icon" type="image/png" href=" {% static 'images/icons/favicon.png' %}"/>
+<link rel="stylesheet" href="{% static 'css/papers.css' %}">
+<link rel="icon" heightype="image/png" href=" {% static 'images/icons/favicon.png' %}"/>
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
 </head>
 <header>
 <div class="container">
-    <input id="toggle" type="checkbox">
-    <label class="toggle-container" for="toggle">
-        <span class="button button-toggle"></span>
-    </label>
-     <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
+    <a href="{% url 'base' %}"> <img class="r" src="{% static 'images/icons/renain.png' %}"> </a> </div>
 </div>
 </header>
 
 <body class="w3-light-grey">
+
+<!-- Page Container -->
 <div class="w3-content w3-margin-top" style="max-width:1000px;">
+
+  <!-- The Grid -->
   <div class="w3-row-padding">
+
+    <!-- Right Column -->
     <div  class="w3-twothird" style="width:100%" style="height:100%">
+
       <div id="scroll" class="w3-container w3-card w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i> Datos de la institucion </h2>
+
         <div class="w3-container">
             <h5 class="w3-opacity"><b>Nombre</b></h5>
             <p> {{institutes.name}} </p>
             <hr>
         </div>
+
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Direccion</b></h5>
           <p> {{institutes.address}} </p>
           <hr>
         </div>
+
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Campus</b></h5>
-          <p> {{institutes.campus}} <a href="/campus/{{institutes.campus.url_name_campus}}"> <font color="0a4a8e"> Ver informacion </font></a> </p>
+          <p> {{institutes.campus}}</p>
           <hr>
         </div>
+
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Telefono</b></h5>
-          <p> {{institutes.telephone}}</p>
-          <hr>
+          <p> {{institutes.telephone}}</p><br>
         </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Subinstitutos pertenecientes a la institucion</b></h5>
-          {% if subinstitutes %}
-          {% for subinstitute in subinstitutes %}
-          <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ subinstitute.name }} <a href="/subinstitute/{{subinstitute.url_name_subinstitute}}"> <font color="0a4a8e"> Ver informacion </font></a> </p>
-          {% endfor %}
-          {% else %}
-          <p> No hay subinstituciones en este instituto </p>
-          {% endif %}
-          <hr>
-        </div>
+
       </div>
+
+
+
+    <!-- End Right Column -->
     </div>
+
+  <!-- End Grid -->
+<!-- End Grid -->
 </div>
+
+  <!-- End Page Container -->
 </div>
 
     <div id="footer">
@@ -75,6 +79,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
          y la dirección Web de conformidad con el artículo 148 de la Ley Federal del Derecho de Autor, de otra forma,
          se requerirá permiso previo y por escrito de la RENAIN. </p>
     </div>
+
    </body>
   </html>
 {% endblock content %}

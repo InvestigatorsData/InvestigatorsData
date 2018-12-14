@@ -11,7 +11,8 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <link rel="stylesheet" href="{% static 'css/links.css' %}">
+  <link rel="stylesheet" href="{% static 'css/register.css' %}">
+
   <link rel="icon" type="image/png" href=" {% static 'images/icons/favicon.png' %}"/>
   <style>
   html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
@@ -19,13 +20,8 @@
 </head>
 
 <header>
-  <div class="container">
-      <input id="toggle" type="checkbox">
-      <label class="toggle-container" for="toggle">
-          <span class="button button-toggle"></span>
-      </label>
-       <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
-  </div>
+  <div id="container">
+    <a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/renain.png' %}"> </a> </div>
 </header>
 
 <body class="w3-light-grey">
