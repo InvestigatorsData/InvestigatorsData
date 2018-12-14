@@ -44,7 +44,9 @@ img.r {
 
 }
 
-
+#about {
+  font-size: 30px;
+}
 
 #footer {
     margin: 5px !important;

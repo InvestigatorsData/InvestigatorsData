@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'css/profilei.css' %}">
 
 <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
 
@@ -19,7 +19,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </head>
 <header>
 
-<div class="container">
+<div id="container">
     <!-- This checkbox will give us the toggle behavior, it will be hidden, but functional -->
     <input id="toggle" type="checkbox">
 
@@ -35,18 +35,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
      <a href="{% url 'base' %}">   <img  class="r" src="{% static 'images/icons/renain.png' %}" alt="logo"> </a>
       <a href="{% url 'base' %}">   <img class="h" src="{% static 'images/icons/help.png' %}" alt="logo"> </a>
-
-
-     {% if user.is_authenticated %}
-     {% if user.is_superuser %}
-     <div id="admin_login"><a href="/admin/"> Ingresar como administrador </a> </div>
-     {% endif %}
-     {% endif %}
-    <nav class="nav logo">
-        <a class="nav-item" href="">Publicaciones &nbsp;</a>
-        <a class="nav-item" href="">Grupos &nbsp;</a>
-    </nav>
-</div>
 </header>
 
 <body class="w3-light-grey">
