@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.urls import reverse
-# Create your models here
+
+#Descripcion de los modelos de la base de datos que se usaran
 
 class States(models.Model):
     id_state = models.AutoField(primary_key=True)
@@ -71,7 +72,7 @@ class Subinstitutes(models.Model):
 
     def __str__(self):
         """A string representation of the model."""
-        return self.name        
+        return self.name
 
 class Papers(models.Model):
     id_paper = models.AutoField(primary_key=True)
@@ -84,7 +85,7 @@ class Papers(models.Model):
         db_table = "Papers"
     def __str__(self):
         """A string representation of the model."""
-        return self.topic    
+        return self.topic
 
 class Groups(models.Model):
     id_group = models.AutoField(primary_key=True)

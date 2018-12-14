@@ -3,6 +3,7 @@ from django.conf.urls import url
 from . import views
 import database.views
 
+#Las urls de toda la aplicacion
 urlpatterns = [
     path('', database.views.base, name='base'),
     path('signup/', database.views.user_signup, name='signup'),
