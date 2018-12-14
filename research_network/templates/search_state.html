@@ -1,7 +1,7 @@
 {% block content %}
 {% load static %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,42 +14,26 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
-
-
-
-    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
-    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
-    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
-    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
-    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
-    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
-    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
-    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/noui/nouislider.min.css' %}">
-    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-    <!--===============================================================================================-->
 </head>
 
 <body>
-
     <header>
         <div class="container">
           <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/renain.png' %}"> </a> </div>
           <div id="renain"><a href="{% url 'base' %}"> <img id="renain" src="{% static 'images/icons/help.png' %}"> </a> </div>
         </div>
     </header>
-
     <div class="form">
         <div class="container-contact100">
             <div class="wrap-contact100">
@@ -77,24 +61,16 @@
             </div>
         </div>
     </div>
-
     <script>
     function get_url(name_string){
         url = name_string.replace(" ","_")
         return url
     }
     </script>
-
-
-
-    <!--===============================================================================================-->
     <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-    <!--===============================================================================================-->
     <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
-    <!--===============================================================================================-->
     <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-    <!--===============================================================================================-->
     <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
     <script>
         $(".js-select2").each(function () {
@@ -115,12 +91,9 @@
             });
         })
     </script>
-    <!--===============================================================================================-->
     <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
     <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
-    <!--===============================================================================================-->
     <script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
-    <!--===============================================================================================-->
     <script src="{% static 'vendor/noui/nouislider.min.js' %}"></script>
     <script>
         var filterBar = document.getElementById('filter-bar');
@@ -142,10 +115,7 @@
             $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
         });
     </script>
-    <!--===============================================================================================-->
     <script src="js/main.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="{% static 'https://www.googletagmanager.com/gtag/js?id=UA-23581568-13' %}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -154,19 +124,12 @@
         gtag('config', 'UA-23581568-13');
     </script>
 
-
-
-
-
-
     <div id="footer">
         <p>Hecho en México, todos los derechos reservados 2018-2019. Esta página
             puede ser reproducida con fines no lucrativos, siempre y cuando no se
             mutile, se cite la fuente completa y su dirección electrónica. De otra
             forma requiere permiso previo por escrito de la Institución. </p>
     </div>
-
 </body>
-
 </html>
 {% endblock %}

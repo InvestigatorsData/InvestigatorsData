@@ -1,15 +1,13 @@
 {% load static %}
-
 {% block content %}
 
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="es">
 
 <head>
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <link rel="stylesheet" href="{% static 'css/register.css' %}">
 <link rel="stylesheet" href="{% static 'css/papers.css' %}">
-
 <link rel = "shortcut icon" href = "{% static 'images/icons/favicon.png' %}">
 </head>
 
@@ -20,15 +18,12 @@
     </div>
 </header>
 
-
     <h2 id="title">Publicaciones</h2>
         {% if name == user.username %}
         <p>
         <a id="title2" href="{% url 'upload_paper' slug=user %}"> Subir publicacion</a>
         </p>
         {% endif %}
-        
-
     <table class="table"  width="80%" border="2"
      align="center" cellspacing="0" bordercolor="black" bgcolor="white">
         <thead>
@@ -40,8 +35,6 @@
             <th>Eliminar</th>
         </tr>
         <br>
-
-
         </thead>
         <tbody>
         {% for paper in papers.iterator %}
@@ -64,15 +57,9 @@
                 <center method="post" action="{% url 'delete_paper' slug=user.username  pk=paper.pk%}">
                     {% csrf_token %}
                     <center></center><button type="submit" style="color: #fff;background: #ed3330;border: none;border-radius:5px;margin-left: auto;margin-right: auto;">Eliminar</button></center>
-
-
-                </form>
-
             </td>
             </tr>
-
         {% endfor %}
-
         </tbody>
 
     </table>
@@ -84,8 +71,6 @@
          y la dirección Web de conformidad con el artículo 148 de la Ley Federal del Derecho de Autor, de otra forma,
          se requerirá permiso previo y por escrito de la RENAIN. </p>
     </div>
-
-   </body>
   </html>
 
 {% endblock %}
