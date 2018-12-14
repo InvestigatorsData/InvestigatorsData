@@ -38,12 +38,13 @@
 </head>
 <body>
 
-<header>
-  <div id="container">
-    <div id="renain" scr="{% static 'images/icons/renain.png' %}"><a href="{% url 'base' %}"> RENAIN </a> </div>
-    <div id="help"> <a href="#help">  Ayuda </a> </div>
-  </div>
-</header>
+  <header>
+      <div id="container">
+      <a href="{% url 'base' %}">   <img class="r" src="{% static 'images/icons/renain.png' %}" alt="logo"> </a>
+      <a href="{% url 'base' %}">   <img class="h" src="{% static 'images/icons/help.png' %}" alt="logo"> </a>
+
+      </div>
+  </header>
 
 <div class="form">
 <div class="container-contact100">

@@ -10,59 +10,27 @@
 <link rel="stylesheet" href="{% static 'css/register.css' %}">
 <link rel="stylesheet" href="{% static 'css/papers.css' %}">
 
+
 <link rel = "shortcut icon" href = "{% static 'images/icons/favicon.png' %}">
 </head>
 
 <header>
     <div id="container">
-        <a href="{% url 'base' %}"> <img  src="{% static 'images/icons/renain.png' %}" alt="logo"> </a>
-      <div id="help"> <a href="#help">  Ayuda </a> </div>
+      <a href="{% url 'base' %}">   <img  class="r" src="{% static 'images/icons/renain.png' %}" alt="logo"> </a>
+      <a href="{% url 'base' %}">   <img class="h" src="{% static 'images/icons/help.png' %}" alt="logo"> </a>
     </div>
 </header>
 
 
-    <h2 id="title">Grupos</h2>
-{% if name == user.username %}
-    <p>
+<div id="footer">
+  <p>2018 Red Nacional de Investigación | Hecho en México |
+    © Todos los derechos reservados. Esta página electrónica puede ser reproducida,
+     sin objeto comercial, siempre y cuando su contenido no se mutile o altere, se cite la fuente completa
+     y la dirección Web de conformidad con el artículo 148 de la Ley Federal del Derecho de Autor, de otra forma,
+     se requerirá permiso previo y por escrito de la RENAIN. </p>
+</div>
 
-    <a id="title2" href="{% url 'add_group' slug=user %}">Agregar grupo</a>
-
-    </p>
-{% endif %}
-    <table class="table"  width="80%" border="2"
-     align="center" cellspacing="0" bordercolor="black" bgcolor="white">
-        <thead>
-        <tr>
-            <th>Nombre</th>
-        </tr>
-        <br>
-
-
-        </thead>
-        <tbody>
-        {% for group in groups.iterator %}
-            <tr>
-
-            <td> {{ group.name }} </td>
-
-
-            </tr>
-
-        {% endfor %}
-
-        </tbody>
-
-    </table>
-    <br>
-    <div id="footer">
-      <p>2018 Red Nacional de Investigación | Hecho en México |
-        © Todos los derechos reservados. Esta página electrónica puede ser reproducida,
-         sin objeto comercial, siempre y cuando su contenido no se mutile o altere, se cite la fuente completa
-         y la dirección Web de conformidad con el artículo 148 de la Ley Federal del Derecho de Autor, de otra forma,
-         se requerirá permiso previo y por escrito de la RENAIN. </p>
-    </div>
-
-   </body>
-  </html>
+</body>
+</html>
 
 {% endblock %}
