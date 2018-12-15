@@ -48,8 +48,10 @@ $ python3 manage.py migrate
 ```bash
 $ python3 manage.py loaddata initial.json
 ```
-## Ejecutar la pagina
-Antes, debemos crear un superusuario 
+## Ejecucion
+
+Primero debemos crear un superusuario por defecto de Django, pero como no tiene los campos que requiere el registro de investigador servira unicamente para dar permisos de superusuario a algun investigador, que sera administrador de la pagina y finalmente es opcional borrar el superusuario por defecto de Django creado al principio.
+
 ```bash
 $ python3 manage.py createsuperuser
   Nombre de usuario: admin
@@ -57,7 +59,7 @@ $ python3 manage.py createsuperuser
   Password: admin1234
   Password(again): admin1234
 ```
-Ejecutar el servidor
+### Ejecutar el servidor
 ```bash 
 $ python3 manage.py runserver localhost:8000
 ```
