@@ -46,9 +46,9 @@ img.r {
 }
 
 #footer {
-  height: 40em;
+  height: 5em;
   background-color: #404245 !important;
   color: white !important;
   text-align: center !important;
-  border-radius: 20px !important;
+  border-radius: 10px !important;
 }

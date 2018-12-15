@@ -9,7 +9,7 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-<link rel="stylesheet" href="{% static 'css/papers.css' %}">
+<link rel="stylesheet" href="{% static 'css/links.css' %}">
 <link rel="icon" heightype="image/png" href=" {% static 'images/icons/favicon.png' %}"/>
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
@@ -49,15 +49,31 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Campus</b></h5>
-          <p> {{institutes.campus}}</p>
+          <p> {{institutes.campus}} <a href="/campus/{{institutes.campus.url_name_campus}}">
+              <font color="0a4a8e"> Ver informacion </font>
+            </a> </p>
           <hr>
         </div>
 
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Telefono</b></h5>
-          <p> {{institutes.telephone}}</p><br>
+          <p> {{institutes.telephone}}</p>
+          <hr>
         </div>
 
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Subinstitutos pertenecientes a la institucion</b></h5>
+          {% if subinstitutes %}
+          {% for subinstitute in subinstitutes %}
+          <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ subinstitute.name }} <a href="/subinstitute/{{subinstitute.url_name_subinstitute}}">
+              <font color="0a4a8e"> Ver informacion </font>
+            </a> </p>
+          {% endfor %}
+          {% else %}
+          <p> No hay subinstituciones en este instituto </p>
+          {% endif %}
+          <hr>
+        </div>
       </div>
 
 

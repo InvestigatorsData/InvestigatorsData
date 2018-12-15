@@ -18,11 +18,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </head>
 <header>
 <div class="container">
-    <input id="toggle" type="checkbox">
-    <label class="toggle-container" for="toggle">
-    <span class="button button-toggle"></span>
-    </label>
-    <div id="renain"><a href="{% url 'base' %}"> RENAIN </a> </div>
+  <a href="{% url 'base' %}"> <img class="r" src="{% static 'images/icons/renain.png' %}"> </a> </div>
 </div>
 </header>
 
@@ -44,16 +40,24 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         </div>
         <div class="w3-container">
             <h5 class="w3-opacity"><b>Campus</b></h5>
+            {% if college_campus %}
             {% for campus in college_campus %}
             <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ campus.name }} <a href="/campus/{{campus.url_name_campus}}"> <font color="0a4a8e"> Ver informacion </font></a></p>
             {% endfor %}
+            {% else %}
+            <p> No hay campus en este colegio</p>
+            {% endif %}
             <hr>
         </div>
         <div class="w3-container">
             <h5 class="w3-opacity"><b>Instituciones</b></h5>
+            {% if institutes %}
             {% for institute in institutes %}
             <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ institute.name }} <a href="/institute/{{institute.url_name_institute}}"> <font color="0a4a8e"> Ver informacion </font></a></p>
             {% endfor %}
+            {% else %}
+            <p> No hay instituciones en ese colegio </p>
+            {% endif %}
             <hr>
         </div>
         <div class="w3-container">

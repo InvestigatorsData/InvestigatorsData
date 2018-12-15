@@ -40,13 +40,9 @@
                 <form class="contact100-form validate-form">
                     <align="left">
                         <p style="color: white;">
-                            <font size=6>Resultados de las busquedas de: {{state}}</font>
+                            <font size=6> Campus que se encuentran en {{state.name}}</font>
                         </p>
                               <align="left">
-                                <p style="color: #3ccaed;">
-                                    <font size=5>Campus</font>
-                                </p>
-
                                 <br>
                                 <div  id="Campus" >
                                     {% if campus %}
@@ -54,7 +50,7 @@
                                     <p class="wrap-input100 validate-input bg1" style="color:black;"> {{ campi.name }} <a href="/campus/{{campi.url_name_campus}}"> <font color="0a4a8e"> Ver informacion </font></a></p>
                                     {% endfor %}
                                     {% else %}
-                                    <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron coincidencias</p>
+                                    <p class="wrap-input100 validate-input bg1" style="color:black;">No se encontraron campus</p>
                                     {% endif %}
                                 </div>
                 </form>
